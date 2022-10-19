@@ -83,7 +83,7 @@ SOFTWARE.
 [Go Back to the top](#Tastebite-Recipe-App)
 
 ## Authors Info
-Contributors 
+Contributors - [Dennis-Kimathi](https://github.com/dennohkim)
 
 
 [Go Back to the top](#Tastebite-Recipe-App)
