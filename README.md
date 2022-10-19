@@ -84,6 +84,7 @@ SOFTWARE.
 
 ## Authors Info
 Contributors - [Dennis Kimathi](https://github.com/DennohKim)
+               [Cyron Arieri](https://github.com/ARIERICYRON)
 
 
 [Go Back to the top](#Tastebite-Recipe-App)
