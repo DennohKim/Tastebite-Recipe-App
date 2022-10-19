@@ -2,7 +2,7 @@
 ## By Dennis Kimathi | Cyron Arieri | John Kamau | Onan Thairu | Annastacia Ngina | James Kamuren | Zachary Ndungu
 
 ## Screenshot
- ![image]()
+ ![image](./tastebite-client/src/assets/images/hero-tastebite.png)
 
  ## Table of Content
  - [Description](#description)

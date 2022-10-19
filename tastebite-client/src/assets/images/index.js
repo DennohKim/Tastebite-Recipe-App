@@ -1,0 +1,1 @@
+export { default as Screenshot } from './hero-tastebite.png'
