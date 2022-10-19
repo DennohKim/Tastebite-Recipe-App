@@ -84,6 +84,7 @@ SOFTWARE.
 
 ## Authors Info
 Contributors - [Dennis Kimathi](https://github.com/DennohKim)
+[Onan-Thairu](https://github.com/Onan-Thairu)
 
 
 [Go Back to the top](#Tastebite-Recipe-App)
