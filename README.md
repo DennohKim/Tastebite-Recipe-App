@@ -85,6 +85,7 @@ SOFTWARE.
 ## Authors Info
 
 Contributors - [Dennis Kimathi](https://github.com/DennohKim)
+               [Cyron Arieri](https://github.com/ARIERICYRON)
 
 [Onan-Thairu](https://github.com/Onan-Thairu)
 
