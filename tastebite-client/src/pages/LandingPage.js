@@ -27,7 +27,7 @@ const LandingPage = () => {
         <section>
             <WhyTastebite />
         </section>
-        <section className="h-screen">Testimonials
+        <section className="h-screen flex justify-center items-center bg-red-300 p-11" >Testimonials
             {/* Your section goes here */}
         </section>
         <section className="h-screen">ContactForm & Footer
