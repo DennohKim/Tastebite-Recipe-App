@@ -1,7 +1,7 @@
 import React from "react";
 import RecipeCard from "./RecipeCard";
 
-const RecipesList = ({recipes}) => {
+const RecipesList = ({ recipes }) => {
   const recipeList = recipes.map((recipe) => {
     return (
       <RecipeCard
@@ -12,14 +12,14 @@ const RecipesList = ({recipes}) => {
         peopleServed={recipe.people_served}
         country={recipe.country}
         ratings={recipe.ratings}
-    
       />
     );
   });
   return (
     <div className="w-full">
-     
-      <div className="pt-20 w-4/5 mx-auto grid gap-8 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-2 align-center">{recipeList}</div>
+      <div className="pt-20 w-4/5 mx-auto grid gap-8 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-2 align-center">
+        {recipeList}
+      </div>
     </div>
   );
 };
