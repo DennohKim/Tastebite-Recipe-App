@@ -1,4 +1,8 @@
 import React from 'react'
+// import Recipes from '../components/Recipes/Recipes'
+// import TabComponent from '../components/Recipes/Tabs'
+import Tabtest from '../components/Recipes/TabComponent'
+
 
 const LandingPage = () => {
   return (
@@ -6,12 +10,14 @@ const LandingPage = () => {
         <section className="h-screen">Hero Section
             {/* Your section goes here */}
         </section>
-        <section className="h-screen">Popular recipes
-            {/* Your section goes here */}
-            
+        <section className="">
+            {/* <TabComponent /> */}
+            <Tabtest/>
+            {/* <Recipes /> */}
         </section>
         <section className="h-screen">Why tastebite
             {/* Your section goes here */}
+           
         </section>
         <section className="h-screen">Testimonials
             {/* Your section goes here */}
