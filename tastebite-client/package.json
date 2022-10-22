@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3000",
   "dependencies": {
     "@headlessui/react": "^1.7.3",
+    "@syncfusion/ej2-react-popups": "^19.4.53",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

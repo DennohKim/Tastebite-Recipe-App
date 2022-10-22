@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import { AllRecipes, Dashboard, LandingPage, MyRecipes, Profile, Signin, Signup } from './pages';
 
 function App() {
