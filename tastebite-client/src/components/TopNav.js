@@ -17,6 +17,8 @@ export default function TopNav() {
                 <li className='mr-10 hover:text-yellow-300'>Contact us</li>
             </ul>
         </div>
+        <button>Register</button>
+        <button>Login</button>
     </div>
   )
 }
