@@ -1,11 +1,13 @@
 import React from 'react'
-
+import logo from './logo.svg'
 
 export default function TopNav() {
   return (
     /*flex container*/
     <div className='flex items-centre justify-between'>
-        TopNav
+        <div className=''>
+            <img src={logo} alt="logo"></img>
+        </div>
     </div>
   )
 }
