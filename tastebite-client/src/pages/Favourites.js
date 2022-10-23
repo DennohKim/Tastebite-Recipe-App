@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
 
-const Profile= () => {
+const Favourites = () => {
   const { activeMenu } = useStateContext();
 
   return (
@@ -40,4 +40,4 @@ const Profile= () => {
   );
 };
 
-export default Profile;
+export default Favourites;

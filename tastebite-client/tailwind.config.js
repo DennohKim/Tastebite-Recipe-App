@@ -7,10 +7,21 @@ module.exports = {
         "primary-color": "#FFEA74",
         "secondary-color": "#FF785B",
       },
+      fontFamily: {
+        sans: ['"Jost"', 'sans-serif']
+      },
+
       width: {
-        215: "215px",
-        357: "357px",
-        557: "557px",
+        width: {
+          400: '400px',
+          760: '760px',
+          780: '780px',
+          800: '800px',
+          900: '900px',
+          1000: '1000px',
+          1200: '1200px',
+          1400: '1400px',
+        },
       },
       minWidth: {
         155: "155px",
@@ -25,6 +36,5 @@ module.exports = {
         557: "557px",
       },
     },
-    
   },
 };

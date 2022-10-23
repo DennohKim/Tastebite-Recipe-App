@@ -59,7 +59,7 @@ const NavbarDashboard = () => {
           <p className="text-base text-gray-600 ">Welcome {username} </p>
         </div>
 
-        <button onClick={handleLogout} className="border-2 border-primary-color text-primary-color hover:bg-primary-color hover:text-white rounded px-6 py-2 my-4">
+        <button onClick={handleLogout} className="border-2 border-secondary-color text-secondary-color hover:bg-secondary-color hover:font-bold rounded px-6 py-2 my-4">
           Logout
         </button>
       </div>
