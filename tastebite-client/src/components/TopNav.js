@@ -17,8 +17,8 @@ export default function TopNav() {
                 <li className='mr-10 hover:text-yellow-300'>Contact us</li>
             </ul>
         </div>
-        <button className='mr-16'>Register</button>
-        <button className='mr-16 bg-red-400 text-white text-xl p-10 rounded-none -sm m-3'>Login</button>
+        <button className='mr-16 hover:text-yellow-300 text-lg font-light' >Register</button>
+        <button className='font-light mr-16 bg-red-400 text-white text-xl p-10 rounded-none -sm m-3'>Login</button>
     </div>
   )
 }
