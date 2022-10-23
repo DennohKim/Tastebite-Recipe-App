@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "/users", to: "users#index"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  resources :recipes, only: [:index, :create, :update, :destroy]
 end
