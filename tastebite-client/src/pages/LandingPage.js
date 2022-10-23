@@ -1,10 +1,12 @@
 import React from 'react'
+import TopNav from '../components/TopNav'
 
 const LandingPage = () => {
   return (
     <div>
-        <section className="h-screen">Hero Section
+        <section className="h-screen">
             {/* Your section goes here */}
+            <TopNav />
         </section>
         <section className="h-screen">Popular recipes
             {/* Your section goes here */}
