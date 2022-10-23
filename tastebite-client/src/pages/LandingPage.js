@@ -4,7 +4,7 @@ import TopNav from '../components/TopNav'
 const LandingPage = () => {
   return (
     <div>
-        <section className="h-screen">
+        <section className="h-screen relative container mx-auto p-6">
             {/* Your section goes here */}
             <TopNav />
         </section>
