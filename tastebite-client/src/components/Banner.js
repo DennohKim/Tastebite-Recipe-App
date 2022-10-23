@@ -1,4 +1,5 @@
 import React from 'react'
+import image from './FoodPlate.jpg'
 
 export default function Banner() {
   return (
@@ -9,6 +10,9 @@ export default function Banner() {
             <br></br>new ones and share them with friends.
         </p>
         <button class= 'inline-block text-lg bg-red-400 border-none p-5 m-5'>Get Started</button>
+        <div>
+        <img src={image} alt='plate'></img>
+        </div>
     </div>
   )
 }
