@@ -8,7 +8,7 @@ export default function Banner() {
             <br></br>where users can Save their favorite recipes in the app, create 
             <br></br>new ones and share them with friends.
         </p>
-        <button class= ''>Get Started</button>
+        <button class= 'inline-block text-lg bg-red-400 border-none p-5 m-5'>Get Started</button>
     </div>
   )
 }
