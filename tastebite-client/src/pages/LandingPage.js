@@ -1,4 +1,5 @@
 import React from 'react'
+import Banner from '../components/Banner'
 import TopNav from '../components/TopNav'
 
 const LandingPage = () => {
@@ -7,6 +8,7 @@ const LandingPage = () => {
         <section className="h-screen relative container mx-auto p-12 items-centre justify-between">
             {/* Your section goes here */}
             <TopNav />
+            <Banner />
         </section>
         <section className="h-screen">Popular recipes
             {/* Your section goes here */}
