@@ -2,7 +2,7 @@
 ## By Dennis Kimathi | Cyron Arieri | John Kamau | Onan Thairu | Annastacia Ngina | James Kamuren | Zachary Ndungu
 
 ## Screenshot
- ![image]()
+ ![image](./tastebite-client/src/assets/images/hero-tastebite.png)
 
  ## Table of Content
  - [Description](#description)
@@ -83,8 +83,14 @@ SOFTWARE.
 [Go Back to the top](#Tastebite-Recipe-App)
 
 ## Authors Info
-Contributors - [Dennis Kimathi](https://github.com/DennohKim)
-               [Cyron Arieri](https://github.com/ARIERICYRON)
 
+Contributors - [Dennis Kimathi](https://github.com/DennohKim)
+
+[James Kamuren](https://github.com/Chemobo)
+[Cyron Arieri](https://github.com/ARIERICYRON)
+
+[Onan-Thairu](https://github.com/Onan-Thairu)
+
+[John Kamau](https://github.com/JohnKamaujk)
 
 [Go Back to the top](#Tastebite-Recipe-App)
