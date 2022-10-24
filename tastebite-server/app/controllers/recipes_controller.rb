@@ -10,8 +10,22 @@ class RecipesController < ApplicationController
       recipe = @current_user.recipes.create!(recipe_params) 
       render json: recipe, status: :created
     end
+
+    def update
+      recipe = find_recipe.update!(recipe_params) 
+      render json: recipe
+    end
+
+    def destroy
+      recipe = find_recipe
+      recipe.destroy
+      head :no_content
+    end
   
     private 
+    def find_recipe
+      Recipe.find(params[:id])
+    end
     def recipe_params 
       params.permit(:title, :country, :rating, :ingredients, :procedure, :people_served, :category, :cooking_time, :image_url, :video_link)
     end

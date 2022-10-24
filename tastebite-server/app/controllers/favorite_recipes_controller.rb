@@ -7,8 +7,24 @@ class FavoriteRecipesController < ApplicationController
         favorite_recipe = @current_user.favorite_recipes.create!(favorite_recipe_params) 
         render json: favorite_recipe, status: :created
     end
+
+    def update
+        favorite_recipe = find_favorite_recipe.update!(favorite_recipe_params) 
+        render json: favorite_recipe
+      end
+  
+      def destroy
+        favorite_recipe = find_favorite_recipe
+        favorite_recipe.destroy
+        head :no_content
+      end
     
     private 
+
+    def find_favorite_recipe
+        FavoriteRcipe.find(params[:id])
+    end
+    
     def favorite_recipe_params 
         params.permit(:title, :country, :rating, :ingredients, :procedure, :people_served, :category, :cooking_time, :image_url, :video_link)
     end
