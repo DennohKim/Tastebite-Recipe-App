@@ -1,7 +1,13 @@
 import React from 'react'
+
+// import Recipes from '../components/Recipes/Recipes'
+// import TabComponent from '../components/Recipes/Tabs'
+import Tabtest from '../components/Recipes/TabComponent'
+
 import WhyTastebite from '../components/WhyTastebite/WhyTastebite'
-import Banner from '../components/Banner'
-import TopNav from '../components/TopNav'
+import Banner from '../components/HeroSection/Banner'
+import TopNav from '../components/HeroSection/TopNav'
+
 
 
 const LandingPage = () => {
@@ -12,15 +18,17 @@ const LandingPage = () => {
             <TopNav />
             <Banner />
         </section>
-        <section className="h-screen">Popular recipes
-            {/* Your section goes here */}
-            
+        <section className="">
+            {/* <TabComponent /> */}
+            <Tabtest/>
+            {/* <Recipes /> */}
         </section>
+
         <section>
             <WhyTastebite />
         </section>
-        <section className="h-screen">Testimonials
-            {/* Your section goes here */}
+        <section className="" >
+            <Slider/>
         </section>
         <section className="h-screen">ContactForm & Footer
             {/* Your section goes here */}

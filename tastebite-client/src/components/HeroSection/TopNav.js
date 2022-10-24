@@ -1,12 +1,13 @@
 import React from 'react'
-import logo from './logo.svg'
+import { Logo } from '../../assets/images'
+
 
 export default function TopNav() {
   return (
     /*flex container*/
     <div className='flex w-4/5 mx-auto items-center justify-between'>
         <div className='pt-2 pl-'>
-            <img src={logo} alt="logo"></img>
+            <img src={Logo} alt="logo"/>
         </div>
         <div className='flex-6 hidden md:flex'>
             <ul className='flex justify-center m-0 p-12 list-none text-lg font-light cursor-pointer mr-9'>
