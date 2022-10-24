@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { AllRecipes, Dashboard, LandingPage, MyRecipes, Profile, Signin, Signup } from './pages';
-import Favourites from './pages/Favourites';
+import { AllRecipes, Dashboard, LandingPage, MyRecipes, Profile, Signin, Signup, Favourites } from './pages';
 import './App.css'
 
 function App() {

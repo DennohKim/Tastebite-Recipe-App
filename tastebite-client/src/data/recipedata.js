@@ -1,5 +1,6 @@
 export const recipeInfo = [
     {
+      id: 1,
       image_url: "https://www.simplyrecipes.com/thmb/s78KzcJv6NnSmzQr4I9jDq1pfzA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Miso-Mushroom-Pasta-LEAD-06-bfea5cb9131c4690aa443d9559b2e3e8.jpg",
       recipe_name: 'Creamy Miso Mushroom Pasta',
       cooking_time: 20,
@@ -14,6 +15,7 @@ export const recipeInfo = [
     },
 
     {
+        id: 2,
         image_url: "https://www.simplyrecipes.com/thmb/q1A6OERwYtdZ6dYCSnrjfkrEs9c=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Pulled-Pork-Enchiladas-LEAD-02-baf69e91ec6d4fbeb9304550991b44e7.jpg",
         recipe_name: 'Pulled Pork Enchiladas',
         cooking_time: 60,
@@ -27,6 +29,7 @@ export const recipeInfo = [
   
       },
       {
+        id: 3,
         image_url: "https://www.simplyrecipes.com/thmb/u4pfL3TRefhkQuqRhouGvVAJBSM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Americano-Cocktail-LEAD-08-c3c291a689fa4e548f947ddec81ef942.jpg",
         recipe_name: 'Americano Cocktail',
         cooking_time: 3,
@@ -41,6 +44,7 @@ export const recipeInfo = [
       },
 
       {
+        id: 4,
         image_url: "https://www.simplyrecipes.com/thmb/9qoNxxbl2cQ-wS5UiqKmRJl7l9M=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Air-Fryer-Hash-Brown-LEAD-03-92d4fd8479c344c4a4c64431c71793c2.jpg",
         recipe_name: 'Air Fryer Hash Browns',
         cooking_time: 18,
@@ -55,6 +59,7 @@ export const recipeInfo = [
       },
 
       {
+        id: 5 ,
         image_url: "https://www.simplyrecipes.com/thmb/NQArZT2BS-nwPGfhYPCrVQ56X5I=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Stovetop-Taco-Soup-LEAD-03-4b5f409c17494b11b285f1e2408a183e.jpg",
         recipe_name: 'Stovetop Taco Soup',
         cooking_time: 35,

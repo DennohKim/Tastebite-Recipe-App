@@ -2,18 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BiTimeFive, BiDish } from "react-icons/bi";
 
-const RecipeCard = ({
+const AllRecipeCard = ({
   image,
   recipeName,
   cookingTime,
   peopleServed,
   country,
   ratings,
-  
+  recipeId
 }) => {
   return (
     <div>
-      <Link to="/signin">
+      <Link to={`/allrecipes/${recipeId}`}>
         <div className="shadow-md p-4 rounded-md">
           <div className="">
             <img className="max-w-full h-auto" src={image} alt="recipe" />
@@ -53,4 +53,4 @@ const RecipeCard = ({
   );
 };
 
-export default RecipeCard;
+export default AllRecipeCard;
