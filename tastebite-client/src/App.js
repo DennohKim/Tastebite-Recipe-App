@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AllRecipes, Dashboard, LandingPage, MyRecipes, Profile, Signin, Signup, Favourites } from './pages';
 import './App.css'
 
+
 function App() {
   return (
     <div className="App">

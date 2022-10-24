@@ -2,9 +2,9 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
-import AllRecipesList from "../components/Recipes/AllRecipesList";
-import { Route } from "react-router-dom";
-import ShowRecipe from "../components/Recipes/ShowRecipe";
+// import AllRecipesList from "../components/Recipes/AllRecipesList";
+// import { Route } from "react-router-dom";
+// import ShowRecipe from "../components/Recipes/ShowRecipe";
 
 const AllRecipes = () => {
   const { activeMenu } = useStateContext();
@@ -28,7 +28,7 @@ const AllRecipes = () => {
         <div
           className={
             activeMenu
-              ? "bg-main-bg min-h-screen md:ml-72 w-full  "
+              ? "bg-main-bg min-h-screen md:ml-72 w-full"
               : "bg-main-bg w-full min-h-screen flex-2 "
           }
         >
@@ -36,10 +36,10 @@ const AllRecipes = () => {
             <NavbarDashboard />
           
             <div className="px-2 mx-auto my-4 gap-2">
-            <AllRecipesList/>
+            {/* <AllRecipesList/>
             <Route >
               <ShowRecipe/>
-            </Route>
+            </Route> */}
 
             </div>
             
