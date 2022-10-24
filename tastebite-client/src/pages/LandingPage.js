@@ -1,6 +1,8 @@
 import React from 'react'
+import WhyTastebite from '../components/WhyTastebite/WhyTastebite'
 import Banner from '../components/Banner'
 import TopNav from '../components/TopNav'
+
 
 const LandingPage = () => {
   return (
@@ -14,8 +16,8 @@ const LandingPage = () => {
             {/* Your section goes here */}
             
         </section>
-        <section className="h-screen">Why tastebite
-            {/* Your section goes here */}
+        <section>
+            <WhyTastebite />
         </section>
         <section className="h-screen">Testimonials
             {/* Your section goes here */}
