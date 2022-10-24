@@ -1,11 +1,16 @@
 import React from 'react'
 import WhyTastebite from '../components/WhyTastebite/WhyTastebite'
+import Banner from '../components/Banner'
+import TopNav from '../components/TopNav'
+
 
 const LandingPage = () => {
   return (
     <div>
-        <section className="h-screen">Hero Section
+        <section className="h-screen w-full">
             {/* Your section goes here */}
+            <TopNav />
+            <Banner />
         </section>
         <section className="h-screen">Popular recipes
             {/* Your section goes here */}
