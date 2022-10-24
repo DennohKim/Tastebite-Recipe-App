@@ -5,7 +5,7 @@ import TopNav from '../components/TopNav'
 const LandingPage = () => {
   return (
     <div>
-        <section className="h-screen relative container mx-auto p-12 items-centre justify-between">
+        <section className="h-screen w-full">
             {/* Your section goes here */}
             <TopNav />
             <Banner />
