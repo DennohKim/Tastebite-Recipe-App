@@ -3,10 +3,10 @@ import React, { createContext, useContext, useState } from "react";
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-  
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
- 
+  const [user, setUser] = useState([]);
+
   return (
     <StateContext.Provider
       value={{
@@ -14,9 +14,8 @@ export const ContextProvider = ({ children }) => {
         setActiveMenu,
         screenSize,
         setScreenSize,
-        
-      
-       
+        user,
+        setUser,
       }}
     >
       {children}

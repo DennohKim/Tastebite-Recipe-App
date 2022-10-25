@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    #Authorization will only skip signup action
+    #Authorization will only skip signup action & index users
     skip_before_action :authorize, only: [:create, :index]
 
     def index
@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
     def create 
       user = User.create!(user_params) 
-      session[:user_id] = user.id 
       render json: user, status: :created 
     end
 
