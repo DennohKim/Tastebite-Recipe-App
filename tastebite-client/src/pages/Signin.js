@@ -28,6 +28,7 @@ const Signin = () => {
       if (r.ok) {
         r.json().then((data) => {
           setUser(data);
+          localStorage.setItem('user', JSON.stringify(user))
           navigate("/dashboard");
         });
       } else {

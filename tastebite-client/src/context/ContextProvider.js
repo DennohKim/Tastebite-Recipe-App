@@ -12,6 +12,15 @@ export const ContextProvider = ({ children }) => {
 
   console.log(user)
 
+  useEffect(() => {
+
+    const userInfo = JSON.parse(localStorage.getItem('user'))
+
+    if (userInfo){
+      setUser(userInfo)
+    }
+
+  }, []);
   
 
   useEffect(() => {
