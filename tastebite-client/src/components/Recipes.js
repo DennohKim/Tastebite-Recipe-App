@@ -59,7 +59,7 @@ const Recipes = () => {
         {recipes.map((recipe) => {
           return (
             <div key={recipe.id}>
-              <img src={recipe.image_url} alt="recipe-image" />
+              <img src={recipe.image_url} alt="recipe" />
               
 
               </div>

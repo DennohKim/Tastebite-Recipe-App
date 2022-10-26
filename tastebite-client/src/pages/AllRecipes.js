@@ -2,11 +2,7 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
-import Recipes from "../components/Recipes";
 
-
-// import { Route } from "react-router-dom";
-// import ShowRecipe from "../components/Recipes/ShowRecipe";
 
 import AllRecipesList from "../components/Recipes/AllRecipesList";
 

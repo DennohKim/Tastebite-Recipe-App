@@ -30,7 +30,7 @@ function IngredientInput() {
   }
 
   return (
-    <form autoComplete="off" className="App">
+    <form autoComplete="off" className="main-container">
       <div className="form-field">
         <label htmlFor="">ingredient(s)</label>
 

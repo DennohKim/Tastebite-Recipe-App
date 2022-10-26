@@ -5,7 +5,7 @@ import { useStateContext } from '../../context/ContextProvider';
 
 const AllRecipesList = () => {
 
-const { recipes, setRecipes } = useStateContext();
+const { recipes } = useStateContext();
 
     const recipeList = recipes.map((recipe) => {
 

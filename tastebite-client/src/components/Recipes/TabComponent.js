@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { recipeInfo } from "../../data/recipedata";
+import React from "react";
 import Buttons from "./Buttons";
 import RecipesList from "./RecipesList";
 import { useStateContext } from "../../context/ContextProvider";

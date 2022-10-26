@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import Sidebar from "../components/Sidebar";
-import { BsBookmark, BsPlus } from "react-icons/bs";
+import { BsBookmark } from "react-icons/bs";
 import { BiFoodMenu } from "react-icons/bi";
 import { HiOutlineUserGroup } from "react-icons/hi";
 
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
 import Modaltest from "../components/Dashboard/Modaltest";
-// import AddRecipeModal from "../components/Dashboard/AddRecipeModal";
+
 
 const Dashboard = () => {
   const { activeMenu } = useStateContext();
-  const [modal, setModal] = useState(true);
+
 
   return (
     <>
@@ -78,10 +78,7 @@ const Dashboard = () => {
               </div>
             </div>
            
-            {/* <div className="flex gap-2w-full active:scale-90 bg-secondary-color transition duration-150 ease-in-out rounded-full text-white px-4 py-2 text-sm">
-              
-               
-              </div> */}
+          
           </div>
         </div>
       </div>

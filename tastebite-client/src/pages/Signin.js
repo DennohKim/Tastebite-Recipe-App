@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Logo } from "../assets/images";
 import { Link, useNavigate } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
@@ -6,7 +6,7 @@ import { useStateContext } from "../context/ContextProvider";
 const Signin = () => {
   const { user, setUser } = useStateContext();
 
-  // console.log(user)
+  console.log(user)
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

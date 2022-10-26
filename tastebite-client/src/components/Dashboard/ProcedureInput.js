@@ -30,7 +30,7 @@ const ProcedureInput = () => {
     }
   
     return (
-      <form autoComplete="off" className="App">
+      <form autoComplete="off" className="main-container">
         <div className="form-field">
           <label htmlFor="">procedure(s)</label>
   
