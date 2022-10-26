@@ -2,6 +2,10 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
+import AllRecipesList from "../components/Recipes/AllRecipesList";
+import AllMyRecipeList from "../components/Recipes/AllMyRecipeList";
+import AddRecipeModal from "../components/Dashboard/AddRecipeModal";
+import Modaltest from "../components/Dashboard/Modaltest";
 
 const MyRecipes = () => {
   const { activeMenu } = useStateContext();
@@ -30,6 +34,12 @@ const MyRecipes = () => {
         >
           <div className="fixed md:static bg-main-bg navbar w-full">
             <NavbarDashboard />
+
+            <div className="px-2 mx-auto my-4 gap-2">
+            <AllMyRecipeList/>
+           
+
+            </div>
           
 
             
