@@ -7,6 +7,9 @@ export const ContextProvider = ({ children }) => {
   const [screenSize, setScreenSize] = useState(undefined);
   const [user, setUser] = useState([]);
 
+  console.log(user)
+
+
   return (
     <StateContext.Provider
       value={{
@@ -21,6 +24,9 @@ export const ContextProvider = ({ children }) => {
       {children}
     </StateContext.Provider>
   );
+
 };
+
+
 
 export const useStateContext = () => useContext(StateContext);
