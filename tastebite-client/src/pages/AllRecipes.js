@@ -36,10 +36,7 @@ const AllRecipes = () => {
             <NavbarDashboard />
           
             <div className="px-2 mx-auto my-4 gap-2">
-            {/* <AllRecipesList/>
-            <Route >
-              <ShowRecipe/>
-            </Route> */}
+          
 
             </div>
             
