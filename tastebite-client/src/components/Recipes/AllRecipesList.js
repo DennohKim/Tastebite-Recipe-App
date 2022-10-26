@@ -1,9 +1,12 @@
 import React from 'react';
 import AllRecipeCard from './AllRecipeCard';
 import { recipeInfo } from "../../data/recipedata";
+import { useStateContext } from '../../context/ContextProvider';
 
 
 const AllRecipesList = () => {
+
+  const { recipes, setRecipes } = useStateContext();
   
     const recipeList = recipeInfo.map((recipe) => {
     return (

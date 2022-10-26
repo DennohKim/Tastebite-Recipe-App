@@ -1,7 +1,6 @@
 import React from 'react'
 
-// import Recipes from '../components/Recipes/Recipes'
-// import TabComponent from '../components/Recipes/Tabs'
+
 import Tabtest from '../components/Recipes/TabComponent'
 
 import WhyTastebite from '../components/WhyTastebite/WhyTastebite'
