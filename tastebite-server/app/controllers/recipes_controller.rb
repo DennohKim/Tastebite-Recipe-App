@@ -5,6 +5,11 @@ class RecipesController < ApplicationController
     def index 
       render json: Recipe.all, status: :ok
     end
+    def show 
+ recipes = Recipe.find(find_recipe)
+ render json:  recipe, status: :ok
+
+    end 
   
     def create
       recipe = @current_user.recipes.create!(recipe_params) 
@@ -24,7 +29,7 @@ class RecipesController < ApplicationController
   
     private 
     def find_recipe
-      Recipe.find(params[:id])
+      Recipe.find(params[:title, :country, :category])
     end
     def recipe_params 
       params.permit(:title, :country, :rating, :ingredients, :procedure, :people_served, :category, :cooking_time, :image_url, :video_link)

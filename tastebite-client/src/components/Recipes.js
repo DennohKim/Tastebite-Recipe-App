@@ -1,24 +1,23 @@
-import React, { useState, useMemo }  from 'react'
+import React, { useState, useMemo } from "react";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 
-
 const Recipes = () => {
- 
-        const [value, setValue] = useState("");
-        const options = useMemo(() => countryList().getData(), []);
-      
-        const changeHandler = (value) => {
-          setValue(value);
-        };
+  const [value, setValue] = useState("");
+  const options = useMemo(() => countryList().getData(), []);
+
+  const changeHandler = (value) => {
+    setValue(value);
+  };
   return (
-      <>
-            <h3 className="font-bold">All Recipes</h3>
-              <div class="flex  justify-around">
-                <div class="w-15">
-                  <input
-                    type="search"
-                    class="
+    <>
+      <div >
+      <h3 className="font-bold">All Recipes</h3>
+      <div class="flex  justify-center">
+        <div class="px-8">
+          <input
+            type="search"
+            class="
         form-control
         block
         w-full
@@ -35,30 +34,27 @@ const Recipes = () => {
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       "
-                    placeholder="Search by name, ingredients or country"
-                  />
-                </div>
+            placeholder="Search by name, ingredients or country"
+          />
+        </div>
 
-                <div>
-                  <select>
-                    <option> Categories</option>
-                    <option>Breakfast</option>
-                    <option>Lunch</option>
-                    <option>Dinner</option>
-                  </select>
-                </div>
+        <div px-8>
+          <select>
+            <option> Categories</option>
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+          </select>
+        </div>
 
-                <div>
-                  <Select
-                    class="w-8"
-                    options={options}
-                    value={value}
-                    onChange={changeHandler}
-                  />
-                </div>
-              </div>
-          </>
-  )
-}
+        <div class="px-8">
+          <Select options={options} value={value} onChange={changeHandler} />
+        </div>
+        </div>
+        </div>
+      <div></div>
+    </>
+  );
+};
 
-export default Recipes 
+export default Recipes;

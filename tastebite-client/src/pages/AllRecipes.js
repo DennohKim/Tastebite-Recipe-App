@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
+import Recipes from "../components/Recipes";
 // import AllRecipesList from "../components/Recipes/AllRecipesList";
 // import { Route } from "react-router-dom";
 // import ShowRecipe from "../components/Recipes/ShowRecipe";
@@ -40,6 +41,7 @@ const AllRecipes = () => {
 
             <div className="px-4 mx-auto my-4 gap-2">
             
+              <Recipes/>
 
             </div>
           </div>
