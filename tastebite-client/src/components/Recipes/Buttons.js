@@ -1,8 +1,9 @@
 import React from "react";
-import { recipeInfo } from "../../data/recipedata";
 
 
-const Buttons = ({ setRecipes, categories, filterRecipes }) => {
+
+
+const Buttons = ({ setRecipes, categories, filterRecipes, recipes }) => {
 
     
   return (
@@ -10,7 +11,7 @@ const Buttons = ({ setRecipes, categories, filterRecipes }) => {
       <div className="flex justify-center">
         <button
           className="text-black p-1 px-4 mx-5 border-b-2"
-          onClick={() => setRecipes(recipeInfo)}
+          onClick={() => setRecipes(recipes)}
         >
           All
         </button>
