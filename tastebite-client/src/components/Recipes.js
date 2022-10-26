@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState, useMemo }  from 'react'
+import Select from "react-select";
+import countryList from "react-select-country-list";
 
 
 const Recipes = () => {
+ 
+        const [value, setValue] = useState("");
+        const options = useMemo(() => countryList().getData(), []);
+      
+        const changeHandler = (value) => {
+          setValue(value);
+        };
   return (
       <>
             <h3 className="font-bold">All Recipes</h3>
@@ -52,4 +61,4 @@ const Recipes = () => {
   )
 }
 
-export default Recipes
+export default Recipes 

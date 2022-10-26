@@ -41,7 +41,7 @@ const AllRecipes = () => {
             <div className="px-4 mx-auto my-4 gap-2">
             
 
-            </div
+            </div>
           </div>
         </div>
       </div>
