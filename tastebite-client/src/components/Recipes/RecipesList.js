@@ -17,7 +17,7 @@ const RecipesList = ({ recipes }) => {
   });
   return (
     <div className="w-full">
-      <div className="pt-20 w-4/5 mx-auto grid gap-8 xs:grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:grid-rows-2 lg:grid-rows-2 align-center">
+      <div className="pt-20 w-4/5 mx-auto grid gap-8 xs:grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 md:grid-rows-2 lg:grid-rows-2 align-center">
         {recipeList}
       </div>
     </div>
