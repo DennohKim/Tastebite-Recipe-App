@@ -33,3 +33,5 @@ end
 
 gem "active_model_serializers", "~> 0.10.12"
 
+gem 'rails_same_site_cookie'
+

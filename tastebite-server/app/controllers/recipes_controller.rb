@@ -5,10 +5,18 @@ class RecipesController < ApplicationController
     def index 
       render json: Recipe.all, status: :ok
     end
+<<<<<<< HEAD
     def show 
  recipe =find_recipe
  render json:  recipe, status: :ok
     end 
+=======
+
+    def show
+      recipe = find_recipe
+      render json: recipe, status: :ok
+    end
+>>>>>>> bfaa40d2237ae63d0713f8f6fd2fb103f7d0d3f4
   
     def create
       recipe = @current_user.recipes.create!(recipe_params) 

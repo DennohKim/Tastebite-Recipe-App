@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     #Authorization will only skip signin action
-    skip_before_action :authorize, only: :create
+    # skip_before_action :authorize, only: :create
   
     def create 
       user = User.find_by(username: params[:username])
