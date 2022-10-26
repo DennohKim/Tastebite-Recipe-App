@@ -7,6 +7,7 @@ import Tabtest from '../components/Recipes/TabComponent'
 import WhyTastebite from '../components/WhyTastebite/WhyTastebite'
 import Banner from '../components/HeroSection/Banner'
 import TopNav from '../components/HeroSection/TopNav'
+import Slider from '../components/Testimonials/Slider'
 
 
 
