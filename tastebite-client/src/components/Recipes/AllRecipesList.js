@@ -4,8 +4,11 @@ import { useStateContext } from '../../context/ContextProvider';
 
 
 const AllRecipesList = () => {
-  const {recipes} = useStateContext()
+
+const { recipes, setRecipes } = useStateContext();
+
     const recipeList = recipes.map((recipe) => {
+
     return (
       <AllRecipeCard
         recipeId={recipe.id}
