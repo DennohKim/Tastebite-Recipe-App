@@ -1,6 +1,5 @@
 import React from 'react';
 import AllRecipeCard from './AllRecipeCard';
-import { recipeInfo } from "../../data/recipedata";
 import { useStateContext } from '../../context/ContextProvider';
 
 
@@ -10,9 +9,9 @@ const AllRecipesList = () => {
     return (
       <AllRecipeCard
         recipeId={recipe.id}
-        key={recipe.recipe_name}
+        key={recipe.id}
         image={recipe.image_url}
-        recipeName={recipe.recipe_name}
+        recipeName={recipe.title}
         cookingTime={recipe.cooking_time}
         peopleServed={recipe.people_served}
         country={recipe.country}
