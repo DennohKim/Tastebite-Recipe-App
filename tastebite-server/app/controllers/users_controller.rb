@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     #Authorization will only skip signup action & index users
-    skip_before_action :authorize, only: [:create, :index]
+    # skip_before_action :authorize, only: [:create, :index]
 
     def index
         users = User.all
