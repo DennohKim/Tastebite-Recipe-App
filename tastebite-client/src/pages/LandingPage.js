@@ -8,6 +8,8 @@ import WhyTastebite from '../components/WhyTastebite/WhyTastebite'
 import Banner from '../components/HeroSection/Banner'
 import TopNav from '../components/HeroSection/TopNav'
 import Slider from '../components/Testimonials/Slider'
+import Footer from '../components/Footer/Footer'
+import ContactForm from '../components/Footer/ContactForm'
 
 
 
@@ -31,7 +33,9 @@ const LandingPage = () => {
         <section className="" >
             <Slider/>
         </section>
-        <section className="h-screen">ContactForm & Footer
+        <section className="h-screen">
+        <ContactForm/>
+        <Footer/>
             {/* Your section goes here */}
         </section>
     </div>
