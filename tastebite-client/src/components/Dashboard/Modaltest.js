@@ -1,4 +1,7 @@
 import React from "react";
+import { BsPlus } from 'react-icons/bs'
+import IngredientInput from "./IngredientInput";
+import ProcedureInput from "./ProcedureInput";
 
 export default function Modaltest() {
   const [showModal, setShowModal] = React.useState(false);
@@ -9,11 +12,12 @@ export default function Modaltest() {
         type="button"
         onClick={() => setShowModal(true)}
       >
+      <BsPlus/>
         Create New Recipe
       </button>
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className="justify-center items-center flex overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -101,8 +105,12 @@ export default function Modaltest() {
                     </div>
 
                     <div className="flex">
-                      <div className="ingredients"></div>
-                      <div className="procedure"></div>
+                      <div className="ingredients">
+                        <IngredientInput/>
+                      </div>
+                      <div className="procedure">
+                      <ProcedureInput/>
+                      </div>
                     </div>
                   </div>
                 </div>
