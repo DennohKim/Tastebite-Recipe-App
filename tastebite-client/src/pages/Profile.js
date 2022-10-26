@@ -6,6 +6,7 @@ import NavbarDashboard from "../components/NavbarDashboard";
 const Profile= () => {
   const { activeMenu } = useStateContext();
 
+
   return (
     <>
       <div className="flex relative">
