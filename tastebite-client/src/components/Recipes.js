@@ -1,9 +1,12 @@
 import React, { useState, useMemo } from "react";
 import Select from "react-select";
 import countryList from "react-select-country-list";
+import { useStateContext } from "../context/ContextProvider";
+
 
 const Recipes = () => {
   const [value, setValue] = useState("");
+  const { recipes } = useStateContext();
   const options = useMemo(() => countryList().getData(), []);
 
   const changeHandler = (value) => {
@@ -52,7 +55,17 @@ const Recipes = () => {
         </div>
         </div>
         </div>
-      <div></div>
+      <div>
+        {recipes.map((recipe) => {
+          return (
+            <div key={recipe.id}>
+              <img src={recipe.image_url} alt="recipe-image" />
+              
+
+              </div>
+          )
+        })}
+      </div>
     </>
   );
 };

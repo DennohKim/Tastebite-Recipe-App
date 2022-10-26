@@ -1,11 +1,12 @@
 import React from 'react';
 import AllRecipeCard from './AllRecipeCard';
 import { recipeInfo } from "../../data/recipedata";
+import { useStateContext } from '../../context/ContextProvider';
 
 
 const AllRecipesList = () => {
-  
-    const recipeList = recipeInfo.map((recipe) => {
+  const {recipes} = useStateContext()
+    const recipeList = recipes.map((recipe) => {
     return (
       <AllRecipeCard
         recipeId={recipe.id}
@@ -16,6 +17,7 @@ const AllRecipesList = () => {
         peopleServed={recipe.people_served}
         country={recipe.country}
         ratings={recipe.ratings}
+
       />
     );
   });
