@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
     #Authorization will only be skipped when displaying all recipes
-    skip_before_action :authorize, only: :index
+    # skip_before_action :authorize, only: :index
 
     def index 
       render json: Recipe.all, status: :ok
