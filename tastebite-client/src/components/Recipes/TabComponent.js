@@ -14,7 +14,7 @@ const TabComponent = () => {
 
   const filterRecipes = (category) => {
     const newRecipe = recipes.filter((newRecipeDetails) => {
-      return newRecipeDetails.category === category;
+      return newRecipeDetails.category === category && newRecipeDetails.rating === 5;
     });
 
     setRecipes(newRecipe);
