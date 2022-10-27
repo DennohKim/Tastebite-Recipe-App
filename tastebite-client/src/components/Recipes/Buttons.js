@@ -26,6 +26,7 @@ const Buttons = ({ setRecipes, categories, filterRecipes, recipes }) => {
           );
         })}
 
+        
       </div>
   
   );

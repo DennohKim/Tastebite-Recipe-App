@@ -11,11 +11,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
     resource "*",
       headers: :any,
-<<<<<<< HEAD
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
-=======
       methods: [:get, :post, :put, :patch, :delete, :options, :head],
       credentials: true 
->>>>>>> bfaa40d2237ae63d0713f8f6fd2fb103f7d0d3f4
+
   end
 end

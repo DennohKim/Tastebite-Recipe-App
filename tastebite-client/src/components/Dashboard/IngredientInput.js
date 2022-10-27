@@ -2,8 +2,7 @@ import { useState } from "react";
 
 import "./IngredientInput.css";
 
-function IngredientInput() {
-  const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);
+function IngredientInput({ingredientList, setIngredientList}) {
 
   console.log(ingredientList);
 
@@ -30,7 +29,7 @@ function IngredientInput() {
   }
 
   return (
-    <form autoComplete="off" className="App">
+    <form autoComplete="off" className="main-container">
       <div className="form-field">
         <label htmlFor="">ingredient(s)</label>
 

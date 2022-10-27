@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { recipeInfo } from "../../data/recipedata";
+import React from "react";
 import Buttons from "./Buttons";
 import RecipesList from "./RecipesList";
 import { useStateContext } from "../../context/ContextProvider";
@@ -15,7 +14,7 @@ const TabComponent = () => {
 
   const filterRecipes = (category) => {
     const newRecipe = recipes.filter((newRecipeDetails) => {
-      return newRecipeDetails.category === category;
+      return newRecipeDetails.category === category && newRecipeDetails.rating === 5;
     });
 
     setRecipes(newRecipe);

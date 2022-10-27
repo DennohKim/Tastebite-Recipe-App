@@ -12,10 +12,19 @@ export const ContextProvider = ({ children }) => {
 
   console.log(user)
 
+  useEffect(() => {
+
+    const userInfo = JSON.parse(localStorage.getItem('user'))
+
+    if (userInfo){
+      setUser(userInfo)
+    }
+
+  }, []);
   
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/recipes")
+    fetch("http://127.0.0.1:5000/recipes")
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
   }, []);

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import "./ProcedureInput.css";
 
-const ProcedureInput = () => {
-    const [procedureList, setProcedureList] = useState([{ procedure: "" }]);
+const ProcedureInput = ({procedureList, setProcedureList}) => {
 
 
     console.log(procedureList);
@@ -30,7 +29,7 @@ const ProcedureInput = () => {
     }
   
     return (
-      <form autoComplete="off" className="App">
+      <form autoComplete="off" className="main-container">
         <div className="form-field">
           <label htmlFor="">procedure(s)</label>
   

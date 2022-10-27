@@ -5,22 +5,22 @@ import { Logo } from '../../assets/images'
 export default function TopNav() {
   return (
     /*flex container*/
-    <div className='flex w-4/5 mx-auto items-center justify-between'>
+    <div className='flex w-11/12 mx-auto items-center justify-between'>
         <div className='pt-2 pl-'>
             <img src={Logo} alt="logo"/>
         </div>
         <div className='flex-6 hidden md:flex'>
-            <ul className='flex justify-center m-0 p-12 list-none text-lg font-light cursor-pointer mr-9'>
-                <li className='mr-10 hover:text-yellow-300'>Home</li>
-                <li className='mr-10 hover:text-yellow-300'>Recipes</li>
-                <li className='mr-10 hover:text-yellow-300'>Featues</li>
-                <li className='mr-10 hover:text-yellow-300'>Testimonials</li>
-                <li className='mr-10 hover:text-yellow-300'>Contact us</li>
+            <ul className='flex justify-center gap-8 p-12 list-none font-base cursor-pointer mr-9'>
+                <li className=' hover:text-secondary-color'>Home</li>
+                <li className=' hover:text-secondary-color'>Recipes</li>
+                <li className=' hover:text-secondary-color'>Features</li>
+                <li className=' hover:text-secondary-color'>Testimonials</li>
+                <li className=' hover:text-secondary-color'>Contact us</li>
             </ul>
         </div>
-        <div>
-        <button className='mr-16 hover:text-yellow-300 text-lg font-light ' >Register</button>
-        <button className='font-light mr-16 bg-red-400 text-white text-xl px-6 py-2 -sm m-3 rounded-full'>Login</button>
+        <div className='flex gap-3 '>
+        <button className='hover:text-secondary-color text-lg font-base underline' >Register</button>
+        <button className='font-light bg-red-400 text-white text-xl px-6 py-2 rounded-full'>Login</button>
         </div>
     </div>
   )
