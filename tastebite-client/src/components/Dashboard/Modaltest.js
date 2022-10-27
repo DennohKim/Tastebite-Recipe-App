@@ -1,11 +1,66 @@
 import React from "react";
+import { useState } from "react";
 import { BsPlus } from 'react-icons/bs'
 import IngredientInput from "./IngredientInput";
 import ProcedureInput from "./ProcedureInput";
 
 export default function Modaltest() {
   const [showModal, setShowModal] = React.useState(false);
+  const [procedureList, setProcedureList] = useState([{ procedure: "" }]);
+  const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);
+
+
+  const [recipe_name, setRecipeName] = useState("");
+  const [category, setCategory] = useState("")
+  const [servings, setServings] = useState("")
+  const [country, setCountry] = useState("")
+  const [cooking_time, setCookingTime] = useState("")
+  const [ratings, setRatings] = useState("")
+  const [video_tutorial_url, setVideoTutorialUrl] = useState("")
+  const [image, setImage] = useState (" ")
+  const [ingredients, setIngredients] = useState("")
+  const [procedure, setProcedure] = useState("")
+
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+
+  //   fetch("/recipes", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       recipe_name,
+  //       category,
+  //       servings,
+  //       country,
+  //       cooking_time,
+  //       ratings,
+  //       video_tutorial_url,
+  //       image,
+  //       ingredients,
+  //       procedure
+      
+  //     }),
+  //   })
+  //   .then((r) => r.json())
+  //   .then(NewRecipe=> {
+  //     onAddRecipe(NewRecipe)
+  //     setRecipeName("")
+  //     setCategory("")
+  //     setServings("")
+  //     setCountry("")
+  //     setCookingTime("")
+  //     setRatings("")
+  //     setVideoTutorialUrl("")
+  //     setImage("")
+  //     setIngredients("")
+  //     setProcedure("")
+  //   })
+  // }
+
   return (
+
     <>
       <button
         className="bg-secondary-color text-white active:bg-secondary-color font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -36,6 +91,7 @@ export default function Modaltest() {
                   </button>
                 </div>
                 {/*body*/}
+                <form>
                 <div className="relative p-6 flex-auto">
                   <div className="flex flex-col gap-10">
                     <div className="flex gap-3">
@@ -106,10 +162,11 @@ export default function Modaltest() {
 
                     <div className="flex">
                       <div className="ingredients">
-                        <IngredientInput/>
+                        
+                        <IngredientInput ingredientList={ingredientList} setIngredientList={setIngredientList}/>
                       </div>
                       <div className="procedure">
-                      <ProcedureInput/>
+                      <ProcedureInput procedureList={procedureList} setProcedureList={setProcedureList}/>
                       </div>
                     </div>
                   </div>
@@ -125,12 +182,13 @@ export default function Modaltest() {
                   </button>
                   <button
                     className="bg-secondary-color text-white active:bg-secondary-color font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
+                    type="submit"
                     onClick={() => setShowModal(false)}
                   >
-                    Save Changes
+                    submit
                   </button>
                 </div>
+                </form>
               </div>
             </div>
           </div>
