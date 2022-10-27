@@ -10,7 +10,7 @@ export const people =[
 
     {
         id: 2,
-        image:"https://th.bing.com/th/id/R.c571d0e5d938a891fbe1630635ecc38f?rik=7wiUdBkzBOTtpA&pid=ImgRaw&r=0",
+        image:"https://ca.slack-edge.com/T0101L740P4-U03CT6URCNP-d26c20f47ae1-512",
         name : "Johnson Mwendwa",
         title :"chef",
         quote:"I have a lot of food allergies and i'm always excited to find new recipes that i can cook. Taste Bite has a large collection of recipes with photos, ingredients and instructions."
