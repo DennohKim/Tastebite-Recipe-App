@@ -1,27 +1,25 @@
 import React from "react";
-
-import Tabtest from "../components/Recipes/TabComponent";
-
 import WhyTastebite from "../components/WhyTastebite/WhyTastebite";
 import Banner from "../components/HeroSection/Banner";
 import TopNav from "../components/HeroSection/TopNav";
 import Slider from "../components/Testimonials/Slider";
 import Footer from "../components/Footer/Footer";
 import ContactForm from "../components/Footer/ContactForm";
+import TabComponent from "../components/Recipes/TabComponent";
 
 const LandingPage = () => {
   return (
     <div>
       <TopNav />
-      <section className="h-screen w-full">
+      <section className="w-full">
         {/* Your section goes here */}
 
         <Banner />
       </section>
-      <section className="">
-        {/* <TabComponent /> */}
-        <Tabtest />
-        {/* <Recipes /> */}
+      <section className="mb-20">
+        
+        <TabComponent />
+       
       </section>
 
       <section>
@@ -30,8 +28,8 @@ const LandingPage = () => {
       <section className="">
         <Slider />
       </section>
-      <section className="h-screen">
-        <ContactForm />
+      <section className="">
+      <ContactForm />
         <Footer />
         {/* Your section goes here */}
       </section>

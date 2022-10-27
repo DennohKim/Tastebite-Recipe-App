@@ -10,7 +10,7 @@ export default function TopNav() {
             <img src={Logo} alt="logo"/>
         </div>
         <div className='flex-6 hidden md:flex'>
-            <ul className='flex justify-center gap-6 p-12 list-none font-base cursor-pointer mr-9'>
+            <ul className='flex justify-center gap-8 p-12 list-none font-base cursor-pointer mr-9'>
                 <li className=' hover:text-secondary-color'>Home</li>
                 <li className=' hover:text-secondary-color'>Recipes</li>
                 <li className=' hover:text-secondary-color'>Features</li>
