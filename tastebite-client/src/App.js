@@ -75,46 +75,14 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
-        <Route
-          path="/allrecipes"
-          element={
-            <ProtectedRoute user={user}>
-              <AllRecipes />
-            </ProtectedRoute>
-          }
-        ></Route>
-        <Route
-          path="/myrecipes"
-          element={
-            <ProtectedRoute user={user}>
-              <MyRecipes />
-            </ProtectedRoute>
-          }
-        ></Route>
-        <Route
+        {/* <Route
           path="/myrecipes/:id/edit"
           element={
             <ProtectedRoute user={user}>
               <EditRecipes />
             </ProtectedRoute>
           }
-        ></Route>
-        <Route
-          path="/account"
-          element={
-            <ProtectedRoute user={user}>
-              <Profile />
-            </ProtectedRoute>
-          }
-        ></Route>
-        <Route
-          path="/favourites"
-          element={
-            <ProtectedRoute user={user}>
-              <Favourites />
-            </ProtectedRoute>
-          }
-        ></Route>
+        ></Route> */}
       </Routes>
     </div>
   );

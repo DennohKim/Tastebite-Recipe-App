@@ -15,6 +15,7 @@ const Favourites = () => {
   const [favourites, setFavourites] = useState(user.favorite_recipes)
 
   // setFavourites(user.favorite_recipes)
+  console.log(favourites)
 
 
   // const favourites = user.favorite_recipes
