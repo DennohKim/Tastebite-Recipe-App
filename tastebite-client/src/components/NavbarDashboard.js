@@ -33,8 +33,8 @@ const NavbarDashboard = () => {
   const navigate = useNavigate();
 
   function handleLogout() {
+    localStorage.removeItem("user")
     navigate("/signin")
-    
   }
 
 
