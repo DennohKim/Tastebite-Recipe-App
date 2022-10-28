@@ -18,7 +18,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import CreateRecipe from "./pages/CreateRecipe";
 import EditRecipes from "./pages/EditRecipes";
 
-
 function App() {
   const { user } = useStateContext();
 
@@ -41,6 +40,22 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <AllRecipes />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/allrecipes"
+          element={
+            <ProtectedRoute user={user}>
+              <AllRecipes />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/allrecipes/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <ShowRecipe />
             </ProtectedRoute>
           }
         ></Route>
