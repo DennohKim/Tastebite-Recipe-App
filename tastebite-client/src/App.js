@@ -13,6 +13,7 @@ import {
 } from "./pages";
 import "./App.css";
 
+import ShowRecipe from "./pages/ShowRecipe";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CreateRecipe from "./pages/CreateRecipe";
 import EditRecipes from "./pages/EditRecipes";
@@ -39,6 +40,22 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <AllRecipes />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/allrecipes"
+          element={
+            <ProtectedRoute user={user}>
+              <AllRecipes />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/allrecipes/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <ShowRecipe />
             </ProtectedRoute>
           }
         ></Route>
@@ -75,17 +92,14 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
-       
-       
-        <Route
+        {/* <Route
           path="/myrecipes/:id/edit"
           element={
             <ProtectedRoute user={user}>
               <EditRecipes />
             </ProtectedRoute>
           }
-        ></Route>
-    
+        ></Route> */}
       </Routes>
     </div>
   );
