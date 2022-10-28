@@ -26,9 +26,9 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 
 
 const NavbarDashboard = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const { activeMenu, setActiveMenu, user } = useStateContext();
 
-  const  username  = "Chizaa"
+  const  {username}  = user
 
   const navigate = useNavigate();
 
@@ -59,7 +59,7 @@ const NavbarDashboard = () => {
           <p className="text-base text-gray-600 ">Welcome {username} </p>
         </div>
 
-        <button onClick={handleLogout} className="border-2 border-secondary-color text-secondary-color hover:bg-secondary-color hover:font-bold rounded px-6 py-2 my-4">
+        <button onClick={handleLogout} className="border-2 border-secondary-color text-secondary-color hover:text-white hover:bg-secondary-color hover:font-bold rounded px-6 py-2 my-4">
           Logout
         </button>
       </div>

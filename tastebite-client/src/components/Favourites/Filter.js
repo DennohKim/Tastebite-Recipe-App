@@ -16,9 +16,9 @@ function Filter({ handleFilter, categories, countries, favourites, setFavourites
           <select name="category" id="category" className="mr-3 py-1 px-3 border-solid border-2 border-gray-300 rounded text-gray-400" onChange={handleChange} >
             <option onClick={() => setFavourites(favourites)} >All</option>
             {
-              categories.map((category) => {
+              categories.map((category, index) => {
                 return (
-                  <option value={category} >{category}</option>
+                  <option key={index} value={category} >{category}</option>
                 )
               })
             }
@@ -27,9 +27,9 @@ function Filter({ handleFilter, categories, countries, favourites, setFavourites
           <label htmlFor="country"></label>
           <select name="country" id="country" className="mr-3 py-1 px-3 border-solid border-2 border-gray-300 rounded text-gray-400">
             {
-              countries.map((country) => {
+              countries.map((country, index) => {
                 return (
-                  <option value={country} >{country}</option>
+                  <option key={index} value={country} >{country}</option>
                 )
               })
             }

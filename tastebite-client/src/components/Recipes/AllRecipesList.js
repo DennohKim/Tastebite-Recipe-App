@@ -18,7 +18,8 @@ const { recipes } = useStateContext();
         cookingTime={recipe.cooking_time}
         peopleServed={recipe.people_served}
         country={recipe.country}
-        ratings={recipe.ratings}
+        rating={recipe.rating}
+        recipe={recipe}
 
       />
     );

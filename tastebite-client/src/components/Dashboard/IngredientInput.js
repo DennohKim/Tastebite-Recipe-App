@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./IngredientInput.css";
 
-function IngredientInput({ingredientList, setIngredientList}) {
+function IngredientInput({ingredientList, setIngredientList, onAddRecipe}) {
 
   console.log(ingredientList);
 
@@ -19,14 +19,14 @@ function IngredientInput({ingredientList, setIngredientList}) {
     setIngredientList(list)
   }
 
-  const handleIngredientChange = (e, index) => {
-    const { name, value } = e.target
-    const list = [...ingredientList]
-    list[index][name] = value;
-    setIngredientList(list);
+  // const handleIngredientChange = (e, index) => {
+  //   const { name, value } = e.target
+  //   const list = [...ingredientList]
+  //   list[index][name] = value;
+  //   setIngredientList(list);
 
 
-  }
+  // }
 
   return (
     <form autoComplete="off" className="main-container">
@@ -36,7 +36,7 @@ function IngredientInput({ingredientList, setIngredientList}) {
         {ingredientList.map((singleingredient, index) => (
           <div key={index} className="ingredients">
             <div className="first-division">
-              <input className="ingredient" id="ingredient" required type="text" name="ingredient" value={singleingredient.ingredient} onChange={(e) => handleIngredientChange(e, index)} />
+              <input className="ingredient" id="ingredient" required type="text" name="ingredient" value={singleingredient.ingredient} onChange={(e) => setIngredientList(e.target.value)} />
 
               {/* Conditionally render add button to appear once */}
               {ingredientList.length - 1 === index && ingredientList.length < 4 && (

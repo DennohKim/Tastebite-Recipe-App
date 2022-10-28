@@ -1,11 +1,10 @@
 import React from "react";
 import AllRecipeCard from '../Recipes/AllRecipeCard';
 
-// import { useStateContext } from '../../context/ContextProvider';
 
 const FavouriteRecipeList = ({ favourites }) => {
 
-  // const {recipes} = useStateContext()
+  
   const favRecipeList = favourites.map((recipe) => {
     return (
       <AllRecipeCard
@@ -16,7 +15,7 @@ const FavouriteRecipeList = ({ favourites }) => {
         cookingTime={recipe.cooking_time}
         peopleServed={recipe.people_served}
         country={recipe.country}
-        ratings={recipe.ratings}
+        rating={recipe.rating}
 
       />
     );
