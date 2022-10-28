@@ -16,15 +16,12 @@ const Buttons = ({ setRecipes, categories, filterRecipes, recipes }) => {
             className="text-black p-1 px-4 mx-5"
             key={index}
             onClick={() => filterRecipes(category)}
-            >
-              {category}
-            </button>
-          );
-        })}
-
-        
-      </div>
-  
+          >
+            {category}
+          </button>
+        );
+      })}
+    </div>
   );
 };
 
