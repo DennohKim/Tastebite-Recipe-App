@@ -13,9 +13,11 @@ import {
 } from "./pages";
 import "./App.css";
 
+import ShowRecipe from "./pages/ShowRecipe";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CreateRecipe from "./pages/CreateRecipe";
 import EditRecipes from "./pages/EditRecipes";
+
 
 function App() {
   const { user } = useStateContext();

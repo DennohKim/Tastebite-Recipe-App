@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const StateContext = createContext();
+
 
 export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -8,7 +10,9 @@ export const ContextProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
   const [user, setUser] = useState(null);
 
+
   console.log(user);
+
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
@@ -17,6 +21,7 @@ export const ContextProvider = ({ children }) => {
       setUser(userInfo);
     }
   }, []);
+
 
   useEffect(() => {
     fetch("http://127.0.0.1:3000/recipes")
