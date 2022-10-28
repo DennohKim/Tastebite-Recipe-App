@@ -2,19 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BiTimeFive, BiDish } from "react-icons/bi";
 
+
 const AllRecipeCard = ({
   image,
   recipeName,
   cookingTime,
   peopleServed,
   country,
-  ratings,
+  rating,
   recipeId
+
 }) => {
+
+
   return (
     <div>
+
       <Link to={`/allrecipes/${recipeId}`}>
-      <div className="shadow-md rounded-md">
+        <div className="shadow-md rounded-md">
           <div className="w-full">
             <img
               className="w-full h-48 object-cover"
@@ -49,7 +54,7 @@ const AllRecipeCard = ({
                 </p>
               </div>
               <div className="flex gap-2 scale-75">
-                {Array(ratings)
+                {Array(rating)
                   .fill()
                   .map((_, i) => (
                     <p>⭐</p>
@@ -58,7 +63,7 @@ const AllRecipeCard = ({
             </div>
           </div>
         </div>
-      </Link>
+        </Link>
     </div>
   );
 };
