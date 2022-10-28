@@ -12,6 +12,4 @@ class FavoriteRecipe < ApplicationRecord
     validates :cooking_time, presence: true
     validates :image_url, presence: true
     validates :video_link, presence: true
-    validates :ingredientstest, presence: true
-    validates :procedurestest, presence: true
 end
