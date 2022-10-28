@@ -1,17 +1,19 @@
 import React from "react";
 import RecipeCard from "./RecipeCard";
+import { useStateContext } from '../../context/ContextProvider';
 
-const RecipesList = ({ recipes }) => {
+const RecipesList = () => {
+  const {recipes} = useStateContext()
   const recipeList = recipes.map((recipe) => {
     return (
       <RecipeCard
-        key={recipe.recipe_name}
+        key={recipe.id}
         image={recipe.image_url}
-        recipeName={recipe.recipe_name}
+        recipeName={recipe.title}
         cookingTime={recipe.cooking_time}
         peopleServed={recipe.people_served}
         country={recipe.country}
-        ratings={recipe.ratings}
+        ratings={recipe.rating}
       />
     );
   });

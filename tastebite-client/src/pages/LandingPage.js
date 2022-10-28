@@ -1,13 +1,14 @@
 import React from 'react'
 
-// import Recipes from '../components/Recipes/Recipes'
-// import TabComponent from '../components/Recipes/Tabs'
+
 import Tabtest from '../components/Recipes/TabComponent'
 
 import WhyTastebite from '../components/WhyTastebite/WhyTastebite'
 import Banner from '../components/HeroSection/Banner'
 import TopNav from '../components/HeroSection/TopNav'
 import Slider from '../components/Testimonials/Slider'
+import Footer from '../components/Footer/Footer'
+import ContactForm from '../components/Footer/ContactForm'
 
 
 
@@ -31,7 +32,9 @@ const LandingPage = () => {
         <section className="" >
             <Slider/>
         </section>
-        <section className="h-screen">ContactForm & Footer
+        <section className="h-screen">
+        <ContactForm/>
+        <Footer/>
             {/* Your section goes here */}
         </section>
     </div>

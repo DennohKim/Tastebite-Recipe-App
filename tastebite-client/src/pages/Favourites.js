@@ -31,6 +31,7 @@ const Favourites = () => {
           <div className="fixed md:static bg-main-bg navbar w-full">
             <NavbarDashboard />
           
+          
 
             
           </div>
