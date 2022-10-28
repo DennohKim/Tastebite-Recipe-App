@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./IngredientInput.css";
 
-function IngredientInput({ingredientList, setIngredientList}) {
+function IngredientInput({ingredientList, setIngredientList, onAddRecipe}) {
 
   console.log(ingredientList);
 

@@ -6,12 +6,11 @@ import { HiOutlineUserGroup } from "react-icons/hi";
 
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
-import Modaltest from "../components/Dashboard/Modaltest";
-
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const { activeMenu } = useStateContext();
-
+ 
 
   return (
     <>
@@ -73,12 +72,16 @@ const Dashboard = () => {
                 </div>
               </div>
               <div>
-              <Modaltest />
-
+              
+                <Link to="/dashboard/create"
+                  className="bg-secondary-color text-white active:bg-secondary-color font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  type="button"
+                  
+                >
+                  Create New Recipe
+                </Link>
               </div>
             </div>
-           
-          
           </div>
         </div>
       </div>

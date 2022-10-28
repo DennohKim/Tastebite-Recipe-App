@@ -1,34 +1,36 @@
 import React from "react";
 import { useState } from "react";
-import { useStateContext } from "../../context/ContextProvider";
-import IngredientInput from "./IngredientInput";
-import ProcedureInput from "./ProcedureInput";
+import NavbarDashboard from "../components/NavbarDashboard";
+import Sidebar from "../components/Sidebar";
+import { useStateContext } from "../context/ContextProvider";
 
-export default function Modaltest() {
-  const { recipes, setRecipes } = useStateContext();
-  const [showModal, setShowModal] = React.useState(false);
-  const [procedureList, setProcedureList] = useState([{ procedure: "" }]);
-  const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);
+
+const CreateRecipe = () => {
+  const { recipes, setRecipes, activeMenu, user } = useStateContext();
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
-  const [servings, setServings] = useState("");
+  const [peopleServed, setPeopleServed] = useState("");
   const [country, setCountry] = useState("");
   const [cookingTime, setCookingTime] = useState("");
-  const [ratings, setRatings] = useState("");
-  const [videoTutorialUrl, setVideoTutorialUrl] = useState("");
-  const [image, setImage] = useState(" ");
+  const [rating, setRating] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [procedure, setProcedure] = useState("");
+  const [videoLink, setVideoLink] = useState("");
+  const [imageUrl, setImageUrl] = useState(" ");
 
-  const categories = recipes.map((recipe) => recipe.category)
-  const uniqueCategories = [...new Set(categories)]
+  const categories = recipes.map((recipe) => recipe.category);
+  const uniqueCategories = [...new Set(categories)];
+
+  const { id } = user
 
   function handleAddRecipe(newRecipe) {
     setRecipes([...recipes, newRecipe]);
   }
 
   function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    fetch("/recipes", {
+    fetch("http://127.0.0.1:5000/recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,38 +38,48 @@ export default function Modaltest() {
       body: JSON.stringify({
         title,
         category,
-        servings,
+        people_served: peopleServed,
         country,
         cooking_time: cookingTime,
-        ratings,
-        video_tutorial_url: videoTutorialUrl,
-        image,
-        ingredientstest: ingredientList.ingredient ,
-        procedurestest: procedureList.procedure
-
+        rating,
+        video_link: videoLink,
+        image_url: imageUrl,
+        ingredients,
+        procedure,
+        user_id: id,
       }),
     })
-    .then((r) => r.json())
-    .then(newRecipe=> {
-      handleAddRecipe(newRecipe)
-  
-    })
+      .then((r) => r.json())
+      .then((newRecipe) => {
+        handleAddRecipe(newRecipe);
+      });
   }
-
-  
 
   return (
     <>
-      <button
-        className="bg-secondary-color text-white active:bg-secondary-color font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-        Create New Recipe
-      </button>
-      {showModal ? (
-        <>
-          <div className="justify-center items-center flex overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+      <div className="flex relative">
+        <div className="fixed" style={{ zIndex: "100000" }}>
+          {activeMenu ? (
+            <div className="w-72 fixed sidebar bg-white ">
+              <Sidebar />
+            </div>
+          ) : (
+            <div className="w-0">
+              <Sidebar />
+            </div>
+          )}
+        </div>
+
+        <div
+          className={
+            activeMenu
+              ? "bg-main-bg min-h-screen md:ml-72 w-full  "
+              : "bg-main-bg w-full min-h-screen flex-2 "
+          }
+        >
+          <div className="fixed md:static bg-main-bg navbar w-full">
+            <NavbarDashboard />
+
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -76,14 +88,6 @@ export default function Modaltest() {
                   <h3 className="text-3xl font-semibold">
                     Create a fingerlicking recipe
                   </h3>
-                  <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
-                  >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
-                  </button>
                 </div>
                 {/*body*/}
                 <form onSubmit={handleSubmit}>
@@ -102,12 +106,13 @@ export default function Modaltest() {
                         </div>
                         <div>
                           <label htmlFor="">Category</label>
-                          <select
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                          >
-                            {uniqueCategories.map((category,index) => (
-                              <option key={index} value={category}>
+                          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                            {uniqueCategories.map((category, index) => (
+                              <option
+                                key={index}
+                                
+                                
+                              >
                                 {category}
                               </option>
                             ))}
@@ -118,8 +123,8 @@ export default function Modaltest() {
                           <input
                             type="number"
                             name="servings"
-                            value={servings}
-                            onChange={(e) => setServings(e.target.value)}
+                            value={peopleServed}
+                            onChange={(e) => setPeopleServed(e.target.value)}
                             className="border-2"
                           />
                         </div>
@@ -150,8 +155,8 @@ export default function Modaltest() {
                           <input
                             type="number"
                             name="ratings"
-                            value={ratings}
-                            onChange={(e) => setRatings(e.target.value)}
+                            value={rating}
+                            onChange={(e) => setRating(e.target.value)}
                             className="border-2"
                           />
                         </div>
@@ -160,37 +165,35 @@ export default function Modaltest() {
                           <input
                             type="text"
                             name="video tutorials url"
-                            value={videoTutorialUrl}
-                            onChange={(e) => setVideoTutorialUrl(e.target.value)}
+                            value={videoLink}
+                            onChange={(e) =>
+                              setVideoLink(e.target.value)
+                            }
                             className="border-2"
                           />
                         </div>
                       </div>
                       <div className="">
-                        <label htmlFor="">Image</label>
+                        <label htmlFor="">Image Link</label><br />
                         <input
                           type="text"
                           name="image"
                           className="border-2"
-                          value={image}
-                          onChange={(e) => setImage(e.target.value)}
+                          value={imageUrl}
+                          onChange={(e) => setImageUrl(e.target.value)}
                         />
                       </div>
 
-                      <div className="flex">
-                        <div className="ingredients">
-                          <IngredientInput
-                            ingredientList={ingredientList}
-                            setIngredientList={setIngredientList}
-                            
-                          />
+                      <div className="flex gap-12">
+                        <div className="ingredient" id="textarea">
+                          <label htmlFor="">Ingredient(s)</label><br />
+                          <textarea type="textarea" className="border-2"value={ingredients}
+                          onChange={(e) => setIngredients(e.target.value)}/>
                         </div>
-                        <div className="procedure">
-                          <ProcedureInput
-                            procedureList={procedureList}
-                            setProcedureList={setProcedureList}
-                            
-                          />
+                        <div className="procedure" id="textarea">
+                          <label htmlFor="">Procedure(s)</label><br />
+                          <textarea type="textarea" className="border-2" value={procedure}
+                          onChange={(e) => setProcedure(e.target.value)} />
                         </div>
                       </div>
                     </div>
@@ -198,27 +201,20 @@ export default function Modaltest() {
                   {/*footer*/}
                   <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b gap-4">
                     <button
-                      className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline rounded-full focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                      type="button"
-                      onClick={() => setShowModal(false)}
-                    >
-                      Close
-                    </button>
-                    <button
                       className="bg-secondary-color text-white active:bg-secondary-color font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="submit"
-                      onClick={() => setShowModal(false)}
                     >
-                      submit
+                      Create Recipe
                     </button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
-      ) : null}
+        </div>
+      </div>
     </>
   );
-}
+};
+
+export default CreateRecipe;
