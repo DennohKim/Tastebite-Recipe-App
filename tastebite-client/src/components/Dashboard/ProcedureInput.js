@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import "./ProcedureInput.css";
 
-const ProcedureInput = () => {
-    const [procedureList, setProcedureList] = useState([{ procedure: "" }]);
+const ProcedureInput = ({procedureList, setProcedureList}) => {
 
 
     console.log(procedureList);

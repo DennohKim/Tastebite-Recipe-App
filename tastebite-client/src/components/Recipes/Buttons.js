@@ -16,12 +16,24 @@ const Buttons = ({ setRecipes, categories, filterRecipes, recipes }) => {
             className="text-black p-1 px-4 mx-5"
             key={index}
             onClick={() => filterRecipes(category)}
+<<<<<<< HEAD
           >
             {category}
           </button>
         );
       })}
     </div>
+=======
+            >
+              {category}
+            </button>
+          );
+        })}
+
+        
+      </div>
+  
+>>>>>>> d077a066da5abf4e2795554907b1b7142e18187b
   );
 };
 

@@ -19,7 +19,8 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/recipes")
+
+    fetch("http://127.0.0.1:5000/recipes")
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
   }, []);
