@@ -14,7 +14,7 @@ function IngredientInput({ingredientList, setIngredientList}) {
   //Helper function to remove ingredient button
 
   const handleIngredientRemove = (index) => {
-    const list = [...ingredientList]
+    const list = [...ingredientList] 
     list.splice(index, 1);
     setIngredientList(list)
   }

@@ -8,8 +8,6 @@ export default function Modaltest() {
   const [showModal, setShowModal] = React.useState(false);
   const [procedureList, setProcedureList] = useState([{ procedure: "" }]);
   const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);
-
-
   const [recipe_name, setRecipeName] = useState("");
   const [category, setCategory] = useState("")
   const [servings, setServings] = useState("")
@@ -21,43 +19,43 @@ export default function Modaltest() {
   const [ingredients, setIngredients] = useState("")
   const [procedure, setProcedure] = useState("")
 
-  // function handleSubmit(e) {
-  //   e.preventDefault()
+   function handleSubmit(e) {
+     e.preventDefault()
 
-  //   fetch("/recipes", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       recipe_name,
-  //       category,
-  //       servings,
-  //       country,
-  //       cooking_time,
-  //       ratings,
-  //       video_tutorial_url,
-  //       image,
-  //       ingredients,
-  //       procedure
+     fetch("/recipes", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+      },
+       body: JSON.stringify({
+         recipe_name,
+         category,
+         servings,
+         country,
+         cooking_time,
+         ratings,
+         video_tutorial_url,
+         image,
+         ingredients,
+         procedure
       
-  //     }),
-  //   })
-  //   .then((r) => r.json())
-  //   .then(NewRecipe=> {
-  //     onAddRecipe(NewRecipe)
-  //     setRecipeName("")
-  //     setCategory("")
-  //     setServings("")
-  //     setCountry("")
-  //     setCookingTime("")
-  //     setRatings("")
-  //     setVideoTutorialUrl("")
-  //     setImage("")
-  //     setIngredients("")
-  //     setProcedure("")
-  //   })
-  // }
+       }),
+     })
+     .then((r) => r.json())
+     .then(NewRecipe=> {
+       onAddRecipe(NewRecipe)
+       setRecipeName("")
+       setCategory("")
+       setServings("")
+       setCountry("")
+       setCookingTime("")
+       setRatings("")
+       setVideoTutorialUrl("")
+       setImage("")
+       setIngredients("")
+       setProcedure("")
+     })
+   }
 
   return (
 
@@ -183,7 +181,7 @@ export default function Modaltest() {
                   <button
                     className="bg-secondary-color text-white active:bg-secondary-color font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="submit"
-                    onClick={() => setShowModal(false)}
+                    onSubmit={() => setShowModal(false)}
                   >
                     submit
                   </button>
