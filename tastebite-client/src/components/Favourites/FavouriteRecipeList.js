@@ -1,37 +1,33 @@
-import React from 'react';
-import AllRecipeCard from './AllRecipeCard';
-import { useStateContext } from '../../context/ContextProvider';
+import React from "react";
+import AllRecipeCard from '../Recipes/AllRecipeCard';
 
 
-const AllRecipesList = () => {
+const FavouriteRecipeList = ({ favourites }) => {
 
-const { recipes } = useStateContext();
-
-    const recipeList = recipes.map((recipe) => {
-
+  
+  const favRecipeList = favourites.map((recipe) => {
     return (
       <AllRecipeCard
-        recipeId={recipe.id}
         key={recipe.id}
+        recipeId={recipe.id}
         image={recipe.image_url}
         recipeName={recipe.title}
         cookingTime={recipe.cooking_time}
         peopleServed={recipe.people_served}
         country={recipe.country}
         rating={recipe.rating}
-        recipe={recipe}
-
+        
       />
     );
   });
+
   return (
     <div className="w-full">
       <div className="pt-20 w-4/5 mx-auto grid gap-8 xs:grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 md:grid-rows-2 lg:grid-rows-2 align-center">
-        {recipeList}
+        {favRecipeList}
       </div>
     </div>
   );
-}
+};
 
-
-export default AllRecipesList
+export default FavouriteRecipeList;

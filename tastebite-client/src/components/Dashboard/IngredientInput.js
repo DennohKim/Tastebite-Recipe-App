@@ -2,8 +2,7 @@ import { useState } from "react";
 
 import "./IngredientInput.css";
 
-function IngredientInput() {
-  const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);
+function IngredientInput({ingredientList, setIngredientList, onAddRecipe}) {
 
   console.log(ingredientList);
 

@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    recipe = @current_user.recipes.create!(recipe_params)
+    recipe = Recipe.create!(recipe_params)
     render json: recipe, status: :created
   end
 
@@ -34,6 +34,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.permit(:title, :country, :rating, :ingredients, :procedure, :people_served, :category, :cooking_time, :image_url, :video_link)
+    params.permit(:title, :country, :rating, :ingredients, :procedure, :people_served, :category, :cooking_time, :image_url, :video_link, :user_id )
   end
 end

@@ -1,7 +1,5 @@
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 
 const StateContext = createContext();
 
@@ -10,20 +8,19 @@ export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
   const [recipes, setRecipes] = useState([]);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
 
+
+  console.log(user);
 
 
   useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("user"));
 
-    const userInfo = JSON.parse(localStorage.getItem('user'))
-
-    if (userInfo){
-      setUser(userInfo)
+    if (userInfo) {
+      setUser(userInfo);
     }
-
   }, []);
-
 
 
   useEffect(() => {
@@ -31,7 +28,6 @@ export const ContextProvider = ({ children }) => {
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
   }, []);
-
 
   return (
     <StateContext.Provider
@@ -44,13 +40,11 @@ export const ContextProvider = ({ children }) => {
         setRecipes,
         user,
         setUser,
-
       }}
     >
       {children}
     </StateContext.Provider>
   );
-
 };
 
 export const useStateContext = () => useContext(StateContext);

@@ -9,8 +9,9 @@ const AllRecipeCard = ({
   cookingTime,
   peopleServed,
   country,
-  ratings,
-  recipeId,
+  rating,
+  recipeId
+
 }) => {
 
 
@@ -53,7 +54,7 @@ const AllRecipeCard = ({
                 </p>
               </div>
               <div className="flex gap-2 scale-75">
-                {Array(ratings)
+                {Array(rating)
                   .fill()
                   .map((_, i) => (
                     <p>⭐</p>
