@@ -19,14 +19,14 @@ function IngredientInput({ingredientList, setIngredientList, onAddRecipe}) {
     setIngredientList(list)
   }
 
-  // const handleIngredientChange = (e, index) => {
-  //   const { name, value } = e.target
-  //   const list = [...ingredientList]
-  //   list[index][name] = value;
-  //   setIngredientList(list);
+  const handleIngredientChange = (e, index) => {
+    const { name, value } = e.target
+    const list = [...ingredientList]
+    list[index][name] = value;
+    setIngredientList(list);
 
 
-  // }
+  }
 
   return (
     <form autoComplete="off" className="main-container">
@@ -36,7 +36,7 @@ function IngredientInput({ingredientList, setIngredientList, onAddRecipe}) {
         {ingredientList.map((singleingredient, index) => (
           <div key={index} className="ingredients">
             <div className="first-division">
-              <input className="ingredient" id="ingredient" required type="text" name="ingredient" value={singleingredient.ingredient} onChange={(e) => setIngredientList(e.target.value)} />
+              <input className="ingredient" id="ingredient" required type="text" name="ingredient" value={singleingredient.ingredient} onChange={(e) => handleIngredientChange(e, index)} />
 
               {/* Conditionally render add button to appear once */}
               {ingredientList.length - 1 === index && ingredientList.length < 4 && (

@@ -16,7 +16,7 @@ const FavouriteRecipeList = ({ favourites }) => {
         peopleServed={recipe.people_served}
         country={recipe.country}
         rating={recipe.rating}
-
+        
       />
     );
   });
