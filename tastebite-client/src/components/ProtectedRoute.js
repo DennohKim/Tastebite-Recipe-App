@@ -1,14 +1,18 @@
-import React from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ user, redirectPath = "/", children }) => {
   const navigate = useNavigate();
 
-  if (!user) {
-    return navigate(redirectPath);
-  }
+  useEffect(() => {
 
-  return children;
+    if (!user) {
+      return navigate(redirectPath);
+    }
+  
+    return children;
+  }, [children, user, navigate, redirectPath])
+ 
 };
 
 export default ProtectedRoute;

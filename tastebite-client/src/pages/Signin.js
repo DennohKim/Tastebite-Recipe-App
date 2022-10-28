@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
 
 const Signin = () => {
-  const { user, setUser } = useStateContext();
+  const { setUser } = useStateContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
