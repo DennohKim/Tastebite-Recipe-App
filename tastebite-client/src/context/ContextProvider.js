@@ -1,8 +1,10 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 
 const StateContext = createContext();
+
 
 export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -10,7 +12,7 @@ export const ContextProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
   const [user, setUser] = useState([]);
 
-  console.log(user)
+
 
   useEffect(() => {
 
@@ -21,10 +23,11 @@ export const ContextProvider = ({ children }) => {
     }
 
   }, []);
-  
+
+
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/recipes")
+    fetch("http://127.0.0.1:3000/recipes")
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
   }, []);

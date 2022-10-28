@@ -1,17 +1,15 @@
-import React  from "react";
+import React from "react";
+import { useParams } from "react-router-dom";
+import NavbarDashboard from "../components/NavbarDashboard";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
-import NavbarDashboard from "../components/NavbarDashboard";
-import AllRecipesList from "../components/Recipes/AllRecipesList";
 
-
-
-const AllRecipes = () => {
-  const { activeMenu } = useStateContext();
-
+const ShowRecipe = () => {
+  const { activeMenu, recipes } = useStateContext();
+  const { id } = useParams();
 
   return (
-    <>
+    <div>
       <div className="flex relative">
         <div className="fixed" style={{ zIndex: "100000" }}>
           {activeMenu ? (
@@ -28,23 +26,19 @@ const AllRecipes = () => {
         <div
           className={
             activeMenu
-              ? "bg-main-bg min-h-screen md:ml-72 w-full"
+              ? "bg-main-bg min-h-screen md:ml-72 w-full  "
               : "bg-main-bg w-full min-h-screen flex-2 "
           }
         >
           <div className="fixed md:static bg-main-bg navbar w-full">
             <NavbarDashboard />
-          
-
-            <div className="px-4 mx-auto my-4 gap-2">
-            
-              <AllRecipesList />
-            </div>
+            <img src={recipes[id - 1].image_url} alt="recipe" />
+            ("")
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default AllRecipes;
+export default ShowRecipe;

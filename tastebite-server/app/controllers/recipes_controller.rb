@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
 
   def show
     recipe = find_recipe
-    render json: recipe, status: :ok
+    render json:  recipe, status: :ok
   end
 
   def create
