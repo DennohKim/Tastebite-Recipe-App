@@ -4,7 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
 
 const Signin = () => {
+
   const { setUser } = useStateContext();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -12,7 +14,7 @@ const Signin = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:5000/login", {
+    fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +27,8 @@ const Signin = () => {
       if (r.ok) {
         r.json().then((data) => {
           setUser(data);
-          localStorage.setItem("user", JSON.stringify(data));
+
+          localStorage.setItem('user', JSON.stringify(data))
           navigate("/dashboard");
         });
       } else {
