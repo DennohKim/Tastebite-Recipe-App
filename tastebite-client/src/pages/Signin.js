@@ -5,6 +5,9 @@ import { useStateContext } from "../context/ContextProvider";
 
 const Signin = () => {
   const { user, setUser } = useStateContext();
+
+  /*console.log(user)*/
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -25,7 +28,8 @@ const Signin = () => {
       if (r.ok) {
         r.json().then((data) => {
           setUser(data);
-          localStorage.setItem("user", JSON.stringify(data));
+
+          localStorage.setItem('user', JSON.stringify(data))
           navigate("/dashboard");
         });
       } else {
