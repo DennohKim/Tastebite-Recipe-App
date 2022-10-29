@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ user, redirectPath = "/", children }) => {
@@ -9,6 +9,8 @@ const ProtectedRoute = ({ user, redirectPath = "/", children }) => {
   }
 
   return children;
+  
+ 
 };
 
 export default ProtectedRoute;
