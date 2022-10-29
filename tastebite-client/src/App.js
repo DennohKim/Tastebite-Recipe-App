@@ -16,7 +16,8 @@ import "./App.css";
 import ShowRecipe from "./pages/ShowRecipe";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CreateRecipe from "./pages/CreateRecipe";
-import EditRecipes from "./pages/EditRecipes";
+import ShowMyRecipes from "./pages/ShowMyRecipes";
+// import EditRecipes from "./pages/EditRecipes";
 
 function App() {
   const { user } = useStateContext();
@@ -32,14 +33,6 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <Dashboard />
-            </ProtectedRoute>
-          }
-        ></Route>
-        <Route
-          path="/allrecipes"
-          element={
-            <ProtectedRoute user={user}>
-              <AllRecipes />
             </ProtectedRoute>
           }
         ></Route>
@@ -89,6 +82,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <CreateRecipe />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/myrecipes/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <ShowMyRecipes />
             </ProtectedRoute>
           }
         ></Route>

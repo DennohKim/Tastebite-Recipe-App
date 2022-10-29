@@ -8,6 +8,7 @@ export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
   const [recipes, setRecipes] = useState([]);
+  const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
 
 
@@ -24,9 +25,15 @@ export const ContextProvider = ({ children }) => {
 
 
   useEffect(() => {
-    fetch("http://127.0.0.5000/recipes")
+    fetch("http://127.0.0.1:5000/recipes")
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/users")
+      .then((res) => res.json())
+      .then((user) => setUsers(user));
   }, []);
 
   return (
@@ -40,6 +47,8 @@ export const ContextProvider = ({ children }) => {
         setRecipes,
         user,
         setUser,
+        users,
+        setUsers
       }}
     >
       {children}
