@@ -18,9 +18,9 @@ import {
 
 } from "./pages";
 import "./App.css";
-
-
 import ProtectedRoute from "./components/ProtectedRoute";
+import ShowRecipeVideo from "./pages/ShowRecipeVideo";
+
 
 
 function App() {
@@ -53,6 +53,22 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <ShowRecipe />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/showrecipes/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <ShowRecipeVideo/>
+            </ProtectedRoute>
+          }
+        ></Route>
+         <Route
+          path="/showrecipevideo"
+          element={
+            <ProtectedRoute user={user}>
+              <ShowRecipe/>
             </ProtectedRoute>
           }
         ></Route>
