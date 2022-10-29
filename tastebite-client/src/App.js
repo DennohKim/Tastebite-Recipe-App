@@ -10,14 +10,18 @@ import {
   Signin,
   Signup,
   Favourites,
+  ShowRecipe,
+  CreateRecipe,
+  ShowMyRecipes,
+  EditRecipes
+
+
 } from "./pages";
 import "./App.css";
 
-import ShowRecipe from "./pages/ShowRecipe";
+
 import ProtectedRoute from "./components/ProtectedRoute";
-import CreateRecipe from "./pages/CreateRecipe";
-import ShowMyRecipes from "./pages/ShowMyRecipes";
-// import EditRecipes from "./pages/EditRecipes";
+
 
 function App() {
   const { user } = useStateContext();
@@ -93,14 +97,14 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
-        {/* <Route
+        <Route
           path="/myrecipes/:id/edit"
           element={
             <ProtectedRoute user={user}>
               <EditRecipes />
             </ProtectedRoute>
           }
-        ></Route> */}
+        ></Route>
       </Routes>
     </div>
   );
