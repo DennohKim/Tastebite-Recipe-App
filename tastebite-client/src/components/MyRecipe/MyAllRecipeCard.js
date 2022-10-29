@@ -45,6 +45,9 @@ const MyAllRecipeCard = ({
               </p>
               <p className="pl-2 text-sm md:text-sm lg:text-base">Servings</p>
             </div>
+            <div className="flex justify-between items-center py-2">
+                <button className="w-full active:scale-90 bg-secondary-color transition duration-150 ease-in-out rounded-full text-white px-4 py-2 text-sm">Delete</button>
+              </div>
           </div>
           <div className="flex justify-between items-center py-2 ">
             <div>
