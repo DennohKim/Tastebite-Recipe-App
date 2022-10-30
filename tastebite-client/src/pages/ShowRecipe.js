@@ -1,15 +1,15 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import NavbarDashboard from "../components/NavbarDashboard";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
-import { BiTimeFive } from "react-icons/bi";
-import { BsBookmark } from "react-icons/bs";
+import { BsBookmark, BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import ShowRecipeNav from "../components/ShowRecipeNav";
 
 const ShowRecipe = () => {
-  const { activeMenu, recipes } = useStateContext();
+  const { activeMenu, recipes, user } = useStateContext();
   const { id } = useParams();
+  const { username } = user;
 
   return (
     <div>
@@ -35,8 +35,8 @@ const ShowRecipe = () => {
         >
           <div className="fixed md:static bg-main-bg navbar w-full">
             <NavbarDashboard />
-            <ShowRecipeNav/>
-            <div className="px-6">
+            <ShowRecipeNav />
+            <div className="px-2">
               <div className="flex justify-evenly">
                 <div>
                   <div className="w-full">
@@ -46,45 +46,52 @@ const ShowRecipe = () => {
                       alt="recipe"
                     />
                   </div>
-                  <div className="flex   ">
-                    <div className="px-1 py-4">
-                      <BiTimeFive className="" />
-                      <span className="font-bold">Servings</span>
+                  <div className="py-6 ">
+                    <button className="w-32 active:scale-90 bg-secondary-color transition duration-150 ease-in-out rounded-full text-white px-4 py-2 text-sm">
+                      <BsBookmark className="inline " /> BookMark
+                    </button>
+                  </div>
+                  <div>
+                    <span className="font-bold">Share on Social Media</span>
+                    <div className="flex justify-evenly py-4">
+                      <Link>
+                        <BsFacebook className="" />
+                      </Link>
+                      <Link>
+                        <BsInstagram className="font-2xl" />
+                      </Link>
+                      <Link>
+                        <BsTwitter className="font-2xl" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="underline hover:underline-offset-8">
+                    <p className="text-4xl  py-2  ">{recipes[id - 1].title}</p>
+                  </div>
+                  <div className="flex  justify-evenly  ">
+                    <div className=" py-4  ">
+                      <span className="font-bold py-1">Servings</span>
                       <p className="">{recipes[id - 1].people_served}</p>
                     </div>
-                    <div className="px-1  py-4">
+                    <div className=" py-4">
                       <span className="font-bold">Category</span>
                       <p className="">{recipes[id - 1].category}</p>
                     </div>
-                    <div className="px-1  py-4">
+                    <div className=" py-4">
                       <span className="font-bold">Cooking TIme</span>
                       <p className="">{recipes[id - 1].cooking_time}</p>
                     </div>
-                    <div className="px-1 py-4">
+                    <div className="py-4">
                       <span className="font-bold">Country</span>
                       <p className="">{recipes[id - 1].country}</p>
                     </div>
                   </div>
                   <div className="py-4">
-                    <button className="w-32 active:scale-90 bg-secondary-color transition duration-150 ease-in-out rounded-full text-white px-4 py-2 text-sm">
-                      <BsBookmark /> BookMark
-                    </button>
-
-                    <div className="px-1 py-4">
-                      <span className="font-bold">Recipe Creator</span>
-                      <p className="">{recipes[id - 1].user_id}</p>
-                    </div>
-                  </div>
-                  <div>
-                    <span className="font-bold">Share on Social Media</span>
-                  </div>
-                </div>
-                <div>
-                  <div>
-                    <p className="font-bold">{recipes[id - 1].title}</p>
-                  </div>
-                  <div className="py-4">
-                    <span className="font-medium">Ingredients</span>
+                    <span className="text-2xl underline hover:underline-offset-8">
+                      Ingredients
+                    </span>
                     <>
                       {recipes[id - 1].ingredients
                         .split(".")
@@ -98,7 +105,9 @@ const ShowRecipe = () => {
                     </>
                   </div>
                   <div className="py-4">
-                    <span className="font-medium">Procedure</span>
+                    <span className="text-2xl underline hover:underline-offset-8">
+                      Procedure
+                    </span>
                     <>
                       {recipes[id - 1].procedure.split(".").map((proced) => {
                         return (
@@ -108,6 +117,13 @@ const ShowRecipe = () => {
                         );
                       })}
                     </>
+                  </div>
+                  <div className="px-1 py-4">
+                    <p className="font-medium">
+                      {" "}
+                      <span className="font-bold">Recipe Creator:</span>{" "}
+                      {username}
+                    </p>
                   </div>
                 </div>
               </div>
