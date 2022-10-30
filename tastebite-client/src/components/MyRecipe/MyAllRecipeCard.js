@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BiTimeFive, BiDish } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
@@ -13,6 +13,8 @@ const MyAllRecipeCard = ({
   ratings,
   recipeId,
 }) => {
+
+  
  
   return (
     <div>
@@ -69,7 +71,7 @@ const MyAllRecipeCard = ({
                 
               >
                 <FiEdit className="self-center" />
-                Edit
+                <button>Edit</button> 
               </Link>
             </div>
 
