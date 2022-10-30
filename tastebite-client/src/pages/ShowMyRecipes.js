@@ -60,7 +60,7 @@ const ShowMyRecipes = () => {
                   }
                   onClick={() => toggleTab(2)}
                 >
-                  Video Tutorial Link
+                  Video Tutorial
                 </button>
               </div>
 
@@ -93,7 +93,9 @@ const ShowMyRecipes = () => {
                           </button>
                         </div>
                         <div>
-                          <h2 className="font-bold text-xl">Share on social media</h2>
+                          <h2 className="font-bold text-xl">
+                            Share on social media
+                          </h2>
                           <ReactShare />
                         </div>
                       </div>
@@ -124,11 +126,29 @@ const ShowMyRecipes = () => {
                         <div className="border-b-2"></div>
                         <div className="pt-8">
                           <h2 className="font-bold text-xl">Ingredients</h2>
-                          <h3 className="">{recipes[id].ingredients}</h3>
+                          <h3 className="">
+                            {recipes[id].ingredients
+                              .split(".")
+                              .map((ingredient) => {
+                                return (
+                                  <ul className="list-disc">
+                                    <li>{ingredient}</li>
+                                  </ul>
+                                );
+                              })}
+                          </h3>
                         </div>
                         <div className="pt-8">
                           <h2 className="font-bold text-xl">Procedures</h2>
-                          <h3 className="">{recipes[id].procedure}</h3>
+                          <h3 className="">
+                            {recipes[id].procedure.split(".").map((prod) => {
+                              return (
+                                <ul className="list-disc">
+                                  <li>{prod}</li>
+                                </ul>
+                              );
+                            })}
+                          </h3>
                         </div>
                       </div>
                     </div>
@@ -140,17 +160,17 @@ const ShowMyRecipes = () => {
                     toggleState === 2 ? "content  active-content" : "content"
                   }
                 >
-                <div className="h-screen">
-                <iframe
-                    src={recipes[id].video_link}
-                    frameborder="0"
-                    allow="autoplay; encrypted-media"
-                    allowfullscreen
-                    title="video"
-                    className="w-full h-3/4"
-                  />
-                </div>
-                  
+                  <div className="h-screen">
+                    <iframe
+                      src={recipes[id].video_link}
+                      frameborder="0"
+                      allow="autoplay; encrypted-media"
+                      allowfullscreen
+                      title="video"
+                      className="w-full h-3/4"
+                    />
+                  </div>
+
                   <hr />
                 </div>
               </div>

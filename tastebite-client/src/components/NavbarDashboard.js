@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useStateContext } from "../context/ContextProvider";
@@ -23,20 +21,17 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   </TooltipComponent>
 );
 
-
-
 const NavbarDashboard = () => {
   const { activeMenu, setActiveMenu, user } = useStateContext();
 
-  const  {username}  = user
+  const { username } = user;
 
   const navigate = useNavigate();
 
   function handleLogout() {
-    localStorage.removeItem("user")
-    navigate("/signin")
+    localStorage.removeItem("user");
+    navigate("/signin");
   }
-
 
   return (
     <div className="flex justify-between">
@@ -44,9 +39,7 @@ const NavbarDashboard = () => {
         {
           <NavButton
             title="Menu"
-            customFunc={() =>
-              setActiveMenu((activeMenu) => !activeMenu)
-            }
+            customFunc={() => setActiveMenu((activeMenu) => !activeMenu)}
             color="primary-color"
             icon={<AiOutlineMenu />}
           />
@@ -56,10 +49,15 @@ const NavbarDashboard = () => {
       <div className="flex p-4">
         <div className="pr-6">
           <p className="text-base font-bold py-2">Account</p>
-          <p className="text-base text-gray-600 ">Welcome {username} </p>
+          <p className="text-base text-gray-600">
+            Welcome: <span className="font-bold"> {username} </span>
+          </p>
         </div>
 
-        <button onClick={handleLogout} className="border-2 border-secondary-color text-secondary-color hover:text-white hover:bg-secondary-color hover:font-bold rounded px-6 py-2 my-4">
+        <button
+          onClick={handleLogout}
+          className="border-2 border-secondary-color text-secondary-color hover:text-white hover:bg-secondary-color hover:font-bold rounded px-6 py-2 my-4"
+        >
           Logout
         </button>
       </div>
