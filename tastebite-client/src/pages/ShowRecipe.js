@@ -33,9 +33,9 @@ const ShowRecipe = () => {
           <div className="fixed md:static bg-main-bg navbar w-full">
             <NavbarDashboard />
             <div>
-              <div>
+              {/* <div>
               <img src={recipes[id - 1].image_url} alt="recipe" />
-              </div>
+              </div> */}
             
             </div>
             
