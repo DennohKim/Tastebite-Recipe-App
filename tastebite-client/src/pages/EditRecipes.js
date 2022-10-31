@@ -16,16 +16,16 @@ const EditRecipes = () => {
 
   const [toggleState, setToggleState] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState(recipes[id].title);
-  const [category, setCategory] = useState(recipes[id].category);
-  const [peopleServed, setPeopleServed] = useState(recipes[id].people_served);
-  const [country, setCountry] = useState(recipes[id].country);
-  const [cookingTime, setCookingTime] = useState(recipes[id].cooking_time);
-  const [rating, setRating] = useState(recipes[id].rating);
-  const [ingredients, setIngredients] = useState(recipes[id].ingredients);
-  const [procedure, setProcedure] = useState(recipes[id].procedure);
-  const [videoLink, setVideoLink] = useState(recipes[id].video_link);
-  const [imageUrl, setImageUrl] = useState(recipes[id].image_url);
+  const [title, setTitle] = useState(recipes[id -1].title);
+  const [category, setCategory] = useState(recipes[id -1].category);
+  const [peopleServed, setPeopleServed] = useState(recipes[id -1].people_served);
+  const [country, setCountry] = useState(recipes[id -1].country);
+  const [cookingTime, setCookingTime] = useState(recipes[id -1].cooking_time);
+  const [rating, setRating] = useState(recipes[id - 1].rating);
+  const [ingredients, setIngredients] = useState(recipes[id -1].ingredients);
+  const [procedure, setProcedure] = useState(recipes[id -1].procedure);
+  const [videoLink, setVideoLink] = useState(recipes[id -1].video_link);
+  const [imageUrl, setImageUrl] = useState(recipes[id -1].image_url);
 
   const categories = recipes.map((recipe) => recipe.category);
   const uniqueCategories = [...new Set(categories)];

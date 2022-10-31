@@ -4,7 +4,7 @@ class FavoriteRecipesController < ApplicationController
     end
     
     def create
-        favorite_recipe = @current_user.favorite_recipes.create!(favorite_recipe_params) 
+        favorite_recipe = FavoriteRecipe.create!(favorite_recipe_params) 
         render json: favorite_recipe, status: :created
     end
 
@@ -26,7 +26,7 @@ class FavoriteRecipesController < ApplicationController
     end
     
     def favorite_recipe_params 
-        params.permit(:title, :country, :rating, :ingredients, :procedure, :people_served, :category, :cooking_time, :image_url, :video_link)
+        params.permit(:title, :country, :rating, :ingredients, :procedure, :people_served, :category, :cooking_time, :image_url, :video_link, :user_id)
     end
     
 end

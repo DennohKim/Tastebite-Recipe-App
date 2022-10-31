@@ -7,15 +7,68 @@ import { BsBookmark } from "react-icons/bs";
 import ReactShare from "../components/MyRecipe/ReactShare";
 
 const ShowRecipe = () => {
-  const { activeMenu, recipes, user } = useStateContext();
+  const { activeMenu, recipes, favouriteRecipes, setFavouriteRecipes } = useStateContext();
   const { id } = useParams();
-  const { username } = user;
+   
 
   const [toggleState, setToggleState] = useState(1);
+  const [title, setTitle] = useState(recipes[id -1].title);
+  const [category, setCategory] = useState(recipes[id -1].category);
+  const [peopleServed, setPeopleServed] = useState(recipes[id -1].people_served);
+  const [country, setCountry] = useState(recipes[id -1].country);
+  const [cookingTime, setCookingTime] = useState(recipes[id -1].cooking_time);
+  const [rating, setRating] = useState(recipes[id -1].rating);
+  const [ingredients, setIngredients] = useState(recipes[id -1].ingredients);
+  const [procedure, setProcedure] = useState(recipes[id -1].procedure);
+  const [videoLink, setVideoLink] = useState(recipes[id -1].video_link);
+  const [imageUrl, setImageUrl] = useState(recipes[id -1].image_url);
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+
+  function handleAddFavouriteRecipe(newFavourite) {
+    setFavouriteRecipes([...favouriteRecipes, newFavourite]);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+   
+    fetch("http://127.0.0.1:5000/favorite_recipes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        category,
+        people_served: peopleServed,
+        country,
+        cooking_time: cookingTime,
+        rating,
+        video_link: videoLink,
+        image_url: imageUrl,
+        ingredients,
+        procedure,
+        user_id: id,
+      }),
+    })
+      .then((r) => r.json())
+      .then((newFavourite) => {
+        handleAddFavouriteRecipe(newFavourite);
+
+      });
+      
+      // fetch(`http://127.0.0.1:5000/me/${id}`)
+      // .then((r) => r.json())
+      // .then((data) => {
+      //   setUser(data);
+
+      //   localStorage.setItem("user", JSON.stringify(data));
+      // });
+   
+  }
 
   return (
     <div>
@@ -71,15 +124,18 @@ const ShowRecipe = () => {
                     <div>
                       <img
                         className="h-full  w-3/4 object-cover rounded-md"
-                        src={recipes[id - 1].image_url}
+                        src={imageUrl}
                         alt="recipe"
                       />
                     </div>
+                    <form onSubmit={handleSubmit}>
                     <div className="py-6 ">
-                      <button className="w-32 active:scale-90 bg-secondary-color transition duration-150 ease-in-out rounded-full text-white px-4 py-2 text-sm">
+                      <button className="w-32 active:scale-90 bg-secondary-color transition duration-150 ease-in-out rounded-full text-white px-4 py-2 text-sm" type="submit" >
                         <BsBookmark className="inline " /> BookMark
                       </button>
                     </div>
+                    </form>
+                    
                     <div>
                       <span className="font-bold">Share on Social Media</span>
                       <div className="flex justify-evenly py-4">
@@ -90,25 +146,25 @@ const ShowRecipe = () => {
                   <div className="float-left">
                     <div className="underline hover:underline-offset-8">
                       <p className="text-4xl   ">
-                        {recipes[id - 1].title}
+                        {title}
                       </p>
                     </div>
                     <div className="flex  justify-evenly  ">
                       <div className=" py-4  ">
                         <span className="font-bold">Servings</span>
-                        <p className="">{recipes[id - 1].people_served}</p>
+                        <p className="">{peopleServed}</p>
                       </div>
                       <div className=" py-4">
                         <span className="font-bold">Category</span>
-                        <p className="">{recipes[id - 1].category}</p>
+                        <p className="">{category}</p>
                       </div>
                       <div className=" py-4">
                         <span className="font-bold">Cooking TIme</span>
-                        <p className="">{recipes[id - 1].cooking_time}</p>
+                        <p className="">{cookingTime}</p>
                       </div>
                       <div className="py-4">
                         <span className="font-bold">Country</span>
-                        <p className="">{recipes[id - 1].country}</p>
+                        <p className="">{country}</p>
                       </div>
                     </div>
                     <div className="">
@@ -116,7 +172,7 @@ const ShowRecipe = () => {
                         Ingredients
                       </span>
                       <>
-                        {recipes[id - 1].ingredients
+                        {ingredients
                           .split(".")
                           .map((ingredient) => {
                             return (
@@ -132,7 +188,7 @@ const ShowRecipe = () => {
                         Procedure
                       </span>
                       <>
-                        {recipes[id - 1].procedure.split(".").map((proced) => {
+                        {procedure.split(".").map((proced) => {
                           return (
                             <ul className="list-disc">
                               <li>{proced}</li>
@@ -147,7 +203,7 @@ const ShowRecipe = () => {
                         <span className="font-medium">
                           Recipe Creator:
                         </span>{" "}
-                        {username}
+                        {recipes[id -1].user.username}
                       </p>
                     </div>
                   </div>
@@ -161,7 +217,7 @@ const ShowRecipe = () => {
               >
                 <div className="h-screen">
                   <iframe
-                    src={recipes[id].video_link}
+                    src={videoLink}
                     frameborder="0"
                     allow="autoplay; encrypted-media"
                     allowfullscreen

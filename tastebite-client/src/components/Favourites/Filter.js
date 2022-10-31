@@ -46,6 +46,7 @@ function Filter({
             name="country"
             id="country"
             className="mr-3 py-1 px-3 border-solid border-2 border-gray-300 rounded text-gray-400"
+            onChange= {handleChange}
           >
             {countries.map((country, index) => {
               return (

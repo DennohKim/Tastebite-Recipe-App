@@ -20,13 +20,20 @@ class UsersController < ApplicationController
     
     #Return an updated user 
     def update
-      render json: @current_user.update!(user_params)
+      user = find_user
+      render json: user.update!(update_user_params), status: :ok
+
+      # render json: User.update!(update_user_params )
     end
   
     private 
   
     def user_params 
       params.permit(:username, :email, :password, :password_confirmation, :image_url) 
+    end
+
+    def update_user_params 
+      params.permit(:username, :email, :image_url) 
     end
 
     def find_user

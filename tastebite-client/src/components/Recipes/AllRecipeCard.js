@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiTimeFive, BiDish } from "react-icons/bi";
+import { ShowRecipe } from "../../pages";
 
 
 const AllRecipeCard = ({
@@ -10,7 +11,8 @@ const AllRecipeCard = ({
   peopleServed,
   country,
   rating,
-  recipeId
+  recipeId,
+  recipeCreator
 
 }) => {
 
@@ -63,6 +65,7 @@ const AllRecipeCard = ({
             </div>
           </div>
         </div>
+        
         </Link>
     </div>
   );

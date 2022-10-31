@@ -6,6 +6,7 @@ export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
   const [recipes, setRecipes] = useState([]);
+  const [favouriteRecipes, setFavouriteRecipes] = useState([]);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
 
@@ -23,6 +24,12 @@ export const ContextProvider = ({ children }) => {
     fetch("http://127.0.0.1:5000/recipes")
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/favorite_recipes")
+      .then((res) => res.json())
+      .then((favourite) => setFavouriteRecipes(favourite));
   }, []);
 
   useEffect(() => {
@@ -44,6 +51,8 @@ export const ContextProvider = ({ children }) => {
         setUser,
         users,
         setUsers,
+        favouriteRecipes, 
+        setFavouriteRecipes
       }}
     >
       {children}
