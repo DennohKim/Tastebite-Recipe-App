@@ -22,13 +22,13 @@ export const ContextProvider = ({ children }) => {
   // }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/recipes")
+    fetch("http://127.0.0.1:3000/recipes")
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/users")
+    fetch("http://127.0.0.1:3000/users")
       .then((res) => res.json())
       .then((user) => setUsers(user));
   }, []);
