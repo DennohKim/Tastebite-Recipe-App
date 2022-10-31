@@ -6,7 +6,7 @@ import MyAllRecipeCard from "./MyAllRecipeCard";
 
 const MyRecipeList = ({ myRecipe }) => {
 
-  // const {recipes} = useStateContext()
+ 
   const myRecipeList = myRecipe.map((recipe) => {
     return (
       <MyAllRecipeCard

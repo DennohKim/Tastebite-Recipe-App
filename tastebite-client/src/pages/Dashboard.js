@@ -9,7 +9,7 @@ import NavbarDashboard from "../components/NavbarDashboard";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-  const { activeMenu } = useStateContext();
+  const { activeMenu, users, recipes, user } = useStateContext();
  
 
   return (
@@ -40,8 +40,8 @@ const Dashboard = () => {
             <div className="px-12 mx-auto my-4 grid grid-cols-4 gap-8">
               <div className="px-4 py-2 bg-slate-200 rounded flex justify-between hover:bg-primary-color hover:text-white">
                 <div>
-                  <p className="pb-3 text-gray-600">Users</p>
-                  <p className="font-bold text-4xl ">{""}</p>
+                  <p className="pb-3 text-gray-600">Active Users</p>
+                  <p className="font-bold text-4xl ">{users.length}</p>
                 </div>
                 <div className="w-2/6">
                   <HiOutlineUserGroup
@@ -53,7 +53,7 @@ const Dashboard = () => {
               <div className="px-4 py-2 bg-slate-200 rounded flex justify-between hover:bg-primary-color hover:text-white">
                 <div>
                   <p className="pb-3 text-gray-600">Recipes</p>
-                  <p className="font-bold text-4xl">{""}</p>
+                  <p className="font-bold text-4xl">{recipes.length}</p>
                 </div>
                 <div className="w-2/6">
                   <BiFoodMenu
@@ -65,7 +65,7 @@ const Dashboard = () => {
               <div className="px-4 py-2 bg-slate-200 rounded flex justify-between hover:bg-primary-color hover:text-white">
                 <div>
                   <p className="pb-3 text-gray-600">Favourites</p>
-                  <p className="font-bold text-4xl">{""}</p>
+                  <p className="font-bold text-4xl">{user.favorite_recipes.length}</p>
                 </div>
                 <div className="w-2/6">
                   <BsBookmark className="w-full outline-slate-200 " size={40} />

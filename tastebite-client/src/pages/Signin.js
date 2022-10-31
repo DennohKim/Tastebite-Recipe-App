@@ -4,9 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
 
 const Signin = () => {
-  const { user, setUser } = useStateContext();
 
-  /*console.log(user)*/
+  const { setUser } = useStateContext();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +14,7 @@ const Signin = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:5000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
