@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useStateContext } from "../src/context/ContextProvider";
+import { useEffect } from "react";
 
 import {
   AllRecipes,
@@ -19,7 +20,16 @@ import CreateRecipe from "./pages/CreateRecipe";
 import EditRecipes from "./pages/EditRecipes";
 
 function App() {
-  const { user } = useStateContext();
+  const { user,setUser } = useStateContext();
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("user"));
+
+    if (userInfo) {
+      setUser(userInfo);
+      // setRecipes(user.recipes)
+    }
+  }, []);
 
   return (
     <div className="App">

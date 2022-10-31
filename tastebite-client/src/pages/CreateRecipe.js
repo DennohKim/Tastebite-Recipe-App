@@ -4,9 +4,8 @@ import NavbarDashboard from "../components/NavbarDashboard";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 
-
 const CreateRecipe = () => {
-  const { recipes, setRecipes, activeMenu, user } = useStateContext();
+  const { recipes, setRecipes, setUser, activeMenu, user } = useStateContext();
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [peopleServed, setPeopleServed] = useState("");
@@ -21,7 +20,7 @@ const CreateRecipe = () => {
   const categories = recipes.map((recipe) => recipe.category);
   const uniqueCategories = [...new Set(categories)];
 
-  const { id } = user
+  const { id } = user;
 
   function handleAddRecipe(newRecipe) {
     setRecipes([...recipes, newRecipe]);
@@ -30,7 +29,7 @@ const CreateRecipe = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://127.0.0.1:5000/recipes", {
+    fetch("http://127.0.0.1:3000/recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,6 +51,14 @@ const CreateRecipe = () => {
       .then((r) => r.json())
       .then((newRecipe) => {
         handleAddRecipe(newRecipe);
+      });
+
+    fetch(`http://127.0.0.1:3000/me/${id}`)
+      .then((r) => r.json())
+      .then((data) => {
+        setUser(data);
+
+        localStorage.setItem("user", JSON.stringify(data));
       });
   }
 
@@ -106,15 +113,12 @@ const CreateRecipe = () => {
                         </div>
                         <div>
                           <label htmlFor="">Category</label>
-                          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                          <select
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                          >
                             {uniqueCategories.map((category, index) => (
-                              <option
-                                key={index}
-                                
-                                
-                              >
-                                {category}
-                              </option>
+                              <option key={index}>{category}</option>
                             ))}
                           </select>
                         </div>
@@ -166,15 +170,14 @@ const CreateRecipe = () => {
                             type="text"
                             name="video tutorials url"
                             value={videoLink}
-                            onChange={(e) =>
-                              setVideoLink(e.target.value)
-                            }
+                            onChange={(e) => setVideoLink(e.target.value)}
                             className="border-2"
                           />
                         </div>
                       </div>
                       <div className="">
-                        <label htmlFor="">Image Link</label><br />
+                        <label htmlFor="">Image Link</label>
+                        <br />
                         <input
                           type="text"
                           name="image"
@@ -186,14 +189,24 @@ const CreateRecipe = () => {
 
                       <div className="flex gap-12">
                         <div className="ingredient" id="textarea">
-                          <label htmlFor="">Ingredient(s)</label><br />
-                          <textarea type="textarea" className="border-2"value={ingredients}
-                          onChange={(e) => setIngredients(e.target.value)}/>
+                          <label htmlFor="">Ingredient(s)</label>
+                          <br />
+                          <textarea
+                            type="textarea"
+                            className="border-2"
+                            value={ingredients}
+                            onChange={(e) => setIngredients(e.target.value)}
+                          />
                         </div>
                         <div className="procedure" id="textarea">
-                          <label htmlFor="">Procedure(s)</label><br />
-                          <textarea type="textarea" className="border-2" value={procedure}
-                          onChange={(e) => setProcedure(e.target.value)} />
+                          <label htmlFor="">Procedure(s)</label>
+                          <br />
+                          <textarea
+                            type="textarea"
+                            className="border-2"
+                            value={procedure}
+                            onChange={(e) => setProcedure(e.target.value)}
+                          />
                         </div>
                       </div>
                     </div>

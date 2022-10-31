@@ -14,18 +14,23 @@ class UsersController < ApplicationController
 
     #Return a user who has their id stored in session
     def show 
-      render json: @current_user
+      user = find_user
+      render json:  user, status: :ok
     end
     
     #Return an updated user 
     def update
-        render json: @current_user.update!(user_params)
+      render json: @current_user.update!(user_params)
     end
   
     private 
   
     def user_params 
       params.permit(:username, :email, :password, :password_confirmation, :image_url) 
+    end
+
+    def find_user
+      User.find(params[:id])
     end
   
 end

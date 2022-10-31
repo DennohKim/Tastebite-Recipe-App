@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 const StateContext = createContext();
 
@@ -14,13 +13,14 @@ export const ContextProvider = ({ children }) => {
   console.log(user);
 
 
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("user"));
+  // useEffect(() => {
+  //   const userInfo = JSON.parse(localStorage.getItem("user"));
 
-    if (userInfo) {
-      setUser(userInfo);
-    }
-  }, []);
+  //   if (userInfo) {
+  //     setUser(userInfo);
+  //     // setRecipes(user.recipes)
+  //   }
+  // }, []);
 
 
   useEffect(() => {
