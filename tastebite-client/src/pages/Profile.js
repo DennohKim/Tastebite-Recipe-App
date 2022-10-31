@@ -31,6 +31,7 @@ const Profile= () => {
         >
           <div className="fixed md:static bg-main-bg navbar w-full">
             <NavbarDashboard />
+            <Profile/>
           
 
             
