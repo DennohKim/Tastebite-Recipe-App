@@ -41,6 +41,7 @@ const ShowRecipe = () => {
         >
           <div className="fixed md:static bg-main-bg navbar w-full">
             <NavbarDashboard />
+
             <div className="bloc-tabs">
               <button
                 className={

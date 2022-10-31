@@ -50,6 +50,7 @@ const MyRecipes = () => {
         >
           <div className="fixed md:static bg-main-bg navbar w-full">
             <NavbarDashboard />
+            
             <div className=" ml-[10%]">
               <div className="w-1/4">
                 <p className="font-bold text-xl">My Recipes</p>
@@ -58,6 +59,7 @@ const MyRecipes = () => {
                  user.recipes.length < 1 ? null : <Filter handleFilter={handleFilter} categories={uniqueCategories} countries={uniqueCountries } myRecipes={myRecipes} setMyRecipes={setMyRecipes} /> 
               }
             </div>
+            
             <MyRecipeList myRecipe={myRecipes}/>
           </div>
         </div>

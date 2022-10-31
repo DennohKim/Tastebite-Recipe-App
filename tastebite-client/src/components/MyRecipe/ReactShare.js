@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import {
   FacebookShareButton,
   EmailShareButton,
@@ -14,6 +15,8 @@ import {
 } from "react-share";
 
 const ReactShare = () => {
+
+  // const {recipeUrl } = useLocation();
   return (
     <div className="flex gap-6">
       <div>
