@@ -4,8 +4,9 @@ import { useStateContext } from "../../context/ContextProvider";
 
 export default function DeleteModal({recipeName, recipeId}) {
 
-  const { recipes, setRecipes } = useStateContext();
+  const { recipes, setRecipes, user, setUser } = useStateContext();
   const [showModal, setShowModal] = React.useState(false);
+  const { id } = user;
 
   function onHandleDelete(deleteRecipe) {
     const updatedRecipe= recipes.filter((recipe) => {
@@ -20,6 +21,14 @@ export default function DeleteModal({recipeName, recipeId}) {
     })
     .then((response) => response.json())
       .then(() => onHandleDelete(recipeId));
+
+      fetch(`http://127.0.0.1:5000/me/${id}`)
+      .then((r) => r.json())
+      .then((data) => {
+        setUser(data);
+
+        localStorage.setItem("user", JSON.stringify(data));
+      });
   }
   
   return (

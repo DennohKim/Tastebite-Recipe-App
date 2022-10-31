@@ -29,7 +29,7 @@ const CreateRecipe = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://127.0.0.1:3000/recipes", {
+    fetch("http://127.0.0.1:5000/recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,9 +51,11 @@ const CreateRecipe = () => {
       .then((r) => r.json())
       .then((newRecipe) => {
         handleAddRecipe(newRecipe);
+        
+
       });
 
-    fetch(`http://127.0.0.1:3000/me/${id}`)
+    fetch(`http://127.0.0.1:5000/me/${id}`)
       .then((r) => r.json())
       .then((data) => {
         setUser(data);
