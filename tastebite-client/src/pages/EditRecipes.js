@@ -132,9 +132,9 @@ const EditRecipes = () => {
 
                         <div>
                           <div className="flex justify-center align-center">
-                            <FiEdit className="self-center" />
+                            
                             <button
-                              className="flex gap-2 align-items-center  text-secondary-color active:bg-secondary-color text-md px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
+                              className="flex gap-2 align-items-center  text-white bg-secondary-color text-md px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
                               type="submit"
                             >
                               Save Changes
@@ -208,8 +208,10 @@ const EditRecipes = () => {
                           <div>
                             <h3 className="font-bold text-lg">Cooking Time</h3>
                             <input
+                            
                             type="text"
                             name="cookingTime"
+                            className="border-10 h-24"
                             autoComplete="off"
                             value={cookingTime}
                             onChange={(e) => setCookingTime(e.target.value)}
@@ -230,7 +232,7 @@ const EditRecipes = () => {
                           <div className="border-b-2"></div>
                           <div className="pt-8">
                             <h2 className="font-bold text-xl">Ingredients</h2>
-                            <input
+                            <textarea
                             type="text"
                             name="ingredients"
                             autoComplete="off"
@@ -240,7 +242,7 @@ const EditRecipes = () => {
                           </div>
                           <div className="pt-8">
                             <h2 className="font-bold text-xl">Procedures</h2>
-                            <input
+                            <textarea
                             type="text"
                             name="procedure"
                             autoComplete="off"
