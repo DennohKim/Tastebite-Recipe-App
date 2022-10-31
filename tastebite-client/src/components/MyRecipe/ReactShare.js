@@ -16,12 +16,13 @@ import {
 
 const ReactShare = () => {
 
-  // const {recipeUrl } = useLocation();
+  const { recipeUrl } = useLocation();
+  const url = recipeUrl
   return (
     <div className="flex gap-6">
       <div>
         <FacebookShareButton
-          url="https://www.youtube.com/watch?v=BZy1f0Tl7OM&list=RDScDgJJi5Guc&index=2&ab_channel=Drake"
+          url={url}
           quote={"Hey there"}
           hashtag="#awesomerecipes"
         >
