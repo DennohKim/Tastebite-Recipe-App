@@ -4,7 +4,7 @@ User.create(username:"John", email:"john@gamil.com", password:"2356thy", passwor
 User.create(username:"Mark", email:"mark@gamil.com", password:"klk567", password_confirmation:"klk567", image_url:"https://images.pexels.com/photos/432059/pexels-photo-432059.jpeg?auto=compress&cs=tinysrgb&w=600",)
 User.create(username:"Dennis", email:"dennis@gamil.com", password:"ehr589", password_confirmation:"ehr589", image_url:"https://images.pexels.com/photos/2406949/pexels-photo-2406949.jpeg?auto=compress&cs=tinysrgb&w=600",)
 User.create(username:"Ann", email:"ann@gamil.com", password:"56t3u4i", password_confirmation:"56t3u4i", image_url:"https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=600",)
-User.create(username:"Onan", email:"onan@gamil.com", password:" ", password_confirmation:"iooi346", image_url:"https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600",)
+User.create(username:"Onan", email:"onan@gamil.com", password:"iooi346", password_confirmation:"iooi346", image_url:"https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600",)
 
 Recipe.create(image_url: "https://www.simplyrecipes.com/thmb/s78KzcJv6NnSmzQr4I9jDq1pfzA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Miso-Mushroom-Pasta-LEAD-06-bfea5cb9131c4690aa443d9559b2e3e8.jpg",
 title: "Creamy Miso Mushroom Pasta",
