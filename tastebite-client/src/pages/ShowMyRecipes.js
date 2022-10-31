@@ -6,12 +6,17 @@ import { useStateContext } from "../context/ContextProvider";
 import { useState } from "react";
 import "../components/MyRecipe/Tabs.css";
 import { BsBookmark } from "react-icons/bs";
+import {GrClose} from "react-icons/gr"
 import ReactShare from "../components/MyRecipe/ReactShare";
+
 
 const ShowMyRecipes = () => {
   const { activeMenu, recipes, user } = useStateContext();
   const { id } = useParams();
-  const { username } = user;
+  const { username } = user; 
+
+  
+
 
   const [toggleState, setToggleState] = useState(1);
 
@@ -99,6 +104,11 @@ const ShowMyRecipes = () => {
                           <ReactShare />
                         </div>
                       </div>
+                      <div className="py-6 ">
+                      <button  className="w-32 active:scale-90 bg-secondary-color transition duration-150 ease-in-out rounded-full text-white px-4 py-2 text-sm">
+                        <GrClose  className="inline " /> Close
+                      </button>
+                    </div>
                     </div>
                     <div className="px-10">
                       <h1 className="font-extrabold text-3xl mt-16">

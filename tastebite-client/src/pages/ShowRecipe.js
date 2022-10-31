@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { useParams } from "react-router-dom";
 import NavbarDashboard from "../components/NavbarDashboard";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import { BsBookmark } from "react-icons/bs";
+import {GrClose} from "react-icons/gr"
 import ReactShare from "../components/MyRecipe/ReactShare";
+
 
 const ShowRecipe = () => {
   const { activeMenu, recipes, user } = useStateContext();
   const { id } = useParams();
   const { username } = user;
+
+
 
   const [toggleState, setToggleState] = useState(1);
 
@@ -86,6 +90,11 @@ const ShowRecipe = () => {
                         <ReactShare />
                       </div>
                     </div>
+                    <div className="py-6 ">
+                      <button onClick={window.location = "allrecipes"} className="w-32 active:scale-90 bg-secondary-color transition duration-150 ease-in-out rounded-full text-white px-4 py-2 text-sm">
+                        <GrClose className="inline " /> Close
+                      </button>
+                    </div>
                   </div>
                   <div className="float-left">
                     <div className="underline hover:underline-offset-8">
@@ -150,6 +159,7 @@ const ShowRecipe = () => {
                         {username}
                       </p>
                     </div>
+                   
                   </div>
                 </div>
               </div>
@@ -161,7 +171,7 @@ const ShowRecipe = () => {
               >
                 <div className="h-screen">
                   <iframe
-                    src={recipes[id].video_link}
+                    src={recipes[id - 1].video_link}
                     frameborder="0"
                     allow="autoplay; encrypted-media"
                     allowfullscreen
@@ -171,6 +181,7 @@ const ShowRecipe = () => {
                 </div>
                 <ReactShare />
               </div>
+           
             </div>
           </div>
         </div>
