@@ -22,8 +22,6 @@ import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 
-
-
 function App() {
   const { user,setUser } = useStateContext();
 

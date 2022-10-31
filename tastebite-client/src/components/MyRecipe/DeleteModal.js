@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useStateContext } from "../../context/ContextProvider";
 
@@ -33,10 +33,10 @@ export default function DeleteModal({recipeName, recipeId}) {
   
   return (
     <>
-      <div className="flex gap-2 align-center bg-red-500 text-white active:bg-red-800 uppercase text-md px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
+      <div className="flex gap-2 align-center bg-red-500 text-white active:bg-red-800 uppercase text-md px-4 ml-2 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
         <AiOutlineDelete className="self-center" />
         <button className="self-center" onClick={() => setShowModal(true)}>
-          Delete Recipe
+          Delete
         </button>
       </div>
       {showModal ? (
@@ -73,11 +73,11 @@ export default function DeleteModal({recipeName, recipeId}) {
                     Close
                   </button>
                   <button
-                    className="flex gap-2 align-center bg-red-500 text-white active:bg-red-800 uppercase text-md px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
+                    className="flex gap-2 align-center bg-red-500 text-white active:bg-red-800 text-md px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
                     type="button"
                     onClick={handleDelete}  
                   >
-                    Delete Recipe
+                    Delete
                   </button>
                 </div>
               </div>

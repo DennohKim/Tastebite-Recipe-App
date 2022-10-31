@@ -17,7 +17,7 @@ const MyRecipeList = ({ myRecipe }) => {
         cookingTime={recipe.cooking_time}
         peopleServed={recipe.people_served}
         country={recipe.country}
-        ratings={recipe.ratings}
+        ratings={recipe.rating}
 
       />
     );

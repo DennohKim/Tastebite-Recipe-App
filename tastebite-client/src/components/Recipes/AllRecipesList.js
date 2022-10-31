@@ -13,6 +13,7 @@ const { recipes } = useStateContext();
       <AllRecipeCard
         recipeId={recipe.id}
         key={recipe.id}
+        recipeCreator={recipe.user.username}
         image={recipe.image_url}
         recipeName={recipe.title}
         cookingTime={recipe.cooking_time}
