@@ -4,20 +4,20 @@ import { AiOutlineDelete } from "react-icons/ai";
 export default function DeleteModal({recipeName, recipeId}) {
   const [showModal, setShowModal] = React.useState(false);
 
-  function onHandleDelete(deleteRecipe) {
-    const updatedRecipe= recipes.filter((recipe) => {
-      return recipe.id !== deleteRecipe;
-    });
-    setRecipes(updateRecipe);
-  }
+  // function onHandleDelete(deleteRecipe) {
+  //   const updatedRecipe= recipes.filter((recipe) => {
+  //     return recipe.id !== deleteRecipe;
+  //   });
+  //   setRecipes(updateRecipe);
+  // }
 
-  function handleDelete(recipes){
-    fetch(`http://127.0.0.1:3000/recipes/${recipeId}`,{
-      method:'DELETE'
-    })
-    .then((response) => response.json())
-      .then(() => onHandleDelete(id));
-  }
+  // function handleDelete(recipes){
+  //   fetch(`http://127.0.0.1:3000/recipes/${recipeId}`,{
+  //     method:'DELETE'
+  //   })
+  //   .then((response) => response.json())
+  //     .then(() => onHandleDelete(id));
+  // }
   
   return (
     <>
@@ -63,7 +63,7 @@ export default function DeleteModal({recipeName, recipeId}) {
                   <button
                     className="flex gap-2 align-center bg-red-500 text-white active:bg-red-800 uppercase text-md px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false) && handleDelete}  
+                    onClick={() => setShowModal(false)}  
                   >
                     Delete Recipe
                   </button>
