@@ -73,7 +73,7 @@ const MyAllRecipeCard = ({
               </Link>
             </div>
 
-            <DeleteModal recipeName={recipeName} />
+            <DeleteModal recipeName={recipeName} recipeId={recipeId} />
           </div>
         </div>
       </div>
