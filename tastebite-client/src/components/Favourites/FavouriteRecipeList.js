@@ -1,5 +1,6 @@
 import React from "react";
 import AllRecipeCard from '../Recipes/AllRecipeCard';
+import FavoriteRecipeCard from "./FavoriteRecipeCard";
 
 
 const FavouriteRecipeList = ({ favourites }) => {
@@ -7,7 +8,7 @@ const FavouriteRecipeList = ({ favourites }) => {
   
   const favRecipeList = favourites.map((recipe) => {
     return (
-      <AllRecipeCard
+      <FavoriteRecipeCard
         key={recipe.id}
         recipeId={recipe.id}
         image={recipe.image_url}
