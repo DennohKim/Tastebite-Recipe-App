@@ -19,7 +19,7 @@ const ReactShare = () => {
   const { recipeUrl } = useLocation();
   const url = recipeUrl
   return (
-    <div className="flex gap-6">
+    <div className="flex sm:scale-50  md:scale-75 lg:scale-100  gap-6">
       <div>
         <FacebookShareButton
           url={url}

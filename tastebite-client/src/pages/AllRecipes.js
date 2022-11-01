@@ -1,17 +1,14 @@
-import React  from "react";
+import React from "react";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
 
 import AllRecipesList from "../components/Recipes/AllRecipesList";
 
-
 // import { Route } from "react-router-dom";
-
 
 const AllRecipes = () => {
   const { activeMenu } = useStateContext();
-
 
   return (
     <>
@@ -39,10 +36,14 @@ const AllRecipes = () => {
             <NavbarDashboard />
 
             <div className="px-4 mx-auto my-4 gap-2">
-
-            
-              <AllRecipesList />
-
+              <div className=" ml-[10%]">
+                <div className="w-1/4">
+                  <p className="font-bold text-xl">All Recipes</p>
+                </div>
+              </div>
+              <div>
+                <AllRecipesList />
+              </div>
             </div>
           </div>
         </div>

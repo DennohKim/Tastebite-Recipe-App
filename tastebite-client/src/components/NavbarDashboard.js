@@ -24,13 +24,13 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 const NavbarDashboard = () => {
   const { activeMenu, setActiveMenu, user } = useStateContext();
 
-  const { username } = user;
+  const { username, image_url } = user;
 
   const navigate = useNavigate();
 
   function handleLogout() {
     localStorage.removeItem("user");
-    navigate("/signin");
+    navigate("/");
   }
 
   return (
@@ -46,7 +46,15 @@ const NavbarDashboard = () => {
         }
       </div>
 
-      <div className="flex p-4">
+      <div className="flex items-center p-4">
+        <div className="pr-6">
+          <img
+            className="h-14 w-14 self-center rounded-full object-cover"
+            src={image_url}
+            alt="recipe"
+          />
+        </div>
+
         <div className="pr-6">
           <p className="text-base font-bold py-2">Account</p>
           <p className="text-base text-gray-600">
@@ -56,7 +64,7 @@ const NavbarDashboard = () => {
 
         <button
           onClick={handleLogout}
-          className="border-2 border-secondary-color text-secondary-color hover:text-white hover:bg-secondary-color hover:font-bold rounded px-6 py-2 my-4"
+          className="border-2 border-secondary-color text-white hover:text-white font-semibold bg-secondary-color hover:font-semibold rounded-full hover:shadow-md px-6 py-2 my-4"
         >
           Logout
         </button>
