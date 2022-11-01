@@ -14,7 +14,7 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-const ReactShare = () => {
+const ReactShare = ({videoLink}) => {
 
   const { recipeUrl } = useLocation();
   const url = recipeUrl
@@ -22,7 +22,7 @@ const ReactShare = () => {
     <div className="flex sm:scale-50  md:scale-75 lg:scale-100  gap-6">
       <div>
         <FacebookShareButton
-          url={url}
+          url={videoLink}
           quote={"Hey there"}
           hashtag="#awesomerecipes"
         >
@@ -31,7 +31,7 @@ const ReactShare = () => {
       </div>
       <div>
         <EmailShareButton
-          url="https://www.youtube.com/watch?v=BZy1f0Tl7OM&list=RDScDgJJi5Guc&index=2&ab_channel=Drake"
+          url={videoLink}
           quote={"Hey there"}
           hashtag="#awesomerecipes"
         >
@@ -40,7 +40,7 @@ const ReactShare = () => {
       </div>
       <div>
         <WhatsappShareButton
-          url="https://www.youtube.com/watch?v=BZy1f0Tl7OM&list=RDScDgJJi5Guc&index=2&ab_channel=Drake"
+          url={videoLink}
           quote={"Hey there"}
           hashtag="#awesomerecipes"
         >
@@ -49,7 +49,7 @@ const ReactShare = () => {
       </div>
       <div>
         <LinkedinShareButton
-          url="https://www.youtube.com/watch?v=BZy1f0Tl7OM&list=RDScDgJJi5Guc&index=2&ab_channel=Drake"
+          url={videoLink}
           quote={"Hey there"}
           hashtag="#awesomerecipes"
         >

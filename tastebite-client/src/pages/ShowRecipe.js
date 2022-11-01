@@ -146,7 +146,7 @@ const ShowRecipe = () => {
                           <h2 className="font-bold sm:text-base md:text-base lg:text-lg tracking-normal">
                             Share on social media
                           </h2>
-                          <ReactShare />
+                          <ReactShare videoLink={recipes[id -1].video_link} />
                         </div>
                       </div>
                     </div>

@@ -59,13 +59,13 @@ const CreateRecipe = () => {
 
       });
       
-      fetch(`http://127.0.0.1:5000/me/${id}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setUser(data);
+      // fetch(`http://127.0.0.1:5000/me/${id}`)
+      // .then((r) => r.json())
+      // .then((data) => {
+      //   setUser(data);
 
-        localStorage.setItem("user", JSON.stringify(data));
-      });
+      //   localStorage.setItem("user", JSON.stringify(data));
+      // });
    
   }
 
