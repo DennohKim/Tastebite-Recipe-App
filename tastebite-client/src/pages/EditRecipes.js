@@ -48,7 +48,7 @@ const EditRecipes = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/recipes/${id}`, {
+    fetch(`http://localhost:3000/recipes/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
