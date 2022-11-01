@@ -1,3 +1,5 @@
+
+
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const StateContext = createContext();
@@ -6,6 +8,7 @@ export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
   const [recipes, setRecipes] = useState([]);
+  const [favouriteRecipes, setFavouriteRecipes] = useState([]);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
 
@@ -13,18 +16,22 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
-
-
-  //   if (userInfo) {
-  //     setUser(userInfo);
-  //     // setRecipes(user.recipes)
-  //   }
-  // }, []);
+    if (userInfo) {
+      setUser(userInfo);
+      // setRecipes(user.recipes)
+    }
+  }, []);
 
   useEffect(() => {
     fetch("http://127.0.0.1:3000/recipes")
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:3000/favorite_recipes")
+      .then((res) => res.json())
+      .then((favourite) => setFavouriteRecipes(favourite));
   }, []);
 
   useEffect(() => {
@@ -46,6 +53,8 @@ export const ContextProvider = ({ children }) => {
         setUser,
         users,
         setUsers,
+        favouriteRecipes, 
+        setFavouriteRecipes
       }}
     >
       {children}
