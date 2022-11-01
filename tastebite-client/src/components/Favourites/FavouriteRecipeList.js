@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStateContext } from "../../context/ContextProvider";
 import AllRecipeCard from '../Recipes/AllRecipeCard';
+import FavoriteRecipeCard from "./FavoriteRecipeCard";
 
 
 const FavouriteRecipeList = ({ favourites, setFavourites }) => {
@@ -53,7 +54,7 @@ const FavouriteRecipeList = ({ favourites, setFavourites }) => {
   
   const favRecipeList = recipeListDisplayed.map((recipe) => {
     return (
-      <AllRecipeCard
+      <FavoriteRecipeCard
         key={recipe.id}
         recipeId={recipe.id}
         image={recipe.image_url}

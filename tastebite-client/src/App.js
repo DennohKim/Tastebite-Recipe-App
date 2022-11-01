@@ -20,6 +20,7 @@ import {
 } from "./pages";
 import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ShowMyFavourites from "./pages/ShowMyFavourites";
 
 
 function App() {
@@ -85,6 +86,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <Favourites />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/favourites/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <ShowMyFavourites />
             </ProtectedRoute>
           }
         ></Route>

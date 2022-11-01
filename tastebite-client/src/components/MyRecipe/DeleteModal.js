@@ -16,7 +16,7 @@ export default function DeleteModal({recipeName, recipeId}) {
   }
 
   function handleDelete(){
-    fetch(`http://127.0.0.1:5000/recipes/${recipeId}`,{
+    fetch(`http://127.0.0.1:3000/recipes/${recipeId}`,{
       method:'DELETE'
     })
     .then((response) => response.json())
