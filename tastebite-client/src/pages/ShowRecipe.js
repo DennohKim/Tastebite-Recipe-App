@@ -225,13 +225,9 @@ const ShowRecipe = () => {
                   toggleState === 2 ? "content  active-content" : "content"
                 }
               >
-                <div className="h-screen">
+           <div className="h-screen">
                   <iframe
-<<<<<<< HEAD
                     src={videoLink}
-=======
-                    src={recipes[id - 1].video_link}
->>>>>>> 4a96a18 (Close button functionality updates)
                     frameborder="0"
                     allow="autoplay; encrypted-media"
                     allowfullscreen
