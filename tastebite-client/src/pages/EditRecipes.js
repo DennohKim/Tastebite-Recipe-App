@@ -16,16 +16,18 @@ const EditRecipes = () => {
 
   const [toggleState, setToggleState] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState(recipes[id -1].title);
-  const [category, setCategory] = useState(recipes[id -1].category);
-  const [peopleServed, setPeopleServed] = useState(recipes[id -1].people_served);
-  const [country, setCountry] = useState(recipes[id -1].country);
-  const [cookingTime, setCookingTime] = useState(recipes[id -1].cooking_time);
+  const [title, setTitle] = useState(recipes[id - 1].title);
+  const [category, setCategory] = useState(recipes[id - 1].category);
+  const [peopleServed, setPeopleServed] = useState(
+    recipes[id - 1].people_served
+  );
+  const [country, setCountry] = useState(recipes[id - 1].country);
+  const [cookingTime, setCookingTime] = useState(recipes[id - 1].cooking_time);
   const [rating, setRating] = useState(recipes[id - 1].rating);
-  const [ingredients, setIngredients] = useState(recipes[id -1].ingredients);
-  const [procedure, setProcedure] = useState(recipes[id -1].procedure);
-  const [videoLink, setVideoLink] = useState(recipes[id -1].video_link);
-  const [imageUrl, setImageUrl] = useState(recipes[id -1].image_url);
+  const [ingredients, setIngredients] = useState(recipes[id - 1].ingredients);
+  const [procedure, setProcedure] = useState(recipes[id - 1].procedure);
+  const [videoLink, setVideoLink] = useState(recipes[id - 1].video_link);
+  const [imageUrl, setImageUrl] = useState(recipes[id - 1].image_url);
 
   const categories = recipes.map((recipe) => recipe.category);
   const uniqueCategories = [...new Set(categories)];
@@ -123,157 +125,169 @@ const EditRecipes = () => {
                 >
                   {isEditing ? (
                     <form onSubmit={handleSubmit}>
-                    <div className="grid md:grid-cols-1 lg:grid-cols-2 ">
-                      <div>
-                        <h3 className="font-bold text-lg py-4">
-                          Recipe Creator:{" "}
-                         {username}
-                        </h3>
+                      <div className="grid md:grid-cols-1 lg:grid-cols-2 ">
+                        <div className="flex flex-col">
+                          <div className="flex justify-between align-center ">
+                            <h3 className="font-bold text-lg py-4 tracking-normal">
+                              Recipe Creator:{" "}
+                              <span className="font-normal">
+                                {recipes[id - 1].user.username}
+                              </span>
+                            </h3>
+                          </div>
 
-                        <div>
-                          <div className="flex justify-center align-center">
+                          <div>
                             
+                          </div>
+                          <div className="h-1/2 w-full">
+                            <img
+                              className="h-full w-full object-cover rounded-md pb-10"
+                              src={imageUrl}
+                              alt="recipe"
+                            />
+                            <label>Change Image Link</label><br/>
+                            <input
+                              type="text"
+                              className="py-2 border-2 w-3/4 rounded-md"
+                              name="imageUrl"
+                              autoComplete="off"
+                              value={imageUrl}
+                              onChange={(e) => setImageUrl(e.target.value)}
+                            />
+                          </div> <br/>
+
+                          <div className="mt-16">
                             <button
                               className="flex gap-2 align-items-center  text-white bg-secondary-color text-md px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
                               type="submit"
+                              onClick={() =>
+                              setIsEditing((isEditing) => !isEditing)
+                            }
                             >
                               Save Changes
                             </button>
                           </div>
-                        </div>
 
-                        <div className="h-1/2 w-full">
-                          <img
-                            className="h-full w-full object-cover rounded-md"
-                            src={imageUrl}
-                            alt="recipe"
-                          />
-                          <label>Change Image Link</label>
-                           <input
-                            type="text"
-                            name="imageUrl"
-                            autoComplete="off"
-                            value={imageUrl}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                          />
-                        </div>
-
-                        <div className="pt-10 flex flex-col gap-10">
-                          <div className="flex gap-2 align-center bg-secondary-color text-white active:bg-secondary-color uppercase text-md w-1/4 px-6 py-4 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
-                            <BsBookmark className="self-center mx-auto" />
-                            <button className="self-center mx-auto">
-                              Save Recipe
-                            </button>
-                          </div>
-                          <div>
-                            <h2 className="font-bold text-xl">
-                              Share on social media
-                            </h2>
-                            <ReactShare />
+                          <div className="pt-10 flex flex-col gap-10">
+                            <div>
+                              <h2 className="font-bold sm:text-base md:text-base lg:text-lg tracking-normal">
+                                Share on social media
+                              </h2>
+                              <ReactShare />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="px-10">
-                        <h1 className="font-extrabold text-3xl mt-16">
-                          {title}
-                        </h1>
-                        <input
+                        <div className="px-10">
+                          <h1 className="font-extrabold text-3xl mt-16">
+                            {title}
+                          </h1>
+                          <input
                             type="text"
                             name="title"
+                            className="py-2 border-2 w-3/4 rounded-md"
                             autoComplete="off"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                           />
-                        <div className="flex justify-between py-4 ">
-                          <div>
-                            <h3 className="font-bold text-lg">Servings</h3>
-                            <input
-                            type="text"
-                            name="peopleServed"
-                            autoComplete="off"
-                            value={peopleServed}
-                            onChange={(e) => setPeopleServed(e.target.value)}
-                          />
+                          <div className="flex justify-between py-4 ">
+                            <div>
+                              <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                                Servings
+                              </h3>
+                              <input
+                                type="text"
+                                name="peopleServed"
+                                className="py-2 border-2 w-24 mr-4 rounded-md"
+                                autoComplete="off"
+                                value={peopleServed}
+                                onChange={(e) =>
+                                  setPeopleServed(e.target.value)
+                                }
+                              />
+                            </div>
+                            <div>
+                              <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                                Category
+                              </h3>
+                              <select
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                                className="py-2 border-2 w-24 mr-4 rounded-md"
+                              >
+                                {uniqueCategories.map((category, index) => (
+                                  <option key={index}>{category}</option>
+                                ))}
+                              </select>
+                            </div>
+                            <div>
+                              <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                                Cooking Time
+                              </h3>
+                              <input
+                                type="text"
+                                name="cookingTime"
+                                className="py-2 border-2 w-24 mr-4 rounded-md"
+                                autoComplete="off"
+                                value={cookingTime}
+                                onChange={(e) => setCookingTime(e.target.value)}
+                              />
+                            </div>
+                            <div>
+                              <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                                Country
+                              </h3>
+                              <input
+                                type="text"
+                                name="country"
+                                className="py-2 border-2 w-24 mr-4 rounded-md"
+                                autoComplete="off"
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                              />
+                            </div>
                           </div>
                           <div>
-                            <h3 className="font-bold text-lg">Category</h3>
-                            <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                            {uniqueCategories.map((category, index) => (
-                              <option key={index}>
-                                {category}
-                              </option>
-                            ))}
-                          </select>
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-lg">Cooking Time</h3>
-                            <input
-                            
-                            type="text"
-                            name="cookingTime"
-                            className="border-10 h-24"
-                            autoComplete="off"
-                            value={cookingTime}
-                            onChange={(e) => setCookingTime(e.target.value)}
-                          />
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-lg">Country</h3>
-                            <input
-                            type="text"
-                            name="country"
-                            autoComplete="off"
-                            value={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                          />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="border-b-2"></div>
-                          <div className="pt-8">
-                            <h2 className="font-bold text-xl">Ingredients</h2>
-                            <textarea
-                            type="text"
-                            name="ingredients"
-                            autoComplete="off"
-                            value={ingredients}
-                            onChange={(e) => setIngredients(e.target.value)}
-                          />
-                          </div>
-                          <div className="pt-8">
-                            <h2 className="font-bold text-xl">Procedures</h2>
-                            <textarea
-                            type="text"
-                            name="procedure"
-                            autoComplete="off"
-                            value={procedure}
-                            onChange={(e) => setProcedure(e.target.value)}
-                          />
+                            <div className="border-b-2"></div>
+                            <div className="pt-8">
+                              <h2 className="font-bold text-xl tracking-normal">
+                                Ingredients
+                              </h2>
+                              <textarea
+                                type="text"
+                                name="ingredients"
+                                className="py-10 border-2 w-72 mr-4 rounded-md"
+                                autoComplete="off"
+                                value={ingredients}
+                                onChange={(e) => setIngredients(e.target.value)}
+                              />
+                            </div>
+                            <div className="pt-8">
+                              <h2 className="font-bold text-xl tracking-normal">
+                                Procedures
+                              </h2>
+                              <textarea
+                                type="text"
+                                name="procedure"
+                                className="py-10 border-2 w-72 mr-4 rounded-md"
+                                autoComplete="off"
+                                value={procedure}
+                                onChange={(e) => setProcedure(e.target.value)}
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                     </form>
                   ) : (
                     <div className="grid md:grid-cols-1 lg:grid-cols-2 ">
                       <div>
-                        <h3 className="font-bold text-lg py-4">
-                          Recipe Creator:{" "}
-                          <span className="font-normal">{username}</span>
-                        </h3>
-
-                        <div>
-                          <div className="flex justify-center align-center">
-                            <FiEdit className="self-center" />
-                            <button
-                              className="flex gap-2 align-items-center  text-secondary-color active:bg-secondary-color text-md px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
-                              onClick={() =>
-                                setIsEditing((isEditing) => !isEditing)
-                              }
-                            >
-                              Edit
-                            </button>
-                          </div>
+                        <div className="flex justify-between align-center ">
+                          <h3 className="font-bold text-lg py-4 tracking-normal">
+                            Recipe Creator:{" "}
+                            <span className="font-normal">
+                              {recipes[id - 1].user.username}
+                            </span>
+                          </h3>
                         </div>
 
                         <div className="h-1/2 w-full">
@@ -284,15 +298,20 @@ const EditRecipes = () => {
                           />
                         </div>
 
+                        <div className="flex justify-center align-center gap-2 self-center align-items-center  text-secondary-color active:bg-secondary-color text-md font-semibold border-2 border-secondary-color px-6 py-1 mt-8 rounded-md w-2/5 shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 h-10">
+                          <FiEdit className="self-center" />
+                          <button
+                            onClick={() =>
+                              setIsEditing((isEditing) => !isEditing)
+                            }
+                          >
+                            Edit
+                          </button>
+                        </div>
+
                         <div className="pt-10 flex flex-col gap-10">
-                          <div className="flex gap-2 align-center bg-secondary-color text-white active:bg-secondary-color uppercase text-md w-1/4 px-6 py-4 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
-                            <BsBookmark className="self-center mx-auto" />
-                            <button className="self-center mx-auto">
-                              Save Recipe
-                            </button>
-                          </div>
                           <div>
-                            <h2 className="font-bold text-xl">
+                            <h2 className="font-bold sm:text-base md:text-base lg:text-lg tracking-normal">
                               Share on social media
                             </h2>
                             <ReactShare />
@@ -305,31 +324,59 @@ const EditRecipes = () => {
                         </h1>
                         <div className="flex justify-between py-4 ">
                           <div>
-                            <h3 className="font-bold text-lg">Servings</h3>
+                            <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                              Servings
+                            </h3>
                             <h3 className="">{peopleServed}</h3>
                           </div>
                           <div>
-                            <h3 className="font-bold text-lg">Category</h3>
+                            <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                              Category
+                            </h3>
                             <h3 className="">{category}</h3>
                           </div>
                           <div>
-                            <h3 className="font-bold text-lg">Cooking Time</h3>
+                            <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                              Cooking Time
+                            </h3>
                             <h3 className="">{cookingTime}</h3>
                           </div>
                           <div>
-                            <h3 className="font-bold text-lg">Country</h3>
+                            <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                              Country
+                            </h3>
                             <h3 className="">{country}</h3>
                           </div>
                         </div>
                         <div>
                           <div className="border-b-2"></div>
                           <div className="pt-8">
-                            <h2 className="font-bold text-xl">Ingredients</h2>
-                            <h3 className="">{ingredients}</h3>
+                            <h2 className="font-bold text-xl tracking-normal">
+                              Ingredients
+                            </h2>
+                            <h3 className="ml-6">
+                              {ingredients.split(".").map((ingredient) => {
+                                return (
+                                  <ul className="list-disc">
+                                    <li>{ingredient}</li>
+                                  </ul>
+                                );
+                              })}
+                            </h3>
                           </div>
                           <div className="pt-8">
-                            <h2 className="font-bold text-xl">Procedures</h2>
-                            <h3 className="">{procedure}</h3>
+                            <h2 className="font-bold text-xl tracking-normal">
+                              Procedures
+                            </h2>
+                            <h3 className="ml-6">
+                              {procedure.split(".").map((prod) => {
+                                return (
+                                  <ul className="list-disc">
+                                    <li>{prod}</li>
+                                  </ul>
+                                );
+                              })}
+                            </h3>
                           </div>
                         </div>
                       </div>
