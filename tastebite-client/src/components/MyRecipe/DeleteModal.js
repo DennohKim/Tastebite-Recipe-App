@@ -1,36 +1,49 @@
 import React, { useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useStateContext } from "../../context/ContextProvider";
+import useFetchUser from "../../hooks/useFetchUser";
 
-export default function DeleteModal({recipeName, recipeId}) {
-
+export default function DeleteModal({ recipeName, recipeId }) {
   const { recipes, setRecipes, user, setUser } = useStateContext();
   const [showModal, setShowModal] = React.useState(false);
   const { id } = user;
 
   function onHandleDelete(deleteRecipe) {
-    const updatedRecipe= recipes.filter((recipe) => {
+    const updatedRecipe = recipes.filter((recipe) => {
       return recipe.id !== deleteRecipe;
     });
     setRecipes(updatedRecipe);
   }
 
-  function handleDelete(){
-    fetch(`http://127.0.0.1:3000/recipes/${recipeId}`,{
-      method:'DELETE'
+  function handleDelete() {
+    fetch(`http://127.0.0.1:3000/recipes/${recipeId}`, {
+      method: "DELETE",
     })
-    .then((response) => response.json())
+      .then((response) => response.json())
       .then(() => onHandleDelete(recipeId));
 
-      fetch(`http://127.0.0.1:5000/me/${id}`)
+    // fetch(`http://127.0.0.1:3000/me/${id}`)
+    //   .then((r) => r.json())
+    //   .then((data) => {
+    //     setUser(data);
+
+    //     localStorage.setItem("user", JSON.stringify(data));
+    //   });
+  }
+
+  function updateUser() {
+    setShowModal(false);
+
+    fetch(`http://127.0.0.1:3000/me/${id}`)
       .then((r) => r.json())
       .then((data) => {
         setUser(data);
 
         localStorage.setItem("user", JSON.stringify(data));
       });
+    // useFetchUser(`http://127.0.0.1:3000/me/${id}`)
   }
-  
+
   return (
     <>
       <div className="flex gap-2 align-center bg-red-500 text-white active:bg-red-800 uppercase text-md px-4 ml-2 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
@@ -60,7 +73,8 @@ export default function DeleteModal({recipeName, recipeId}) {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    <span className="font-bold">{recipeName}</span> will be permanently deleted.
+                    <span className="font-bold">{recipeName}</span> will be
+                    permanently deleted.
                   </p>
                 </div>
                 {/*footer*/}
@@ -68,14 +82,14 @@ export default function DeleteModal({recipeName, recipeId}) {
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={updateUser}
                   >
                     Close
                   </button>
                   <button
                     className="flex gap-2 align-center bg-red-500 text-white active:bg-red-800 text-md px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
                     type="button"
-                    onClick={handleDelete}  
+                    onClick={handleDelete}
                   >
                     Delete
                   </button>

@@ -65,14 +65,6 @@ const ShowRecipe = () => {
       .then((newFavourite) => {
         handleAddFavouriteRecipe(newFavourite);
       });
-
-    fetch(`http://127.0.0.1:3000/me/${user.id}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setUser(data);
-
-        localStorage.setItem("user", JSON.stringify(data));
-      });
   }
 
   return (
