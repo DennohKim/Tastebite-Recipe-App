@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import NavbarDashboard from "../components/NavbarDashboard";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import { BsBookmark } from "react-icons/bs";
@@ -12,16 +11,16 @@ const ShowRecipe = () => {
    
 
   const [toggleState, setToggleState] = useState(1);
-  const [title, setTitle] = useState(recipes[id -1].title);
-  const [category, setCategory] = useState(recipes[id -1].category);
-  const [peopleServed, setPeopleServed] = useState(recipes[id -1].people_served);
-  const [country, setCountry] = useState(recipes[id -1].country);
-  const [cookingTime, setCookingTime] = useState(recipes[id -1].cooking_time);
-  const [rating, setRating] = useState(recipes[id -1].rating);
-  const [ingredients, setIngredients] = useState(recipes[id -1].ingredients);
-  const [procedure, setProcedure] = useState(recipes[id -1].procedure);
-  const [videoLink, setVideoLink] = useState(recipes[id -1].video_link);
-  const [imageUrl, setImageUrl] = useState(recipes[id -1].image_url);
+  const title = recipes[id -1].title;
+  const category = recipes[id -1].category;         
+  const peopleServed = recipes[id -1].people_served;
+  const country = recipes[id -1].country;
+  const cookingTime = recipes[id -1].cooking_time;
+  const rating = recipes[id -1].rating;
+  const ingredients = recipes[id -1].ingredients;
+  const procedure = recipes[id -1].procedure;
+  const videoLink = recipes[id -1].video_link;
+  const imageUrl = recipes[id -1].image_url;
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -134,12 +133,15 @@ const ShowRecipe = () => {
                       </div>
 
                       <div className="pt-10 flex flex-col gap-10">
-                        <div className="flex gap-2 align-center bg-secondary-color text-white active:bg-secondary-color uppercase text-md font-bold w-48 px-6 py-4 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
+                      <form onSubmit={handleSubmit}>
+                      <div className="flex gap-2 align-center bg-secondary-color text-white active:bg-secondary-color uppercase text-md font-bold w-48 px-6 py-4 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
                           <BsBookmark className="self-center mx-auto" />
                           <button className="self-center mx-auto">
                             Bookmark
                           </button>
                         </div>
+                      </form>
+                        
                         <div>
                           <h2 className="font-bold sm:text-base md:text-base lg:text-lg tracking-normal">
                             Share on social media
