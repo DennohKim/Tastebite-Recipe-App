@@ -22,7 +22,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const NavbarDashboard = () => {
-  const { activeMenu, setActiveMenu, user } = useStateContext();
+  const {setActiveMenu, user } = useStateContext();
 
   const { username } = user;
 
