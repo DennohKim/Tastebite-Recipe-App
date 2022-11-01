@@ -37,7 +37,7 @@ const Dashboard = () => {
           <div className="fixed md:static bg-main-bg navbar w-full">
             <NavbarDashboard />
 
-            <div className="px-12 mx-auto my-4 grid grid-cols-4 gap-8">
+            <div className="px-12 mx-auto my-4 grid grid-cols-4 lg:grid-cols-3 lg:gap-8 md:grid-cols-2 sm:grid-cols-1 sgap-8">
               <div className="px-4 py-2 bg-slate-200 rounded flex justify-between hover:bg-primary-color hover:text-white">
                 <div>
                   <p className="pb-3 text-gray-600">Active Users</p>

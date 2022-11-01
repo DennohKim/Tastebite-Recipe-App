@@ -30,7 +30,7 @@ const NavbarDashboard = () => {
 
   function handleLogout() {
     localStorage.removeItem("user");
-    navigate("/signin");
+    navigate("/");
   }
 
   return (

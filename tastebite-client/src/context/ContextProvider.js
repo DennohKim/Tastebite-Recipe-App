@@ -9,6 +9,7 @@ export const ContextProvider = ({ children }) => {
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
+  const [search, setSearch ] = useState("");
 
   console.log(user);
 
@@ -52,7 +53,9 @@ export const ContextProvider = ({ children }) => {
         users,
         setUsers,
         favouriteRecipes, 
-        setFavouriteRecipes
+        setFavouriteRecipes,
+        search,
+        setSearch
       }}
     >
       {children}

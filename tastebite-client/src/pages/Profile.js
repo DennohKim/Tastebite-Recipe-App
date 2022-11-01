@@ -100,7 +100,7 @@ const Profile = () => {
                             <h3 className="font-bold text-lg">Email</h3>
                             <input
                               type="text"
-                              name="peopleServed"
+                              name="email"
                               autoComplete="off"
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
