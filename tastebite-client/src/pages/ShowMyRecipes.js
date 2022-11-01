@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import NavbarDashboard from "../components/NavbarDashboard";
 import Sidebar from "../components/Sidebar";
@@ -7,6 +7,7 @@ import { useState } from "react";
 import "../components/MyRecipe/Tabs.css";
 import { BsBookmark } from "react-icons/bs";
 import ReactShare from "../components/MyRecipe/ReactShare";
+import { useReactToPrint } from "react-to-print";
 
 const ShowMyRecipes = () => {
   const { activeMenu, recipes, user } = useStateContext();
@@ -14,10 +15,15 @@ const ShowMyRecipes = () => {
   const { username } = user;
 
   const [toggleState, setToggleState] = useState(1);
+  const componentRef = useRef();
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    document: "emp-data",
+  });
 
   return (
     <div>
@@ -86,10 +92,10 @@ const ShowMyRecipes = () => {
                       </div>
 
                       <div className="pt-10 flex flex-col gap-10">
-                        <div className="flex gap-2 align-center bg-secondary-color text-white active:bg-secondary-color uppercase text-md font-bold w-48 px-6 py-4 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
+                        <div className="flex gap-2 align-center bg-secondary-color text-white active:bg-secondary-color uppercase text-md w-1/4 px-6 py-4 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
                           <BsBookmark className="self-center mx-auto" />
                           <button className="self-center mx-auto">
-                            Bookmark
+                            Save Recipe
                           </button>
                         </div>
                         <div>
@@ -100,7 +106,7 @@ const ShowMyRecipes = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="px-10">
+                    <div className="px-10" ref={componentRef}>
                       <h1 className="font-extrabold text-3xl mt-16">
                         {recipes[id -1].title}
                       </h1>

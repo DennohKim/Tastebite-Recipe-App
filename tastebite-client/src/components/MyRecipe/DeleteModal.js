@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useStateContext } from "../../context/ContextProvider";
 
