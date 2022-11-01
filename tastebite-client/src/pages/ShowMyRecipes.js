@@ -85,7 +85,7 @@ const ShowMyRecipes = () => {
                       <div className="h-1/2 w-full">
                         <img
                           className="h-full w-full object-cover rounded-md"
-                          src={recipes[id].image_url}
+                          src={recipes[id - 1].image_url}
                           alt="recipe"
                         />
                       </div>
@@ -112,24 +112,24 @@ const ShowMyRecipes = () => {
                     </div>
                     <div className="px-10">
                       <h1 className="font-extrabold text-3xl mt-16">
-                        {recipes[id].title}
+                        {recipes[id - 1].title}
                       </h1>
                       <div className="flex justify-between py-4 ">
                         <div>
                           <h3 className="font-bold text-lg">Servings</h3>
-                          <h3 className="">{recipes[id].people_served}</h3>
+                          <h3 className="">{recipes[id - 1].people_served}</h3>
                         </div>
                         <div>
                           <h3 className="font-bold text-lg">Category</h3>
-                          <h3 className="">{recipes[id].category}</h3>
+                          <h3 className="">{recipes[id - 1].category}</h3>
                         </div>
                         <div>
                           <h3 className="font-bold text-lg">Cooking Time</h3>
-                          <h3 className="">{recipes[id].cooking_time}</h3>
+                          <h3 className="">{recipes[id - 1].cooking_time}</h3>
                         </div>
                         <div>
                           <h3 className="font-bold text-lg">Country</h3>
-                          <h3 className="">{recipes[id].country}</h3>
+                          <h3 className="">{recipes[id - 1].country}</h3>
                         </div>
                       </div>
                       <div>
@@ -137,7 +137,7 @@ const ShowMyRecipes = () => {
                         <div className="pt-8">
                           <h2 className="font-bold text-xl">Ingredients</h2>
                           <h3 className="">
-                            {recipes[id].ingredients
+                            {recipes[id - 1].ingredients
                               .split(".")
                               .map((ingredient) => {
                                 return (
@@ -151,7 +151,7 @@ const ShowMyRecipes = () => {
                         <div className="pt-8">
                           <h2 className="font-bold text-xl">Procedures</h2>
                           <h3 className="">
-                            {recipes[id].procedure.split(".").map((prod) => {
+                            {recipes[id - 1].procedure.split(".").map((prod) => {
                               return (
                                 <ul className="list-disc">
                                   <li>{prod}</li>
@@ -172,7 +172,7 @@ const ShowMyRecipes = () => {
                 >
                   <div className="h-screen">
                     <iframe
-                      src={recipes[id].video_link}
+                      src={recipes[id - 1].video_link}
                       frameborder="0"
                       allow="autoplay; encrypted-media"
                       allowfullscreen
