@@ -8,8 +8,8 @@ import "../components/MyRecipe/Tabs.css";
 import { BsBookmark } from "react-icons/bs";
 import ReactShare from "../components/MyRecipe/ReactShare";
 
-const ShowMyRecipes = () => {
-  const { activeMenu, recipes, user } = useStateContext();
+const ShowMyFavourites = () => {
+  const { activeMenu, favouriteRecipes, user } = useStateContext();
   const { id } = useParams();
   const { username } = user;
 
@@ -80,7 +80,7 @@ const ShowMyRecipes = () => {
                       <div className="h-1/2 w-full">
                         <img
                           className="h-full w-full object-cover rounded-md"
-                          src={recipes[id -1].image_url}
+                          src={favouriteRecipes[id - 1].image_url}
                           alt="recipe"
                         />
                       </div>
@@ -102,24 +102,32 @@ const ShowMyRecipes = () => {
                     </div>
                     <div className="px-10">
                       <h1 className="font-extrabold text-3xl mt-16">
-                        {recipes[id -1].title}
+                        {favouriteRecipes[id - 1].title}
                       </h1>
                       <div className="flex justify-between py-4 ">
                         <div>
                           <h3 className="font-bold text-lg">Servings</h3>
-                          <h3 className="">{recipes[id -1].people_served}</h3>
+                          <h3 className="">
+                            {favouriteRecipes[id - 1].people_served}
+                          </h3>
                         </div>
                         <div>
                           <h3 className="font-bold text-lg">Category</h3>
-                          <h3 className="">{recipes[id -1].category}</h3>
+                          <h3 className="">
+                            {favouriteRecipes[id - 1].category}
+                          </h3>
                         </div>
                         <div>
                           <h3 className="font-bold text-lg">Cooking Time</h3>
-                          <h3 className="">{recipes[id -1].cooking_time}</h3>
+                          <h3 className="">
+                            {favouriteRecipes[id - 1].cooking_time}
+                          </h3>
                         </div>
                         <div>
                           <h3 className="font-bold text-lg">Country</h3>
-                          <h3 className="">{recipes[id -1].country}</h3>
+                          <h3 className="">
+                            {favouriteRecipes[id - 1].country}
+                          </h3>
                         </div>
                       </div>
                       <div>
@@ -127,7 +135,7 @@ const ShowMyRecipes = () => {
                         <div className="pt-8">
                           <h2 className="font-bold text-xl">Ingredients</h2>
                           <h3 className="">
-                            {recipes[id -1].ingredients
+                            {favouriteRecipes[id - 1].ingredients
                               .split(".")
                               .map((ingredient) => {
                                 return (
@@ -141,13 +149,15 @@ const ShowMyRecipes = () => {
                         <div className="pt-8">
                           <h2 className="font-bold text-xl">Procedures</h2>
                           <h3 className="">
-                            {recipes[id -1].procedure.split(".").map((prod) => {
-                              return (
-                                <ul className="list-disc">
-                                  <li>{prod}</li>
-                                </ul>
-                              );
-                            })}
+                            {favouriteRecipes[id - 1].procedure
+                              .split(".")
+                              .map((prod) => {
+                                return (
+                                  <ul className="list-disc">
+                                    <li>{prod}</li>
+                                  </ul>
+                                );
+                              })}
                           </h3>
                         </div>
                       </div>
@@ -162,7 +172,7 @@ const ShowMyRecipes = () => {
                 >
                   <div className="h-screen">
                     <iframe
-                      src={recipes[id -1].video_link}
+                      src={favouriteRecipes[id - 1].video_link}
                       frameborder="0"
                       allow="autoplay; encrypted-media"
                       allowfullscreen
@@ -182,4 +192,4 @@ const ShowMyRecipes = () => {
   );
 };
 
-export default ShowMyRecipes;
+export default ShowMyFavourites;
