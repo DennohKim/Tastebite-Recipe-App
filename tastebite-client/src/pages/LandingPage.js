@@ -1,25 +1,40 @@
-import React from 'react'
+import React from "react";
+import WhyTastebite from "../components/WhyTastebite/WhyTastebite";
+import Banner from "../components/HeroSection/Banner";
+import TopNav from "../components/HeroSection/TopNav";
+import Slider from "../components/Testimonials/Slider";
+import Footer from "../components/Footer/Footer";
+import ContactForm from "../components/Footer/ContactForm";
+import TabComponent from "../components/Recipes/TabComponent";
 
 const LandingPage = () => {
   return (
     <div>
-        <section className="h-screen">Hero Section
-            {/* Your section goes here */}
-        </section>
-        <section className="h-screen">Popular recipes
-            {/* Your section goes here */}
-        </section>
-        <section className="h-screen">Why tastebite
-            {/* Your section goes here */}
-        </section>
-        <section className="h-screen">Testimonials
-            {/* Your section goes here */}
-        </section>
-        <section className="h-screen">ContactForm & Footer
-            {/* Your section goes here */}
-        </section>
-    </div>
-  )
-}
+      <TopNav />
+      <section className="w-full">
+        {/* Your section goes here */}
 
-export default LandingPage
+        <Banner />
+      </section>
+      <section className="mb-20">
+        
+        <TabComponent />
+       
+      </section>
+
+      <section>
+        <WhyTastebite />
+      </section>
+      <section >
+        <Slider />
+      </section>
+      <section >
+      <ContactForm />
+        <Footer />
+        {/* Your section goes here */}
+      </section>
+    </div>
+  );
+};
+
+export default LandingPage;

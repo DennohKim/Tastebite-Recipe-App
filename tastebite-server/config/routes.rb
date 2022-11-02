@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  post "/signup", to: "users#create"
+  get "/me/:id", to: "users#show"
+  get "/users", to: "users#index"
+  patch "/users/:id", to: "users#update"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+  resources :recipes, only: [:index, :show, :create, :update, :destroy]
+  resources :favorite_recipes, only: [:index, :create, :update, :destroy]
 end
