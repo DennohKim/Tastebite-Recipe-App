@@ -6,10 +6,10 @@ import { WhyTastebiteImg3 } from "../../assets/images";
 function WhyTastebite() {
   return (
     <div className="w-full">
-      <p className="text-center font-bold text-4xl">Why tastebite</p>
-      <div className="grid grid-cols-1 gap-6 grid-rows-3 w-4/5 mx-auto justify-center items-center ">
-        <div className="grid grid-cols-2 justify-items-center items-center">
-          <div className="xl:pr-60">
+      <h2 className="text-center font-bold text-4xl">Why tastebite</h2>
+      <div className="grid grid-cols-1 gap-10 grid-rows-3 w-4/5 mx-auto justify-center items-center ">
+        <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center items-center">
+          <div className="xl:pr-48 lg:pr-30 self-center">
             <p className="font-bold text-lg lg:text-xl">
               Discover new recipes and save your favorites.
             </p>
@@ -27,7 +27,7 @@ function WhyTastebite() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 justify-items-center items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center items-center">
           <div>
             <img
               src={WhyTastebiteImg2}
@@ -35,7 +35,7 @@ function WhyTastebite() {
               className="bg-secondary-color w-64 rounded "
             />
           </div>
-          <div className="xl:pl-60">
+          <div className="xl:pl-48 lg:pr-30 self-center">
             <p className="font-bold text-lg lg:text-xl">
               Create your own recipe book!
             </p>
@@ -46,8 +46,8 @@ function WhyTastebite() {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-2 justify-items-center ">
-          <div className="xl:pr-60 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center ">
+          <div className="xl:pr-48 lg:pr-30 self-center ">
             <p className="font-bold text-lg lg:text-xl">
               Share Your Recipes with the World
             </p>
