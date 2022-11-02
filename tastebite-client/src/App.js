@@ -24,7 +24,7 @@ import ShowMyFavourites from "./pages/ShowMyFavourites";
 
 
 function App() {
-  const { user,setUser } = useStateContext();
+  const { user, setUser } = useStateContext();
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
