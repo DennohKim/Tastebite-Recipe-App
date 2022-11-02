@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiTimeFive, BiDish } from "react-icons/bi";
-import { ShowRecipe } from "../../pages";
+
 
 const FavoriteRecipeCard = ({
   image,
@@ -10,8 +10,8 @@ const FavoriteRecipeCard = ({
   peopleServed,
   country,
   rating,
-  recipeId,
-  recipeCreator,
+  recipeId
+  
 }) => {
   return (
     <div>
