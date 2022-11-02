@@ -4,6 +4,7 @@ import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import { BsBookmark } from "react-icons/bs";
 import ReactShare from "../components/MyRecipe/ReactShare";
+import NavbarDashboard from "../components/NavbarDashboard";
 
 const ShowRecipe = () => {
   const { activeMenu, recipes, favouriteRecipes, setFavouriteRecipes, user } = useStateContext();
@@ -91,6 +92,7 @@ const ShowRecipe = () => {
               : "bg-main-bg w-full min-h-screen flex-2 "
           }
         >
+         <NavbarDashboard />
           <div className="container">
               <div className="bloc-tabs">
                 <button

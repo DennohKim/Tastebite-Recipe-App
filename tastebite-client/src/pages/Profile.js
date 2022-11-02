@@ -3,6 +3,7 @@ import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
 import { FiEdit } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { activeMenu, user } = useStateContext();
@@ -10,6 +11,8 @@ const Profile = () => {
   const [username, setUsername] = useState(user.username);
   const [imageUrl, setImageUrl] = useState(user.image_url);
   const [email, setEmail] = useState(user.email);
+
+  const navigate = useNavigate();
 
   const { id } = user;
 
@@ -19,6 +22,11 @@ const Profile = () => {
     } else {
       return user;
     }
+  }
+
+  function handleLogout() {
+    localStorage.removeItem("user");
+    navigate("/");
   }
 
   function handleSubmit(e) {
@@ -67,64 +75,63 @@ const Profile = () => {
             <div className="px-12 mx-auto my-4 gap-8">
               {isEditing ? (
                 <form onSubmit={handleSubmit}>
-                  <div className="flex">
-                    <div>
-                      <h3 className="font-bold text-lg py-4">
-                        Recipe Creator: {username}
-                      </h3>
+                  <div className="grid grid-cols-1 grid-rows-3 items-center mx-auto w-1/2 shadow-md mt-10">
+                    <div className="flex flex-col items-center mx-auto">
+                      <img
+                        className="h-24 w-24 rounded-full object-cover"
+                        src={imageUrl}
+                        alt="recipe"
+                      /> <br/>
+                      <label>Change Image Link</label>
                       <input
                         type="text"
-                        name="username"
+                        name="imageUrl"
+                        className="py-2 border-2 w-72 mr-4 rounded-md"
                         autoComplete="off"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
                       />
-                      <div className="">
-                        <img
-                          className="h-24 w-24 rounded-full object-cover"
-                          src={imageUrl}
-                          alt="recipe"
-                        />
-                        <label>Change Image Link</label>
-                        <input
-                          type="text"
-                          name="imageUrl"
-                          autoComplete="off"
-                          value={imageUrl}
-                          onChange={(e) => setImageUrl(e.target.value)}
-                        />
-                      </div>
-                      <div className="px-10">
-                        <div className="flex justify-between py-4 ">
-                          <div>
-                            <h3 className="font-bold text-lg">Email</h3>
-                            <input
-                              type="text"
-                              name="email"
-                              autoComplete="off"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                            />
-                          </div>
+                    </div>
+                    <div className="flex">
+                      <div className="flex flex-col items-center mx-auto">
+                        <h3 className="font-bold text-lg py-4">
+                          Username:
+                          </h3>
+                          <input
+                            type="text"
+                            name="username"
+                            className="py-2 border-2 w-64 mr-4 rounded-md"
+                            autoComplete="off"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                          />
+                        <div className="flex flex-col items-center">
+                          <h3 className="font-bold text-lg">Email:</h3>
+                          <input
+                            type="text"
+                            name="email"
+                            autoComplete="off"
+                            className="py-2 border-2 w-64 mr-4 rounded-md"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
                         </div>
                       </div>
+                    </div>
 
-                      <div>
-                        <div className="flex justify-center align-center">
-                          <button
-                            className="flex gap-2 align-items-center  text-white bg-secondary-color text-md px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
-                            type="submit"
-                          >
-                            Save Changes
-                          </button>
-                        </div>
-                      </div>
+                    <div className="flex justify-center align-center gap-2 align-items-center  text-secondary-color active:bg-secondary-color text-md px-6 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 w-1/3 h-12 mx-auto border-2 border-secondary-color">
+                      <button
+                        type="submit"
+                        onClick={() => setIsEditing((isEditing) => !isEditing)}
+                      >
+                        Save Changes
+                      </button>
                     </div>
                   </div>
                 </form>
               ) : (
-                <div className="grid grid-cols-1 grid-rows-3 mx-auto">
-                <div className="flex">
+                <div className="grid grid-cols-1 grid-rows-3 items-center mx-auto w-1/2 shadow-md mt-10">
+                  <div className="flex mx-auto">
                     <img
                       className="h-24 w-24 rounded-full object-cover"
                       src={imageUrl}
@@ -132,22 +139,20 @@ const Profile = () => {
                     />
                   </div>
                   <div className="flex">
-                  
-                  <div>
-                    <h3 className="font-bold text-lg py-4">
-                      Recipe Creator:
-                      <span className="font-normal">{username}</span>
-                    </h3>
+                    <div className="flex flex-col mx-auto">
+                      <h3 className="font-bold text-lg py-4">
+                        Username:
+                        <span className="font-normal pl-2">{username}</span>
+                      </h3>
 
-                    <div>
-                      <h3 className="font-bold text-lg">Email</h3>
-                      <h3 className="">{email}</h3>
+                      <div className="flex items-center">
+                        <h3 className="font-bold text-lg">Email:</h3>
+                        <h3 className="pl-2">{email}</h3>
+                      </div>
                     </div>
                   </div>
-                </div>
-                  
 
-                  <div className="flex justify-center align-center gap-2 align-items-center  text-secondary-color active:bg-secondary-color text-md px-6 rounded-md shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150">
+                  <div className="flex justify-center align-center gap-2 align-items-center  text-secondary-color active:bg-secondary-color text-md px-6 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 w-1/3 h-12 mx-auto border-2 border-secondary-color">
                     <FiEdit className="self-center" />
                     <button
                       onClick={() => setIsEditing((isEditing) => !isEditing)}
@@ -155,6 +160,13 @@ const Profile = () => {
                       Edit
                     </button>
                   </div>
+
+                  <button
+                    onClick={handleLogout}
+                    className="border-2 border-secondary-color text-white hover:text-white font-semibold bg-secondary-color hover:font-semibold rounded-full hover:shadow-md w-1/3 mx-auto px-6 py-3 my-6"
+                  >
+                    Logout
+                  </button>
                 </div>
               )}
             </div>

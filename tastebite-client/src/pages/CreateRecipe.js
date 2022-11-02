@@ -24,7 +24,7 @@ const CreateRecipe = () => {
   const uniqueCategories = [...new Set(categories)];
 
   const { id } = user;
-  // const [ data ] = user
+
 
 
   function handleAddRecipe(newRecipe) {
