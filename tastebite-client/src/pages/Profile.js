@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
 import { FiEdit } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
+
 const Profile = () => {
-  const { activeMenu, user } = useStateContext();
+  const { activeMenu, user, setUser } = useStateContext();
   const [isEditing, setIsEditing] = useState(false);
   const [username, setUsername] = useState(user.username);
   const [imageUrl, setImageUrl] = useState(user.image_url);
@@ -46,6 +47,20 @@ const Profile = () => {
       .then((r) => r.json())
       .then((updatedUserInfo) => handleUpdateUser(updatedUserInfo));
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(`http://127.0.0.1:5000/me/${id}`)
+        .then((r) => r.json())
+        .then((data) => {
+          setUser(data);
+
+          localStorage.setItem("user", JSON.stringify(data));
+        });
+      
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [id, setUser]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavbarDashboard from "../components/NavbarDashboard";
 import Sidebar from "../components/Sidebar";
@@ -10,17 +10,15 @@ import ReactShare from "../components/MyRecipe/ReactShare";
 import { FiEdit } from "react-icons/fi";
 
 const EditRecipes = () => {
-  const { activeMenu, recipes, setRecipes, user } = useStateContext();
+  const { activeMenu, recipes, setRecipes, user, setUser } = useStateContext();
   const { id } = useParams();
-  const { username } = user;
+ const userId = user.id
 
   const [toggleState, setToggleState] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(recipes[id - 1].title);
   const [category, setCategory] = useState(recipes[id - 1].category);
-  const [peopleServed, setPeopleServed] = useState(
-    recipes[id - 1].people_served
-  );
+  const [peopleServed, setPeopleServed] = useState(recipes[id - 1].people_served);
   const [country, setCountry] = useState(recipes[id - 1].country);
   const [cookingTime, setCookingTime] = useState(recipes[id - 1].cooking_time);
   const [rating, setRating] = useState(recipes[id - 1].rating);
@@ -71,6 +69,21 @@ const EditRecipes = () => {
       .then((r) => r.json())
       .then((updatedRecipe) => handleUpdateRecipe(updatedRecipe));
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(`http://127.0.0.1:5000/me/${userId}`)
+        .then((r) => r.json())
+        .then((data) => {
+          setUser(data);
+
+          localStorage.setItem("user", JSON.stringify(data));
+        });
+      
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [userId, setUser]);
+
 
   return (
     <div>
