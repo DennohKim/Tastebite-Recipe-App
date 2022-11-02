@@ -14,7 +14,7 @@ const Signup = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:3001/signup", {
+    fetch("https://tastebite.herokuapp.com/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
