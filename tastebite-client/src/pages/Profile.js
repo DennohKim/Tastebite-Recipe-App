@@ -16,6 +16,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const { id } = user;
+ 
 
   function handleUpdateUser(updatedUserObj) {
     if (user.id === updatedUserObj.id) {
@@ -137,11 +138,22 @@ const Profile = () => {
                     <div className="flex justify-center align-center gap-2 align-items-center  text-secondary-color active:bg-secondary-color text-md px-6 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 w-1/3 h-12 mx-auto border-2 border-secondary-color">
                       <button
                         type="submit"
-                        onClick={() => setIsEditing((isEditing) => !isEditing)}
+                        // onClick={() => setIsEditing((isEditing) => !isEditing)}
                       >
                         Save Changes
                       </button>
+                      
                     </div>
+                   
+                      <button
+                      className="flex justify-center align-center gap-2 align-items-center  text-secondary-color active:bg-secondary-color text-md px-6 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 w-1/3 h-12 mx-auto border-2 border-secondary-color"
+                       
+                        onClick={() => setIsEditing((isEditing) => !isEditing)}
+                      >
+                        Close
+                      </button>
+                      
+                    
                   </div>
                 </form>
               ) : (

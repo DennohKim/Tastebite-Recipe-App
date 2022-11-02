@@ -5,7 +5,6 @@ import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import { useState } from "react";
 import "../components/MyRecipe/Tabs.css";
-import { BsBookmark } from "react-icons/bs";
 import ReactShare from "../components/MyRecipe/ReactShare";
 import { FiEdit } from "react-icons/fi";
 
