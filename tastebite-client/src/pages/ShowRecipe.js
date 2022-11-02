@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
@@ -7,8 +7,9 @@ import ReactShare from "../components/MyRecipe/ReactShare";
 import NavbarDashboard from "../components/NavbarDashboard";
 
 const ShowRecipe = () => {
-  const { activeMenu, recipes, favouriteRecipes, setFavouriteRecipes, user } = useStateContext();
+  const { activeMenu, recipes, favouriteRecipes, setFavouriteRecipes, user, setUser } = useStateContext();
   const { id } = useParams();
+  const userId = user.id
    
 
   const [toggleState, setToggleState] = useState(1);
@@ -59,16 +60,23 @@ const ShowRecipe = () => {
         handleAddFavouriteRecipe(newFavourite);
 
       });
-      
-      // fetch(`http://127.0.0.1:5000/me/${id}`)
-      // .then((r) => r.json())
-      // .then((data) => {
-      //   setUser(data);
-
-      //   localStorage.setItem("user", JSON.stringify(data));
-      // });
+  
    
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(`http://127.0.0.1:5000/me/${userId}`)
+        .then((r) => r.json())
+        .then((data) => {
+          setUser(data);
+
+          localStorage.setItem("user", JSON.stringify(data));
+        });
+      
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [userId, setUser]);
 
   return (
     <div>

@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
 import { FiEdit } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
+
 const Profile = () => {
-  const { activeMenu, user } = useStateContext();
+  const { activeMenu, user, setUser } = useStateContext();
   const [isEditing, setIsEditing] = useState(false);
   const [username, setUsername] = useState(user.username);
   const [imageUrl, setImageUrl] = useState(user.image_url);
@@ -15,6 +16,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const { id } = user;
+ 
 
   function handleUpdateUser(updatedUserObj) {
     if (user.id === updatedUserObj.id) {
@@ -46,6 +48,20 @@ const Profile = () => {
       .then((r) => r.json())
       .then((updatedUserInfo) => handleUpdateUser(updatedUserInfo));
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(`http://127.0.0.1:5000/me/${id}`)
+        .then((r) => r.json())
+        .then((data) => {
+          setUser(data);
+
+          localStorage.setItem("user", JSON.stringify(data));
+        });
+      
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [id, setUser]);
 
   return (
     <>
@@ -122,11 +138,22 @@ const Profile = () => {
                     <div className="flex justify-center align-center gap-2 align-items-center  text-secondary-color active:bg-secondary-color text-md px-6 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 w-1/3 h-12 mx-auto border-2 border-secondary-color">
                       <button
                         type="submit"
-                        onClick={() => setIsEditing((isEditing) => !isEditing)}
+                        // onClick={() => setIsEditing((isEditing) => !isEditing)}
                       >
                         Save Changes
                       </button>
+                      
                     </div>
+                   
+                      <button
+                      className="flex justify-center align-center gap-2 align-items-center  text-secondary-color active:bg-secondary-color text-md px-6 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 w-1/3 h-12 mx-auto border-2 border-secondary-color"
+                       
+                        onClick={() => setIsEditing((isEditing) => !isEditing)}
+                      >
+                        Close
+                      </button>
+                      
+                    
                   </div>
                 </form>
               ) : (

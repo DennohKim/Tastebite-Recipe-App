@@ -16,20 +16,28 @@ export default function DeleteModal({recipeName, recipeId}) {
   }
 
   function handleDelete(){
-    fetch(`http://127.0.0.1:3000/recipes/${recipeId}`,{
+    fetch(`http://127.0.0.1:5000/recipes/${recipeId}`,{
       method:'DELETE'
     })
     .then((response) => response.json())
       .then(() => onHandleDelete(recipeId));
 
-      fetch(`http://127.0.0.1:5000/me/${id}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setUser(data);
-
-        localStorage.setItem("user", JSON.stringify(data));
-      });
+    
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(`http://127.0.0.1:5000/me/${id}`)
+        .then((r) => r.json())
+        .then((data) => {
+          setUser(data);
+
+          localStorage.setItem("user", JSON.stringify(data));
+        });
+      
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [id, setUser]);
   
   return (
     <>
