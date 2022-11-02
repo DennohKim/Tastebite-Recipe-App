@@ -47,7 +47,7 @@ const EditRecipes = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/recipes/${id}`, {
+    fetch(`https://tastebite.herokuapp.com/recipes/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const EditRecipes = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch(`http://127.0.0.1:5000/me/${userId}`)
+      fetch(`https://tastebite.herokuapp.com/me/${userId}`)
         .then((r) => r.json())
         .then((data) => {
           setUser(data);

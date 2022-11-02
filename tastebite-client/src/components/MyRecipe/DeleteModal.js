@@ -1,4 +1,4 @@
-import React  from "react";
+import React, { useEffect }  from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useStateContext } from "../../context/ContextProvider";
 
@@ -16,7 +16,7 @@ export default function DeleteModal({recipeName, recipeId}) {
   }
 
   function handleDelete(){
-    fetch(`http://127.0.0.1:5000/recipes/${recipeId}`,{
+    fetch(`https://tastebite.herokuapp.com/recipes/${recipeId}`,{
       method:'DELETE'
     })
     .then((response) => response.json())
@@ -27,7 +27,7 @@ export default function DeleteModal({recipeName, recipeId}) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch(`http://127.0.0.1:5000/me/${id}`)
+      fetch(`https://tastebite.herokuapp.com/me/${id}`)
         .then((r) => r.json())
         .then((data) => {
           setUser(data);

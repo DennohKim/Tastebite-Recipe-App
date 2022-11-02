@@ -22,19 +22,19 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3001/recipes")
+    fetch("https://tastebite.herokuapp.com/recipes")
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3001/favorite_recipes")
+    fetch("https://tastebite.herokuapp.com/favorite_recipes")
       .then((res) => res.json())
       .then((favourite) => setFavouriteRecipes(favourite));
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3001/users")
+    fetch("https://tastebite.herokuapp.com/users")
       .then((res) => res.json())
       .then((user) => setUsers(user));
   }, []);

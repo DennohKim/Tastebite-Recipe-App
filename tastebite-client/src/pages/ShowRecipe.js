@@ -36,7 +36,7 @@ const ShowRecipe = () => {
   function handleSubmit(e) {
     e.preventDefault();
    
-    fetch("http://127.0.0.1:3000/favorite_recipes", {
+    fetch("https://tastebite.herokuapp.com/favorite_recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ const ShowRecipe = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch(`http://127.0.0.1:5000/me/${userId}`)
+      fetch(`https://tastebite.herokuapp.com/me/${userId}`)
         .then((r) => r.json())
         .then((data) => {
           setUser(data);

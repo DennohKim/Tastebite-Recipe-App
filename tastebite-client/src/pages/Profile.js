@@ -34,7 +34,7 @@ const Profile = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(`http://127.0.0.1:5000/users/${id}`, {
+    fetch(`https://tastebite.herokuapp.com/users/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const Profile = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch(`http://127.0.0.1:5000/me/${id}`)
+      fetch(`https://tastebite.herokuapp.com/me/${id}`)
         .then((r) => r.json())
         .then((data) => {
           setUser(data);
