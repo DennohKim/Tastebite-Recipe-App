@@ -5,8 +5,7 @@ import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import { useState } from "react";
 import "../components/MyRecipe/Tabs.css";
-import { BsBookmark } from "react-icons/bs";
-import ReactShare from "../components/MyRecipe/ReactShare";
+import ReactShareFavourites from "../components/Favourites/ReactShareFavourites";
 
 const ShowMyFavourites = () => {
   const { activeMenu, favouriteRecipes, user } = useStateContext();
@@ -14,6 +13,15 @@ const ShowMyFavourites = () => {
   const { username } = user;
 
   const [toggleState, setToggleState] = useState(1);
+  const title = favouriteRecipes[id - 1].title;
+  const category = favouriteRecipes[id - 1].category;
+  const peopleServed = favouriteRecipes[id - 1].people_served;
+  const country = favouriteRecipes[id - 1].country;
+  const cookingTime = favouriteRecipes[id - 1].cooking_time;
+  const ingredients = favouriteRecipes[id - 1].ingredients;
+  const procedure = favouriteRecipes[id - 1].procedure;
+  const videoLink = favouriteRecipes[id - 1].video_link;
+  const imageUrl = favouriteRecipes[id - 1].image_url;
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -72,92 +80,88 @@ const ShowMyFavourites = () => {
                 >
                   <div className="grid md:grid-cols-1 lg:grid-cols-2 ">
                     <div>
-                      <h3 className="font-bold text-lg py-4">
+                      <h3 className="font-bold text-lg py-4 tracking-normal">
                         Recipe Creator:{" "}
-                        <span className="font-normal">{username}</span>
+                        <span className="font-normal">
+                          {favouriteRecipes[id - 1].user.username}
+                        </span>
                       </h3>
 
                       <div className="h-1/2 w-full">
                         <img
                           className="h-full w-full object-cover rounded-md"
-                          src={favouriteRecipes[id - 1].image_url}
+                          src={imageUrl}
                           alt="recipe"
                         />
                       </div>
 
                       <div className="pt-10 flex flex-col gap-10">
-                        <div className="flex gap-2 align-center bg-secondary-color text-white active:bg-secondary-color uppercase text-md w-1/4 px-6 py-4 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
-                          <BsBookmark className="self-center mx-auto" />
-                          <button className="self-center mx-auto">
-                            Save Recipe
-                          </button>
-                        </div>
+                        
+
                         <div>
-                          <h2 className="font-bold text-xl">
+                          <h2 className="font-bold sm:text-base md:text-base lg:text-lg tracking-normal">
                             Share on social media
                           </h2>
-                          <ReactShare />
+                          <ReactShareFavourites favouriteVideo={videoLink} />
                         </div>
                       </div>
                     </div>
                     <div className="px-10">
-                      <h1 className="font-extrabold text-3xl mt-16">
-                        {favouriteRecipes[id - 1].title}
-                      </h1>
+                      <h1 className="font-extrabold text-3xl mt-16">{title}</h1>
                       <div className="flex justify-between py-4 ">
                         <div>
-                          <h3 className="font-bold text-lg">Servings</h3>
-                          <h3 className="">
-                            {favouriteRecipes[id - 1].people_served}
+                          <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                            Servings
                           </h3>
+                          <h3 className="">{peopleServed}</h3>
                         </div>
                         <div>
-                          <h3 className="font-bold text-lg">Category</h3>
-                          <h3 className="">
-                            {favouriteRecipes[id - 1].category}
+                          <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                            Category
                           </h3>
+                          <h3 className="">{category}</h3>
                         </div>
                         <div>
-                          <h3 className="font-bold text-lg">Cooking Time</h3>
-                          <h3 className="">
-                            {favouriteRecipes[id - 1].cooking_time}
+                          <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                            Cooking Time
                           </h3>
+                          <h3 className="">{cookingTime}</h3>
                         </div>
                         <div>
-                          <h3 className="font-bold text-lg">Country</h3>
-                          <h3 className="">
-                            {favouriteRecipes[id - 1].country}
+                          <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">
+                            Country
                           </h3>
+                          <h3 className="">{country}</h3>
                         </div>
                       </div>
                       <div>
                         <div className="border-b-2"></div>
                         <div className="pt-8">
-                          <h2 className="font-bold text-xl">Ingredients</h2>
-                          <h3 className="">
-                            {favouriteRecipes[id - 1].ingredients
-                              .split(".")
-                              .map((ingredient) => {
-                                return (
-                                  <ul className="list-disc">
-                                    <li>{ingredient}</li>
-                                  </ul>
-                                );
-                              })}
+                          <h2 className="font-bold text-xl tracking-normal">
+                            Ingredients
+                          </h2>
+                          <h3 className="ml-6">
+                            {ingredients.split(".").map((ingredient) => {
+                              return (
+                                <ul className="list-disc">
+                                  <li>{ingredient}</li>
+                                </ul>
+                              );
+                            })}
                           </h3>
                         </div>
                         <div className="pt-8">
-                          <h2 className="font-bold text-xl">Procedures</h2>
-                          <h3 className="">
-                            {favouriteRecipes[id - 1].procedure
-                              .split(".")
-                              .map((prod) => {
-                                return (
-                                  <ul className="list-disc">
-                                    <li>{prod}</li>
-                                  </ul>
-                                );
-                              })}
+                          <h2 className="font-bold text-xl tracking-normal">
+                            Procedures
+                          </h2>
+                          <h3 className="ml-6">
+                            {procedure.split(".").map((prod) => {
+                              return (
+                                <ul className="list-disc">
+                                  <li>{prod}</li>
+                                </ul>
+                              );
+                            })}
                           </h3>
                         </div>
                       </div>
@@ -172,7 +176,7 @@ const ShowMyFavourites = () => {
                 >
                   <div className="h-screen">
                     <iframe
-                      src={favouriteRecipes[id - 1].video_link}
+                      src={videoLink}
                       frameborder="0"
                       allow="autoplay; encrypted-media"
                       allowfullscreen

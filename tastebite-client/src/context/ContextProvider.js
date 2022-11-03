@@ -9,6 +9,7 @@ export const ContextProvider = ({ children }) => {
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
+  const [search, setSearch ] = useState("");
 
   console.log(user);
 
@@ -21,19 +22,19 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/recipes")
+    fetch("https://tastebite.herokuapp.com/recipes")
       .then((res) => res.json())
       .then((recipe) => setRecipes(recipe));
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/favorite_recipes")
+    fetch("https://tastebite.herokuapp.com/favorite_recipes")
       .then((res) => res.json())
       .then((favourite) => setFavouriteRecipes(favourite));
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/users")
+    fetch("https://tastebite.herokuapp.com/users")
       .then((res) => res.json())
       .then((user) => setUsers(user));
   }, []);
@@ -52,7 +53,9 @@ export const ContextProvider = ({ children }) => {
         users,
         setUsers,
         favouriteRecipes, 
-        setFavouriteRecipes
+        setFavouriteRecipes,
+        search,
+        setSearch
       }}
     >
       {children}

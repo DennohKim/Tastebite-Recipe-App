@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import NavbarDashboard from "../components/NavbarDashboard";
 import MyRecipeList from "../components/MyRecipe/MyRecipeList";
-import Filter from "../components/Favourites/Filter";
+// import Filter from "../components/Favourites/Filter";
 
 
 
@@ -11,18 +11,6 @@ const MyRecipes = () => {
 
   const { activeMenu, user } = useStateContext();
   const [myRecipes, setMyRecipes] = useState(user.recipes)
-
-
-  const categories = user.recipes.map((recipe) => recipe.category)
-  const uniqueCategories = [...new Set(categories)]
-
-  const countries = user.recipes.map((recipe) => recipe.country)
-  const uniqueCountries = [...new Set(countries)]
-
-  const handleFilter = (value) => {
-    const chosenCategory = myRecipes.filter((fav) => fav.category === value)
-    setMyRecipes(chosenCategory)
-  };
 
   
 
@@ -55,12 +43,9 @@ const MyRecipes = () => {
               <div className="w-1/4">
                 <p className="font-bold text-xl">My Recipes</p>
               </div>
-              {
-                 user.recipes.length < 1 ? null : <Filter handleFilter={handleFilter} categories={uniqueCategories} countries={uniqueCountries } myRecipes={myRecipes} setMyRecipes={setMyRecipes} /> 
-              }
             </div>
             
-            <MyRecipeList myRecipe={myRecipes}/>
+            <MyRecipeList myRecipe={myRecipes} setMyRecipes={setMyRecipes}/>
           </div>
         </div>
       </div>

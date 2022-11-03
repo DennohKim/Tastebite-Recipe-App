@@ -1,39 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import NavbarDashboard from "../components/NavbarDashboard";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
 import { BsBookmark } from "react-icons/bs";
 import ReactShare from "../components/MyRecipe/ReactShare";
+import NavbarDashboard from "../components/NavbarDashboard";
 
 const ShowRecipe = () => {
-  const {
-    activeMenu,
-    recipes,
-    setUser,
-    user,
-    favouriteRecipes,
-    setFavouriteRecipes,
-  } = useStateContext();
+  const { activeMenu, recipes, favouriteRecipes, setFavouriteRecipes, user, setUser } = useStateContext();
   const { id } = useParams();
+  const userId = user.id
+   
 
   const [toggleState, setToggleState] = useState(1);
-  const [title, setTitle] = useState(recipes[id - 1].title);
-  const [category, setCategory] = useState(recipes[id - 1].category);
-  const [peopleServed, setPeopleServed] = useState(
-    recipes[id - 1].people_served
-  );
-  const [country, setCountry] = useState(recipes[id - 1].country);
-  const [cookingTime, setCookingTime] = useState(recipes[id - 1].cooking_time);
-  const [rating, setRating] = useState(recipes[id - 1].rating);
-  const [ingredients, setIngredients] = useState(recipes[id - 1].ingredients);
-  const [procedure, setProcedure] = useState(recipes[id - 1].procedure);
-  const [videoLink, setVideoLink] = useState(recipes[id - 1].video_link);
-  const [imageUrl, setImageUrl] = useState(recipes[id - 1].image_url);
+  const title = recipes[id -1].title;
+  const category = recipes[id -1].category;         
+  const peopleServed = recipes[id -1].people_served;
+  const country = recipes[id -1].country;
+  const cookingTime = recipes[id -1].cooking_time;
+  const rating = recipes[id -1].rating;
+  const ingredients = recipes[id -1].ingredients;
+  const procedure = recipes[id -1].procedure;
+  const videoLink = recipes[id -1].video_link;
+  const imageUrl = recipes[id -1].image_url;
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
 
   function handleAddFavouriteRecipe(newFavourite) {
     setFavouriteRecipes([...favouriteRecipes, newFavourite]);
@@ -41,8 +35,8 @@ const ShowRecipe = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    fetch("http://127.0.0.1:3000/favorite_recipes", {
+   
+    fetch("https://tastebite.herokuapp.com/favorite_recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,6 +61,20 @@ const ShowRecipe = () => {
       });
   }
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(`https://tastebite.herokuapp.com/me/${userId}`)
+        .then((r) => r.json())
+        .then((data) => {
+          setUser(data);
+
+          localStorage.setItem("user", JSON.stringify(data));
+        });
+      
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [userId, setUser]);
+
   return (
     <div>
       <div className="flex relative">
@@ -89,142 +97,141 @@ const ShowRecipe = () => {
               : "bg-main-bg w-full min-h-screen flex-2 "
           }
         >
-          <div className="fixed md:static bg-main-bg navbar w-full">
-            <NavbarDashboard />
+         <NavbarDashboard />
+          <div className="container">
+              <div className="bloc-tabs">
+                <button
+                  className={
+                    toggleState === 1 ? "tabs active-tabs font-bold" : "tabs"
+                  }
+                  onClick={() => toggleTab(1)}
+                >
+                  Step by Step Guide
+                </button>
+                <button
+                  className={
+                    toggleState === 2 ? "tabs active-tabs font-bold" : "tabs"
+                  }
+                  onClick={() => toggleTab(2)}
+                >
+                  Video Tutorial
+                </button>
+              </div>
 
-            <div className="bloc-tabs">
-              <button
-                className={
-                  toggleState === 1 ? "tabs active-tabs font-bold" : "tabs"
-                }
-                onClick={() => toggleTab(1)}
-              >
-                Step by Step Guide
-              </button>
-              <button
-                className={
-                  toggleState === 2 ? "tabs active-tabs font-bold" : "tabs"
-                }
-                onClick={() => toggleTab(2)}
-              >
-                Video Tutorial
-              </button>
-            </div>
-            <div className="content-tabs">
-              <div
-                className={
-                  toggleState === 1 ? "content  active-content" : "content"
-                }
-              >
-                <div className="grid grid-cols-2">
-                  <div>
+              <div className="content-tabs">
+                <div
+                  className={
+                    toggleState === 1 ? "content  active-content" : "content"
+                  }
+                >
+                  <div className="grid md:grid-cols-1 lg:grid-cols-2 ">
                     <div>
-                      <img
-                        className="h-full  w-3/4 object-cover rounded-md"
-                        src={imageUrl}
-                        alt="recipe"
-                      />
-                    </div>
-                    <form onSubmit={handleSubmit}>
-                      <div className="py-6 ">
-                        <button
-                          className="w-32 active:scale-90 bg-secondary-color transition duration-150 ease-in-out rounded-full text-white px-4 py-2 text-sm"
-                          type="submit"
-                        >
-                          <BsBookmark className="inline " /> BookMark
-                        </button>
+                      <h3 className="font-bold text-lg py-4 tracking-normal">
+                        Recipe Creator:{" "}
+                        <span className="font-normal">{recipes[id -1].user.username}</span>
+                      </h3>
+
+                      <div className="h-1/2 w-full">
+                        <img
+                          className="h-full w-full object-cover rounded-md"
+                          src={imageUrl}
+                          alt="recipe"
+                        />
                       </div>
-                    </form>
 
-                    <div>
-                      <span className="font-bold">Share on Social Media</span>
-                      <div className="flex justify-evenly py-4">
-                        <ReactShare />
+                      <div className="pt-10 flex flex-col gap-10">
+                      <form onSubmit={handleSubmit}>
+                      <div className="flex gap-2 align-center bg-secondary-color text-white active:bg-secondary-color uppercase text-md font-bold w-48 px-6 py-4 rounded-full shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150">
+                          <BsBookmark className="self-center mx-auto" />
+                          <button className="self-center mx-auto">
+                            Bookmark
+                          </button>
+                        </div>
+                      </form>
+                        
+                        <div>
+                          <h2 className="font-bold sm:text-base md:text-base lg:text-lg tracking-normal">
+                            Share on social media
+                          </h2>
+                          <ReactShare videoLink={recipes[id -1].video_link} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="px-10">
+                      <h1 className="font-extrabold text-3xl mt-16">
+                        {title}
+                      </h1>
+                      <div className="flex justify-between py-4 ">
+                        <div>
+                          <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">Servings</h3>
+                          <h3 className="">{peopleServed}</h3>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">Category</h3>
+                          <h3 className="">{category}</h3>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">Cooking Time</h3>
+                          <h3 className="">{cookingTime}</h3>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold md:text-sm lg:text-base tracking-normal">Country</h3>
+                          <h3 className="">{country}</h3>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="border-b-2"></div>
+                        <div className="pt-8">
+                          <h2 className="font-bold text-xl tracking-normal">Ingredients</h2>
+                          <h3 className="ml-6">
+                            {ingredients
+                              .split(".")
+                              .map((ingredient) => {
+                                return (
+                                  <ul className="list-disc">
+                                    <li>{ingredient}</li>
+                                  </ul>
+                                );
+                              })}
+                          </h3>
+                        </div>
+                        <div className="pt-8">
+                          <h2 className="font-bold text-xl tracking-normal">Procedures</h2>
+                          <h3 className="ml-6">
+                            {procedure.split(".").map((prod) => {
+                              return (
+                                <ul className="list-disc">
+                                  <li>{prod}</li>
+                                </ul>
+                              );
+                            })}
+                          </h3>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="float-left">
-                    <div className="underline hover:underline-offset-8">
-                      <p className="text-4xl   ">{title}</p>
-                    </div>
-                    <div className="flex  justify-evenly  ">
-                      <div className=" py-4  ">
-                        <span className="font-bold">Servings</span>
-                        <p className="">{peopleServed}</p>
-                      </div>
-                      <div className=" py-4">
-                        <span className="font-bold">Category</span>
-                        <p className="">{category}</p>
-                      </div>
-                      <div className=" py-4">
-                        <span className="font-bold">Cooking TIme</span>
-                        <p className="">{cookingTime}</p>
-                      </div>
-                      <div className="py-4">
-                        <span className="font-bold">Country</span>
-                        <p className="">{country}</p>
-                      </div>
-                    </div>
-                    <div className="">
-                      <span className="text-2xl underline hover:underline-offset-8">
-                        Ingredients
-                      </span>
-                      <>
-                        {ingredients.split(".").map((ingredient) => {
-                          return (
-                            <ul className="list-disc">
-                              <li>{ingredient}</li>
-                            </ul>
-                          );
-                        })}
-                      </>
-                    </div>
-                    <div className="py-4">
-                      <span className="text-2xl underline hover:underline-offset-8">
-                        Procedure
-                      </span>
-                      <>
-                        {procedure.split(".").map((proced) => {
-                          return (
-                            <ul className="list-disc">
-                              <li>{proced}</li>
-                            </ul>
-                          );
-                        })}
-                      </>
-                    </div>
-                    <div className="px-1 py-4">
-                      <p className="font-bold">
-                        {" "}
-                        <span className="font-medium">
-                          Recipe Creator:
-                        </span>{" "}
-                        {recipes[id - 1].user.username}
-                      </p>
-                    </div>
-                  </div>
                 </div>
-              </div>
 
-              <div
-                className={
-                  toggleState === 2 ? "content  active-content" : "content"
-                }
-              >
-                <div className="h-screen">
-                  <iframe
-                    src={videoLink}
-                    frameborder="0"
-                    allow="autoplay; encrypted-media"
-                    allowfullscreen
-                    title="video"
-                    className="w-full h-3/4"
-                  />
+                <div
+                  className={
+                    toggleState === 2 ? "content  active-content" : "content"
+                  }
+                >
+                  <div className="h-screen">
+                    <iframe
+                      src={videoLink}
+                      frameborder="0"
+                      allow="autoplay; encrypted-media"
+                      allowfullscreen
+                      title="video"
+                      className="w-full h-3/4"
+                    />
+                  </div>
+
+                  <hr />
                 </div>
-                <ReactShare />
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

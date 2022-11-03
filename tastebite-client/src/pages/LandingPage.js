@@ -25,10 +25,10 @@ const LandingPage = () => {
       <section>
         <WhyTastebite />
       </section>
-      <section className="">
+      <section >
         <Slider />
       </section>
-      <section className="">
+      <section >
       <ContactForm />
         <Footer />
         {/* Your section goes here */}

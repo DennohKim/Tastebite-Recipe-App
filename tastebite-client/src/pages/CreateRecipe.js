@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import NavbarDashboard from "../components/NavbarDashboard";
 import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../context/ContextProvider";
+// import useFetchUser from "../hooks/useFetchUser";
 // import useFetchUser from "../hooks/useFetchUser";
 
 const CreateRecipe = () => {
@@ -18,14 +19,10 @@ const CreateRecipe = () => {
   const [videoLink, setVideoLink] = useState("");
   const [imageUrl, setImageUrl] = useState(" ");
 
-  
-
   const categories = recipes.map((recipe) => recipe.category);
   const uniqueCategories = [...new Set(categories)];
 
   const { id } = user;
-  // const [ data ] = user
-
 
   function handleAddRecipe(newRecipe) {
     setRecipes([...recipes, newRecipe]);
@@ -33,8 +30,8 @@ const CreateRecipe = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-   
-    fetch("http://127.0.0.1:5000/recipes", {
+
+    fetch("https://tastebite.herokuapp.com/recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,18 +53,24 @@ const CreateRecipe = () => {
       .then((r) => r.json())
       .then((newRecipe) => {
         handleAddRecipe(newRecipe);
-
       });
-      
-      fetch(`http://127.0.0.1:5000/me/${id}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setUser(data);
 
-        localStorage.setItem("user", JSON.stringify(data));
-      });
-   
+    
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(`https://tastebite.herokuapp.com/me/${id}`)
+        .then((r) => r.json())
+        .then((data) => {
+          setUser(data);
+
+          localStorage.setItem("user", JSON.stringify(data));
+        });
+      
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [id, setUser]);
 
   return (
     <>

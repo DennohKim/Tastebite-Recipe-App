@@ -30,7 +30,7 @@ export default function TopNav() {
         <div>
           <Link
             to="/signin"
-            className="font-light bg-red-400 text-white text-xl px-6 py-2 rounded-full"
+            className="font-light bg-red-400 shadow-md text-white text-xl px-6 py-2 rounded-full"
           >
             Login
           </Link>

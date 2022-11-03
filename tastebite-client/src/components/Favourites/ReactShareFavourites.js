@@ -13,14 +13,14 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-const ReactShare = ({videoLink}) => {
+const ReactShareFavourites = ({favouriteVideo}) => {
 
 
   return (
     <div className="flex sm:scale-50  md:scale-75 lg:scale-100  gap-6">
       <div>
         <FacebookShareButton
-          url={videoLink}
+          url={favouriteVideo}
           quote={"Hey there"}
           hashtag="#awesomerecipes"
         >
@@ -29,7 +29,7 @@ const ReactShare = ({videoLink}) => {
       </div>
       <div>
         <EmailShareButton
-          url={videoLink}
+          url={favouriteVideo}
           quote={"Hey there"}
           hashtag="#awesomerecipes"
         >
@@ -38,7 +38,7 @@ const ReactShare = ({videoLink}) => {
       </div>
       <div>
         <WhatsappShareButton
-          url={videoLink}
+          url={favouriteVideo}
           quote={"Hey there"}
           hashtag="#awesomerecipes"
         >
@@ -47,7 +47,7 @@ const ReactShare = ({videoLink}) => {
       </div>
       <div>
         <LinkedinShareButton
-          url={videoLink}
+          url={favouriteVideo}
           quote={"Hey there"}
           hashtag="#awesomerecipes"
         >
@@ -58,4 +58,4 @@ const ReactShare = ({videoLink}) => {
   );
 };
 
-export default ReactShare;
+export default ReactShareFavourites;

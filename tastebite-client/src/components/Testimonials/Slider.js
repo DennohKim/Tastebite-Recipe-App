@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Slider.css";
 import {people} from "../../data/data";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 const Slider = () => {
   // const [people] = useState(people);
@@ -28,7 +29,7 @@ const Slider = () => {
   return (
     <section className="section">
       <div className="title">
-        <h2>What our customer say about us</h2>
+        <h2 className="text-center font-bold text-lg md:text-2xl lg:text-4xl text-black">What our customer say about us</h2>
       </div>
       <div className="section-center">
         {people.map((item, indexPeople) => {
@@ -52,11 +53,11 @@ const Slider = () => {
             </article>
           );
         })}
-        <button className="prev" onClick={() => setIndex(index - 1)}>
-          <i className="fas fa-arrow-left" />
+        <button className="prev rounded-full" onClick={() => setIndex(index - 1)}>
+          <BsArrowLeft/>
         </button>
-        <button className="next" onClick={() => setIndex(index + 1)}>
-          <i className="fas fa-arrow-right" />
+        <button className="next rounded-full h-32 w-32" onClick={() => setIndex(index + 1)}>
+          <BsArrowRight/>
         </button>
       </div>
     </section>
