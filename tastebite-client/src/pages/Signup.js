@@ -108,7 +108,7 @@ const Signup = () => {
                     name="Image Url"
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
-                    type="text"
+                    type="file"
                     autoComplete="https://www.pexels.com/"
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-color focus:border-primary-color sm:text-sm"
